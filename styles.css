@@ -1,0 +1,42 @@
+.acftools-message {
+  position: fixed;
+  top: 40px;
+  left: 50%;
+  transform: translate(-50%, 0px);
+  color: white;
+  font-size: 13px;
+  background-color: #0085ba;
+  line-height: 28px;
+  border-radius: 3px;
+  border: 1px solid #0073aa #006799 #006799;
+  box-shadow: 0 1px 0 #006799;
+  text-shadow: 0 -1px 1px #006799, 1px 0 1px #006799, 0 1px 1px #006799,
+    -1px 0 1px #006799;
+  padding: 0 12px;
+  opacity: 0;
+  animation: fade-in-slide 2s ease-in-out;
+}
+
+@keyframes fade-in-slide {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0px);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+}
+
+.li-field-name {
+  cursor: pointer;
+}
+.li-field-name:hover {
+  text-decoration: underline;
+}

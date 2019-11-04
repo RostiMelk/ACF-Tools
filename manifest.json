@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "ACF Tools",
+  "version": "1.0.0",
+  "description": "ACF Tools",
+  "permissions": ["tabs"],
+  "content_scripts": [
+    {
+      "css": ["styles.css"],
+      "js": ["lib/jquery-3.4.1.min.js", "scripts.js"],
+      "matches": ["*://*/wp-admin/*"]
+    }
+  ]
+}

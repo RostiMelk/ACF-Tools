@@ -1,5 +1,6 @@
 $(document).ready(function() {
   copyFieldName();
+  openDocs();
 });
 
 function copyToClipboard(element) {
@@ -17,5 +18,18 @@ function copyToClipboard(element) {
 function copyFieldName() {
   $("body").on("click", ".li-field-name", function() {
     copyToClipboard(this);
+  });
+}
+
+function openDocs() {
+  $("body").on("click", ".li-field-type", function() {
+    var $type = $(this)
+      .closest(".acf-field-object")
+      .data("type");
+    var $url = $type.replace("_", "-");
+    window.open(
+      "https://www.advancedcustomfields.com/resources/" + $url,
+      "_blank"
+    );
   });
 }

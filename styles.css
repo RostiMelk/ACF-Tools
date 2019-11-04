@@ -34,9 +34,11 @@
   }
 }
 
-.li-field-name {
+.li-field-name,
+.li-field-type {
   cursor: pointer;
 }
-.li-field-name:hover {
+.li-field-name:hover,
+.li-field-type:hover {
   text-decoration: underline;
 }

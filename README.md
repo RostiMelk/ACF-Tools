@@ -2,7 +2,11 @@
 
 ### General info
 
-This is a Chrome extension for acf too help with minor stuff.
+This is a Chrome extension for acf to help with minor stuff.
+
+### Features
+
+- Quickly copy an ACF field name
 
 ### Installation
 

@@ -3,10 +3,20 @@ $(document).ready(function() {
   openDocs();
 });
 
-function copyToClipboard(element) {
+function copyToClipboard(element, space) {
   var $temp = $("<input>");
   $("body").append($temp);
-  $temp.val($(element).text()).select();
+  if (space == true) {
+    $temp.val($(element).text()).select();
+  } else {
+    $temp
+      .val(
+        $(element)
+          .text()
+          .substring(1)
+      )
+      .select();
+  }
   document.execCommand("copy");
   $temp.remove();
   $("body").append('<div class="acftools-message">Copied to clipboard!</div>');
@@ -17,8 +27,7 @@ function copyToClipboard(element) {
 
 function copyFieldName() {
   $("body").on("click", ".li-field-name", function() {
-    var fixedFieldName = this.className.substring(1);
-    copyToClipboard(fixedFieldName);
+    copyToClipboard(this, false);
   });
 }
 

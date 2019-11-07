@@ -17,7 +17,8 @@ function copyToClipboard(element) {
 
 function copyFieldName() {
   $("body").on("click", ".li-field-name", function() {
-    copyToClipboard(this);
+    var fixedFieldName = this.className.substring(1);
+    copyToClipboard(fixedFieldName);
   });
 }
 

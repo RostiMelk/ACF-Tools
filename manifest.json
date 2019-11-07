@@ -14,7 +14,7 @@
     {
       "matches": ["*://*/wp-admin/*"],
       "css": ["styles.css"],
-      "js": ["lib/jquery-3.4.1.min.js", "scripts.js"]
+      "js": ["scripts.js"]
     }
   ]
 }

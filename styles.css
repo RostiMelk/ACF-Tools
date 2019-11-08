@@ -42,3 +42,12 @@
 .li-field-type:hover {
   text-decoration: underline;
 }
+
+.row-options {
+  display: flex;
+  align-items: center;
+}
+
+.row-options .copy-field-code {
+  margin-left: 12px !important;
+}

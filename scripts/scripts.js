@@ -47,9 +47,20 @@ function fieldError() {
 
 function copyFieldCode() {
   // Append copy field code button
-  $('.acf-field-object:not([data-type="accordion"], [data-type="message"], [data-type="tab"]) .row-options').append(
-    '<a class="button button-primary button-small copy-field-code" title="Copy PHP code for this field" href="#">Copy code</a>'
-  );
+  function appendCopyCodeBtn() {
+    $('.acf-field-object:not([data-type="accordion"], [data-type="message"], [data-type="tab"]) .row-options').append(
+      '<a class="button button-primary button-small copy-field-code" title="Copy PHP code for this field" href="#">Copy code</a>'
+    );
+  }
+  appendCopyCodeBtn();
+
+  // Append buttons to new fields
+  $('body').on('click', '.add-field', function () {
+    $('.copy-field-code').remove();
+    setTimeout(function () {
+      appendCopyCodeBtn();
+    }, 10);
+  })
 
   $("body").on("click", ".copy-field-code", function () {
     // Get type of field
@@ -79,6 +90,16 @@ function copyFieldCode() {
       var returnType = null;
     }
 
-    acf_field(fieldName, typeOfField, returnType);
+    // Check if sub element or not
+    if ($(this).closest(".acf-field-object").parents('.acf-field-setting-fc_layout').length ||
+      $(this).closest(".acf-field-object").parents('.acf-field-setting-sub_fields').length) {
+      var seniority = 'sub';
+    } else {
+      var seniority = 'parent';
+    }
+
+    console.log('seniority: ' + seniority);
+
+    acf_field(fieldName, typeOfField, returnType, seniority);
   });
 }

@@ -1,4 +1,4 @@
-function acf_field(fieldName, typeOfField, returnType) {
+function acf_field(fieldName, typeOfField, returnType, seniority) {
 	switch (typeOfField) {
 		case "range":
 			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
@@ -116,7 +116,7 @@ function acf_field(fieldName, typeOfField, returnType) {
 			break;
 
 		case "group":
-			var fieldCode = "<?php\n" + "if( have_rows('"+ fieldName +"') ):\n" + "    while( have_rows('"+ fieldName +"') ): the_row();\n" + "        \n" + "    endwhile;\n" + "endif; ?>";
+			var fieldCode = "<?php\n" + "if( have_rows('" + fieldName + "') ):\n" + "    while( have_rows('" + fieldName + "') ): the_row();\n" + "        \n" + "    endwhile;\n" + "endif; ?>";
 			break;
 
 		case "clone":
@@ -124,7 +124,7 @@ function acf_field(fieldName, typeOfField, returnType) {
 			break;
 
 		case "repeater":
-			var fieldCode = "<?php\n" + "if( have_rows('"+ fieldName +"') ):\n" + "    while( have_rows('"+ fieldName +"') ): the_row();\n" + "        \n" + "    endwhile;\n" + "endif; ?>";
+			var fieldCode = "<?php\n" + "if( have_rows('" + fieldName + "') ):\n" + "    while( have_rows('" + fieldName + "') ): the_row();\n" + "        \n" + "    endwhile;\n" + "endif; ?>";
 			break;
 
 		case "link":
@@ -174,14 +174,20 @@ function acf_field(fieldName, typeOfField, returnType) {
 			break;
 
 		case "relationship":
-			var fieldCode = "<?php\n" + "$posts = get_field('"+ fieldName +"');\n" + "if( $posts ): ?>\n" + "    <?php foreach( $posts as $post): ?>\n" + "        <?php setup_postdata($post); ?>\n" + "        \n" + "    <?php endforeach; ?>\n" + "    <?php wp_reset_postdata(); ?>\n" + "<?php endif; ?>";
+			var fieldCode = "<?php\n" + "$posts = get_field('" + fieldName + "');\n" + "if( $posts ): ?>\n" + "    <?php foreach( $posts as $post): ?>\n" + "        <?php setup_postdata($post); ?>\n" + "        \n" + "    <?php endforeach; ?>\n" + "    <?php wp_reset_postdata(); ?>\n" + "<?php endif; ?>";
 			break;
 
 		default:
 			fieldError()
 
 	}
+
 	if (typeof typeOfField != "undefined") {
+		if (seniority == 'sub') {
+			fieldCode = fieldCode.replace('get_field', 'get_sub_field');
+			fieldCode = fieldCode.replace('the_field', 'the_sub_field');
+		}
+		console.log(fieldCode);
 		copyCodeToClipboard(fieldCode);
 	}
 }

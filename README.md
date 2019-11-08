@@ -7,6 +7,7 @@ This is a Chrome extension for acf to help with minor stuff.
 ### Features
 
 - Quickly copy an ACF field name
+- Copy code for field with the matching selected setting and field name
 - Quickly open documentation for field
 
 ### Installation

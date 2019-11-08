@@ -1,7 +1,7 @@
 $(document).ready(function () {
   copyFieldName();
   openDocs();
-  // copyFieldCode();
+  copyFieldCode();
 });
 
 function copyToClipboard(element) {
@@ -16,6 +16,11 @@ function copyToClipboard(element) {
   }, 3000);
 }
 
+function copyCodeToClipboard(element)  {
+  var temp = $('<textarea></textarea>').val(element).appendTo('body').select()
+  document.execCommand('copy')
+}
+
 function copyFieldName() {
   $("body").on("click", ".li-field-name", function () {
     copyToClipboard(this);
@@ -24,21 +29,20 @@ function copyFieldName() {
 
 function openDocs() {
   $("body").on("click", ".li-field-type", function () {
-    var type = $(this)
-      .closest(".acf-field-object")
-      .data("type"),
-      url = type.replace("_", "-");
+    var type = $(this).closest(".acf-field-object").data("type");
+    var url = type.replace("_", "-");
 
-    window.open(
-      "https://www.advancedcustomfields.com/resources/" + url,
-      "_blank"
-    );
+    window.open("https://www.advancedcustomfields.com/resources/" + url, "_blank");
   });
+}
+
+function fieldError() {
+  alert("Unsupported field, submit an issue on: \nhttps://github.com/RostiMelk/ACF-Tools");
 }
 
 function copyFieldCode() {
   // Append copy field code button
-  $(".acf-field-object .row-options").append(
+  $('.acf-field-object:not([data-type="accordion"], [data-type="message"], [data-type="tab"]) .row-options').append(
     '<a class="button button-primary button-small copy-field-code" title="Copy PHP code for this field" href="#">Copy code</a>'
   );
 
@@ -56,7 +60,12 @@ function copyFieldCode() {
       .trim();
 
     // Ouput type for supported fields
-    if (fieldName == 'image') {
+    if (fieldName == 'image' ||
+      fieldName == 'gallery' ||
+      fieldName == 'link' ||
+      fieldName == 'taxonomy' ||
+      fieldName == 'user' ||
+      fieldName == 'file') {
       var returnType = $(this)
         .closest(".acf-field-object")
         .find(".acf-field-setting-return_format input:checked")

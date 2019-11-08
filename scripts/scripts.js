@@ -10,7 +10,7 @@ function copyToClipboard(element) {
   temp.val($(element).text().trim()).select();
   document.execCommand("copy");
   temp.remove();
-  $("body").append('<div class="acftools-message">Copied to clipboard!</div>');
+  $("body").append('<div class="button button-primary button-small acftools-message">Copied to clipboard!</div>');
   setTimeout(function () {
     $(".acftools-message").remove();
   }, 3000);

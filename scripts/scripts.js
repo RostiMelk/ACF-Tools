@@ -4,21 +4,26 @@ $(document).ready(function () {
   copyFieldCode();
 });
 
-function copyToClipboard(element) {
-  var temp = $("<input>");
-  $("body").append(temp);
-  temp.val($(element).text().trim()).select();
-  document.execCommand("copy");
-  temp.remove();
+function copyMessage() {
   $("body").append('<div class="button button-primary button-small acftools-message">Copied to clipboard!</div>');
   setTimeout(function () {
     $(".acftools-message").remove();
   }, 3000);
 }
 
-function copyCodeToClipboard(element)  {
+function copyToClipboard(element) {
+  var temp = $("<input>");
+  $("body").append(temp);
+  temp.val($(element).text().trim()).select();
+  document.execCommand("copy");
+  temp.remove();
+  copyMessage();
+}
+
+function copyCodeToClipboard(element) {
   var temp = $('<textarea></textarea>').val(element).appendTo('body').select()
   document.execCommand('copy')
+  copyMessage();
 }
 
 function copyFieldName() {

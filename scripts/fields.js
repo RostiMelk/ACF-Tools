@@ -182,7 +182,6 @@ function acf_field(fieldName, typeOfField, returnType) {
 
 	}
 	if (typeof typeOfField != "undefined") {
-		console.log(fieldCode);
 		copyCodeToClipboard(fieldCode);
 	}
 }

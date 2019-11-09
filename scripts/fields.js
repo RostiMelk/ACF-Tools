@@ -46,7 +46,6 @@ function acf_field(fieldName, typeOfField, returnType, seniority) {
 				default:
 					fieldError();
 			}
-
 			break;
 
 		case "gallery":
@@ -187,7 +186,6 @@ function acf_field(fieldName, typeOfField, returnType, seniority) {
 			fieldCode = fieldCode.replace('get_field', 'get_sub_field');
 			fieldCode = fieldCode.replace('the_field', 'the_sub_field');
 		}
-		console.log(fieldCode);
 		copyCodeToClipboard(fieldCode);
 	}
 }

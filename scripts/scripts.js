@@ -70,21 +70,21 @@ function copyFieldCode() {
 
     // Get field name
     var fieldName = $(this)
-      .closest(".handle")
+      .closest(".acf-field-object")
       .find(".li-field-name")
       .text()
       .trim();
 
     // Ouput type for supported fields
-    if (fieldName == 'image' ||
-      fieldName == 'gallery' ||
-      fieldName == 'link' ||
-      fieldName == 'taxonomy' ||
-      fieldName == 'user' ||
-      fieldName == 'file') {
+    if (typeOfField == 'image' ||
+      typeOfField == 'gallery' ||
+      typeOfField == 'link' ||
+      typeOfField == 'taxonomy' ||
+      typeOfField == 'user' ||
+      typeOfField == 'file') {
       var returnType = $(this)
         .closest(".acf-field-object")
-        .find(".acf-field-setting-return_format input:checked")
+        .find(".acf-field-setting-return_format li label.selected input")
         .val();
     } else {
       var returnType = null;
@@ -97,8 +97,6 @@ function copyFieldCode() {
     } else {
       var seniority = 'parent';
     }
-
-    console.log('seniority: ' + seniority);
 
     acf_field(fieldName, typeOfField, returnType, seniority);
   });

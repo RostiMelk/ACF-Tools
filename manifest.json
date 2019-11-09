@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "ACF Tools",
-  "version": "1.7",
+  "version": "2.0",
   "description": "ACF Tools",
   "icons": {
     "48": "icons/acf-48.png"

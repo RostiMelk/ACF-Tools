@@ -73,7 +73,7 @@ function acf_field(fieldName, typeOfField, returnType, seniority) {
 					var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
 					break;
 				case "id":
-					var fieldCode = "<?php\n" + "$image = get_field('" + fieldName + "');\n" + "$size = 'full';\n" + "if( $image ) {\n" + "    $url = wp_get_attachment_url( $image ); ?>\n" + "    echo wp_get_attachment_image( $image, $size );\n" + "}";
+					var fieldCode = "<?php\n" + "$image = get_field('" + fieldName + "');\n" + "$size = 'full';\n" + "if( $image ) {\n" + "    $url = wp_get_attachment_url( $image );\n" + "    echo wp_get_attachment_image( $image, $size );\n" + "}; ?>";
 					break;
 				default:
 					fieldError();

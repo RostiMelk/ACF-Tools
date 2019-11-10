@@ -1,9 +1,6 @@
 function acf_field(fieldName, typeOfField, returnType, seniority) {
 	switch (typeOfField) {
-		case "range":
-			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
-			break;
-
+		// Basic
 		case "text":
 			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
 			break;
@@ -12,24 +9,41 @@ function acf_field(fieldName, typeOfField, returnType, seniority) {
 			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
 			break;
 
-		case "button_group":
-			var fieldCode = "<?php if ( get_field('" + fieldName + "') == 'value' ) : ?>\n" + " \n" + "<?php endif; ?>";
+		case "number":
+			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
 			break;
 
-		case "check_box":
-			var fieldCode = "<?php if ( get_field('" + fieldName + "') == 'value' ) : ?>\n" + " \n" + "<?php endif; ?>";
+		case "range":
+			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
 			break;
 
-		case "radio_button":
-			var fieldCode = "<?php if ( get_field('" + fieldName + "') == 'value' ) : ?>\n" + " \n" + "<?php endif; ?>";
+		case "email":
+			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
 			break;
 
-		case "select":
-			var fieldCode = "<?php if ( get_field('" + fieldName + "') == 'value' ) : ?>\n" + " \n" + "<?php endif; ?>";
+		case "url":
+			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
 			break;
 
-		case "true_false":
-			var fieldCode = "<?php if ( get_field('" + fieldName + "') ) : ?>\n" + " \n" + "<?php else: ?>\n" + " \n" + "<?php endif; ?>";
+		case "password":
+			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
+			break;
+
+		//  Content
+		case "image":
+			switch (returnType) {
+				case "array":
+					var fieldCode = "<?php\n" + "$image = get_field('" + fieldName + "');\n" + "if( !empty( $image ) ): ?>\n" + "    <img src='<?php echo esc_url($image['url']); ?>' alt='<?php echo esc_attr($image['alt']); ?>' />\n" + "<?php endif; ?>";
+					break;
+				case "url":
+					var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
+					break;
+				case "id":
+					var fieldCode = "<?php\n" + "$image = get_field('" + fieldName + "');\n" + "$size = 'full';\n" + "if( $image ) {\n" + "    $url = wp_get_attachment_url( $image );\n" + "    echo wp_get_attachment_image( $image, $size );\n" + "}; ?>";
+					break;
+				default:
+					fieldError();
+			}
 			break;
 
 		case "file":
@@ -48,6 +62,14 @@ function acf_field(fieldName, typeOfField, returnType, seniority) {
 			}
 			break;
 
+		case "wysiwyg_editor":
+			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
+			break;
+
+		case "oembed":
+			var fieldCode = "<div class='embed-container'>\n" + "    <?php the_field('" + fieldName + "'); ?>\n" + "</div>";
+			break;
+
 		case "gallery":
 			switch (returnType) {
 				case "array":
@@ -64,68 +86,28 @@ function acf_field(fieldName, typeOfField, returnType, seniority) {
 			}
 			break;
 
-		case "image":
-			switch (returnType) {
-				case "array":
-					var fieldCode = "<?php\n" + "$image = get_field('" + fieldName + "');\n" + "if( !empty( $image ) ): ?>\n" + "    <img src='<?php echo esc_url($image['url']); ?>' alt='<?php echo esc_attr($image['alt']); ?>' />\n" + "<?php endif; ?>";
-					break;
-				case "url":
-					var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
-					break;
-				case "id":
-					var fieldCode = "<?php\n" + "$image = get_field('" + fieldName + "');\n" + "$size = 'full';\n" + "if( $image ) {\n" + "    $url = wp_get_attachment_url( $image );\n" + "    echo wp_get_attachment_image( $image, $size );\n" + "}; ?>";
-					break;
-				default:
-					fieldError();
-			}
+		// Choice
+		case "select":
+			var fieldCode = "<?php if ( get_field('" + fieldName + "') == 'value' ) : ?>\n" + " \n" + "<?php endif; ?>";
 			break;
 
-		case "oembed":
-			var fieldCode = "<div class='embed-container'>\n" + "    <?php the_field('" + fieldName + "'); ?>\n" + "</div>";
+		case "check_box":
+			var fieldCode = "<?php if ( get_field('" + fieldName + "') == 'value' ) : ?>\n" + " \n" + "<?php endif; ?>";
 			break;
 
-		case "wysiwyg_editor":
-			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
+		case "radio_button":
+			var fieldCode = "<?php if ( get_field('" + fieldName + "') == 'value' ) : ?>\n" + " \n" + "<?php endif; ?>";
 			break;
 
-		case "color_picker":
-			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
+		case "button_group":
+			var fieldCode = "<?php if ( get_field('" + fieldName + "') == 'value' ) : ?>\n" + " \n" + "<?php endif; ?>";
 			break;
 
-		case "date_picker":
-			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
+		case "true_false":
+			var fieldCode = "<?php if ( get_field('" + fieldName + "') ) : ?>\n" + " \n" + "<?php else: ?>\n" + " \n" + "<?php endif; ?>";
 			break;
 
-		case "date_time_picker":
-			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
-			break;
-
-		case "google_map":
-			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
-			alert('This field type requires more configuration.\nRead documentation at:\nhttps://www.advancedcustomfields.com/resources/google-map/');
-			window.open("https://www.advancedcustomfields.com/resources/google-map/", "_blank");
-			break;
-
-		case "time_picker":
-			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
-			break;
-
-		case "flexible_content":
-			var fieldCode = "<?php\n" + "$flexibleContentPath = dirname(__FILE__) . '/flexible-content/';\n" + "if(have_rows('" + fieldName + "')) :\n" + "    while (have_rows('" + fieldName + "') ) : the_row();\n" + "        $layout = get_row_layout();\n" + "        $file = ($flexibleContentPath . str_replace('_', '-', $layout) . '.php');\n" + "        if (file_exists($file)) {\n" + "            include($file);\n" + "        }\n" + "    endwhile;\n" + "endif; ?>";
-			break;
-
-		case "group":
-			var fieldCode = "<?php\n" + "if( have_rows('" + fieldName + "') ):\n" + "    while( have_rows('" + fieldName + "') ): the_row();\n" + "        \n" + "    endwhile;\n" + "endif; ?>";
-			break;
-
-		case "clone":
-			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
-			break;
-
-		case "repeater":
-			var fieldCode = "<?php\n" + "if( have_rows('" + fieldName + "') ):\n" + "    while( have_rows('" + fieldName + "') ): the_row();\n" + "        \n" + "    endwhile;\n" + "endif; ?>";
-			break;
-
+		// Relational
 		case "link":
 			switch (returnType) {
 				case "array":
@@ -137,6 +119,18 @@ function acf_field(fieldName, typeOfField, returnType, seniority) {
 				default:
 					fieldError();
 			}
+			break;
+
+		case "post_object":
+			var fieldCode = "<?php\n" + "$post_object = get_field('" + fieldName + "');\n" + "if( $post_object ):\n" + "    $post = $post_object;\n" + "    setup_postdata( $post ); \n" + "    ?>\n" + "        \n" + "    <?php wp_reset_postdata(); ?>\n" + "<?php endif; ?>";
+			break;
+
+		case "page_link":
+			var fieldCode = "<?php\n" + "$urls = get_field('" + fieldName + "');\n" + "if( $urls ): ?>\n" + "    <?php foreach( $urls as $url ): ?>\n" + "        <a href='<? php echo esc_url($url); ?> ><?php echo esc_html( $url ); ?></a>\n" + "    <?php endforeach; ?>\n" + "<?php endif; ?>";
+			break;
+
+		case "relationship":
+			var fieldCode = "<?php\n" + "$posts = get_field('" + fieldName + "');\n" + "if( $posts ): ?>\n" + "    <?php foreach( $posts as $post): ?>\n" + "        <?php setup_postdata($post); ?>\n" + "        \n" + "    <?php endforeach; ?>\n" + "    <?php wp_reset_postdata(); ?>\n" + "<?php endif; ?>";
 			break;
 
 		case "taxonomy":
@@ -168,12 +162,45 @@ function acf_field(fieldName, typeOfField, returnType, seniority) {
 			}
 			break;
 
-		case "post_object":
-			var fieldCode = "<?php\n" + "$post_object = get_field('" + fieldName + "');\n" + "if( $post_object ):\n" + "    $post = $post_object;\n" + "    setup_postdata( $post ); \n" + "    ?>\n" + "        \n" + "    <?php wp_reset_postdata(); ?>\n" + "<?php endif; ?>";
+		//jQuery
+		case "google_map":
+			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
+			alert('This field type requires more configuration.\nRead documentation at:\nhttps://www.advancedcustomfields.com/resources/google-map/');
+			window.open("https://www.advancedcustomfields.com/resources/google-map/", "_blank");
 			break;
 
-		case "relationship":
-			var fieldCode = "<?php\n" + "$posts = get_field('" + fieldName + "');\n" + "if( $posts ): ?>\n" + "    <?php foreach( $posts as $post): ?>\n" + "        <?php setup_postdata($post); ?>\n" + "        \n" + "    <?php endforeach; ?>\n" + "    <?php wp_reset_postdata(); ?>\n" + "<?php endif; ?>";
+		case "date_picker":
+			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
+			break;
+
+		case "date_time_picker":
+			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
+			break;
+
+
+		case "time_picker":
+			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
+			break;
+
+		case "color_picker":
+			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
+			break;
+
+		// Layout
+		case "group":
+			var fieldCode = "<?php\n" + "if( have_rows('" + fieldName + "') ):\n" + "    while( have_rows('" + fieldName + "') ): the_row();\n" + "        \n" + "    endwhile;\n" + "endif; ?>";
+			break;
+
+		case "repeater":
+			var fieldCode = "<?php\n" + "if( have_rows('" + fieldName + "') ):\n" + "    while( have_rows('" + fieldName + "') ): the_row();\n" + "        \n" + "    endwhile;\n" + "endif; ?>";
+			break;
+
+		case "flexible_content":
+			var fieldCode = "<?php\n" + "$flexibleContentPath = dirname(__FILE__) . '/flexible-content/';\n" + "if(have_rows('" + fieldName + "')) :\n" + "    while (have_rows('" + fieldName + "') ) : the_row();\n" + "        $layout = get_row_layout();\n" + "        $file = ($flexibleContentPath . str_replace('_', '-', $layout) . '.php');\n" + "        if (file_exists($file)) {\n" + "            include($file);\n" + "        }\n" + "    endwhile;\n" + "endif; ?>";
+			break;
+
+		case "clone":
+			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
 			break;
 
 		default:

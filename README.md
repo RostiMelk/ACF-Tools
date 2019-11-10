@@ -2,12 +2,12 @@
 
 ### General info
 
-This is a Chrome extension for acf to help with minor stuff.
+This is a Chrome extension for Advanced Custom Fields to help with developing sites faster stuff.
 
 ### Features
 
-- Quickly copy an ACF field name
 - Copy code for field with the matching selected setting and field name
+- Quickly copy an ACF field name
 - Quickly open documentation for field
 
 ### Installation

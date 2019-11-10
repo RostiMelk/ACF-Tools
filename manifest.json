@@ -1,22 +1,16 @@
 {
   "manifest_version": 2,
   "name": "ACF Tools",
-  "version": "2.1",
-  "description": "ACF Tools",
+  "version": "2.1.0",
+  "description": "This is a Chrome extension for Advanced Custom Fields to help with developing sites faster stuff.",
   "icons": {
     "48": "icons/acf-48.png"
   },
-  "permissions": [
-    "tabs"
-  ],
+  "permissions": ["tabs"],
   "content_scripts": [
     {
-      "matches": [
-        "*://*/wp-admin/*"
-      ],
-      "css": [
-        "styles/style.css"
-      ],
+      "matches": ["*://*/wp-admin/*"],
+      "css": ["styles/style.css"],
       "js": [
         "lib/jquery-3.4.1.min.js",
         "scripts/scripts.js",

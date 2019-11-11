@@ -91,11 +91,11 @@ function acf_field(fieldName, typeOfField, returnType, seniority) {
 			var fieldCode = "<?php if ( get_field('" + fieldName + "') == 'value' ) : ?>\n" + " \n" + "<?php endif; ?>";
 			break;
 
-		case "check_box":
+		case "checkbox":
 			var fieldCode = "<?php if ( get_field('" + fieldName + "') == 'value' ) : ?>\n" + " \n" + "<?php endif; ?>";
 			break;
 
-		case "radio_button":
+		case "radio":
 			var fieldCode = "<?php if ( get_field('" + fieldName + "') == 'value' ) : ?>\n" + " \n" + "<?php endif; ?>";
 			break;
 

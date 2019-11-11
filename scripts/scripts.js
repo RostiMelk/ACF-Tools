@@ -70,7 +70,7 @@ function copyFieldCode() {
 
     // Get field name
     var fieldName = $(this)
-      .closest(".acf-field-object")
+      .closest(".handle")
       .find(".li-field-name")
       .text()
       .trim();

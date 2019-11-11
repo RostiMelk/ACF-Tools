@@ -4,7 +4,7 @@
 
 ### General info
 
-This is a Chrome extension for Advanced Custom Fields to help with developing sites faster stuff.
+This is a Chrome extension for Advanced Custom Fields to help with developing sites faster.
 
 ### Features
 

@@ -62,7 +62,7 @@ function acf_field(fieldName, typeOfField, returnType, seniority) {
 			}
 			break;
 
-		case "wysiwyg_editor":
+		case "wysiwyg":
 			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
 			break;
 

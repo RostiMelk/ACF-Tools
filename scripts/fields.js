@@ -214,7 +214,7 @@ function acf_field(fieldName, typeOfField, returnType, seniority, place) {
 			fieldCode = fieldCode.replace('get_field', 'get_sub_field');
 			fieldCode = fieldCode.replace('the_field', 'the_sub_field');
 		}
-		// Add options page if options page
+		// Add options if options page
 		if (place == 'options_page') {
 			var fieldNameRe = new RegExp("'" + fieldName + "'", 'g');
 			fieldCode = fieldCode.replace(fieldNameRe, "'" + fieldName + "', 'options'");

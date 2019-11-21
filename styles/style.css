@@ -42,3 +42,6 @@
 .row-options .copy-field-code {
   margin-left: 12px !important;
 }
+.acf-field-object.open>.handle a.button-secondary {
+  color: #0071a1 !important;
+}

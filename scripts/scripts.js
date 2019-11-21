@@ -46,6 +46,7 @@ function fieldError() {
 }
 
 function copyFieldCode() {
+
   // Append copy field code button
   function appendCopyCodeBtn() {
     $('.acf-field-object:not([data-type="accordion"], [data-type="message"], [data-type="tab"]) .row-options').append(
@@ -53,7 +54,6 @@ function copyFieldCode() {
     );
   }
   appendCopyCodeBtn();
-
   // Append buttons to new fields
   $('body').on('click', '.add-field', function () {
     $('.copy-field-code').remove();
@@ -62,6 +62,7 @@ function copyFieldCode() {
     }, 10);
   })
 
+  // Copy field code
   $("body").on("click", ".copy-field-code", function () {
     // Get type of field
     var typeOfField = $(this)
@@ -98,6 +99,9 @@ function copyFieldCode() {
       var seniority = 'parent';
     }
 
-    acf_field(fieldName, typeOfField, returnType, seniority);
+    // Get field group place
+    var place = $('.refresh-location-rule option[selected="selected"]').val();
+
+    acf_field(fieldName, typeOfField, returnType, seniority, place);
   });
 }

@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "ACF Tools",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "This is a Chrome extension for Advanced Custom Fields to help with developing sites faster.",
   "icons": {
     "16": "icons/icon16.png",

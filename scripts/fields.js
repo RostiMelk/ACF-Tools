@@ -18,7 +18,7 @@ function acf_field(fieldName, typeOfField, returnType, seniority, place) {
 			break;
 
 		case "email":
-			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
+			var fieldCode = "<?php if ( $" + fieldName + " = get_field('" + fieldName + "') ): ?>\n" + "\t<a href=\"mailto:<?php echo $" + fieldName + "; ?>\"><?php echo $" + fieldName + "; ?></a>\n" + "<?php endif; ?>";
 			break;
 
 		case "url":
@@ -33,13 +33,13 @@ function acf_field(fieldName, typeOfField, returnType, seniority, place) {
 		case "image":
 			switch (returnType) {
 				case "array":
-					var fieldCode = "<?php\n" + "$image = get_field('" + fieldName + "');\n" + "if( !empty( $image ) ): ?>\n" + "\t<img src=\"<?php echo esc_url($image['url']); ?>\" alt=\"<?php echo esc_attr($image['alt']); ?>\" />\n" + "<?php endif; ?>";
+					var fieldCode = "<?php\n" + "$" + fieldName + " = get_field('" + fieldName + "');\n" + "if( !empty( $" + fieldName + " ) ): ?>\n" + "\t<img src=\"<?php echo esc_url($" + fieldName + "['url']); ?>\" alt=\"<?php echo esc_attr($" + fieldName + "['alt']); ?>\" />\n" + "<?php endif; ?>";
 					break;
 				case "url":
 					var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
 					break;
 				case "id":
-					var fieldCode = "<?php\n" + "$image = get_field('" + fieldName + "');\n" + "$size = 'full';\n" + "if( $image ) {\n" + "\t$url = wp_get_attachment_url( $image );\n" + "\techo wp_get_attachment_image( $image, $size );\n" + "}; ?>";
+					var fieldCode = "<?php\n" + "$" + fieldName + " = get_field('" + fieldName + "');\n" + "$size = 'full';\n" + "if( $" + fieldName + " ) {\n" + "\t$url = wp_get_attachment_url( $" + fieldName + " );\n" + "\techo wp_get_attachment_image( $" + fieldName + ", $size );\n" + "}; ?>";
 					break;
 				default:
 					fieldError();

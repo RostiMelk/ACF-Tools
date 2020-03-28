@@ -1,7 +1,9 @@
 $(document).ready(function () {
+  var debug = false;
+
   copyFieldName();
   openDocs();
-  copyFieldCode();
+  copyFieldCode(debug);
 });
 
 function copyMessage() {
@@ -34,7 +36,7 @@ function copyFieldName() {
 
 function openDocs() {
   $("body").on("click", ".li-field-type", function () {
-    var type = $(this).closest(".acf-field-object").data("type");
+    var type = $(this).closest(".acf-field-object").attr("data-type");
     var url = type.replace("_", "-");
 
     window.open("https://www.advancedcustomfields.com/resources/" + url, "_blank");
@@ -45,8 +47,7 @@ function fieldError() {
   alert("Unsupported field, submit an issue on: \nhttps://github.com/RostiMelk/ACF-Tools");
 }
 
-function copyFieldCode() {
-
+function copyFieldCode(debug) {
   // Append copy field code button
   function appendCopyCodeBtn() {
     $('.acf-field-object:not([data-type="accordion"], [data-type="message"], [data-type="tab"]) .row-options').append(
@@ -67,7 +68,8 @@ function copyFieldCode() {
     // Get type of field
     var typeOfField = $(this)
       .closest(".acf-field-object")
-      .data("type");
+      .attr("data-type");
+      debug ? console.log('typeOfField: ' + typeOfField) : null;
 
     // Get field name
     var fieldName = $(this)
@@ -75,8 +77,9 @@ function copyFieldCode() {
       .find(".li-field-name")
       .text()
       .trim();
+      debug ? console.log('fieldName: ' + fieldName) : null;
 
-    // Ouput type for supported fields
+    // Output type for supported fields (This is used if a field has multiple types of output methods, such as Array, ID or URL)
     if (typeOfField == 'image' ||
       typeOfField == 'gallery' ||
       typeOfField == 'link' ||
@@ -90,6 +93,7 @@ function copyFieldCode() {
     } else {
       var returnType = null;
     }
+    debug ? console.log('returnType: ' + returnType) : null;
 
     // Check if sub element or not
     if ($(this).closest(".acf-field-object").parents('.acf-field-setting-fc_layout').length ||
@@ -98,9 +102,11 @@ function copyFieldCode() {
     } else {
       var seniority = 'parent';
     }
+    debug ? console.log('seniority: ' + seniority) : null;
 
-    // Get field group place
+    // Get field group place (basically checks if field is in options page or not)
     var place = $('.refresh-location-rule option[selected="selected"]').val();
+    debug ? console.log('place: ' + place) : null;
 
     acf_field(fieldName, typeOfField, returnType, seniority, place);
   });

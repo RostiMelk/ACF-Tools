@@ -227,7 +227,9 @@ function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, pl
 	sessionStorage.removeItem('fieldcode');
 	sessionStorage.setItem('fieldcode', '\n\t\t' + fieldCode + '\n');
 
+
+
 	if(!appendCode) {
-		copyCodeToClipboard(fieldCode);
+		copyCodeToClipboard(fieldCode, subFields);
 	}
 }

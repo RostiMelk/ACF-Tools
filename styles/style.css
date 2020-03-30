@@ -5,7 +5,7 @@
   transform: translate(-50%, 0px);
   pointer-events: none;
   opacity: 0;
-  animation: fade-in-slide 2s ease-in-out;
+  animation: fade-in-slide 2.5s ease-in-out;
   display: block;
   font-size: 14.4px;
   background-color: #C7E8CA;

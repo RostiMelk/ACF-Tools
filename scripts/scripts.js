@@ -5,12 +5,12 @@ $(document).ready(function() {
 	appendCopyCodeBtns();
 });
 
-function copyMessage() {
+function copyMessage(message) {
 	$(".acftools-message").remove();
-	$("body").append('<div class="acftools-message">Copied to clipboard!</div>');
+	$("body").append('<div class="acftools-message">'+message+'</div>');
 }
 
-function copyToClipboard(element) {
+function copyStringToClipboard(element) {
   var temp = $("<input>");
   $("body").append(temp);
   temp
@@ -22,23 +22,28 @@ function copyToClipboard(element) {
 	.select();
   document.execCommand("copy");
   temp.remove();
-  copyMessage();
-}
-
-function copyCodeToClipboard(element) {
-	var temp = $("<textarea></textarea>")
-		.val(element)
-		.appendTo("body")
-		.select();
-	document.execCommand("copy");
-	temp.remove();
-	copyMessage();
 }
 
 function copyFieldName() {
 	$("body").on("click", ".li-field-name", function() {
-		copyToClipboard(this);
+		copyStringToClipboard(this);
+		copyMessage('Copied field name to clipboard!');
 	});
+}
+
+function copyCodeToClipboard(fieldCode, subFields) {
+	var temp = $("<textarea></textarea>")
+		.val(fieldCode)
+		.appendTo("body")
+		.select();
+	document.execCommand("copy");
+	temp.remove();
+	
+	if(subFields.length) {
+		copyMessage('Copied code with sub fields to clipboard!');
+	} else {
+		copyMessage('Copied code to clipboard!');
+	}
 }
 
 function openDocs() {

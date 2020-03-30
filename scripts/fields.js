@@ -1,4 +1,4 @@
-function acf_field(copyCode, fieldName, typeOfField, returnType, seniority, place, subFields) {
+function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, place, subFields) {
 	switch (typeOfField) {
 		// Basic
 		case "text":
@@ -217,12 +217,17 @@ function acf_field(copyCode, fieldName, typeOfField, returnType, seniority, plac
 		var fieldNameRe = new RegExp("'" + fieldName + "'", 'g');
 		fieldCode = fieldCode.replace(fieldNameRe, "'" + fieldName + "', 'options'");
 	}
+
+	// Adjust tabs for appended sub fields
+	if(appendCode) {
+		fieldCode = fieldCode.replace(/\n/g, '\n\t\t')
+	}
 		
 	// Copy to clipboard
 	sessionStorage.removeItem('fieldcode');
-	sessionStorage.setItem('fieldcode', '\n' + fieldCode + '\n');
+	sessionStorage.setItem('fieldcode', '\n\t\t' + fieldCode + '\n');
 
-	if(copyCode) {
+	if(!appendCode) {
 		copyCodeToClipboard(fieldCode);
 	}
 }

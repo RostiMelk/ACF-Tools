@@ -195,12 +195,12 @@ function copyFieldCode() {
 					seniority = getSeniority(thisField),
 					place = getPlace(thisField);
 
-				acf_field(copyCode = false, fieldName, typeOfField, returnType, seniority, place, "");
+				acf_field(appendCode = true, fieldName, typeOfField, returnType, seniority, place, "");
 
 				subFields += sessionStorage.getItem("fieldcode");
 			});
 		}
-		acf_field(copyCode = true, fieldName, typeOfField, returnType, seniority, place, subFields);
+		acf_field(appendCode = false, fieldName, typeOfField, returnType, seniority, place, subFields);
 
 		// Clear session storage
 		sessionStorage.removeItem("fieldcode");

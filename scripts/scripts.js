@@ -201,5 +201,8 @@ function copyFieldCode() {
 			});
 		}
 		acf_field(copyCode = true, fieldName, typeOfField, returnType, seniority, place, subFields);
+
+		// Clear session storage
+		sessionStorage.removeItem("fieldcode");
 	});
 }

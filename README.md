@@ -8,7 +8,7 @@ This is a Chrome extension for Advanced Custom Fields to help with developing si
 
 ### Features
 
-- Copy code for field with the matching selected setting and field name
+- Copy code for field with the matching selected setting and field name ([video demo here](https://youtu.be/_gyqUem8jKo))
 - Quickly copy an ACF field name
 - Quickly open documentation for field
 

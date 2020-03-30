@@ -81,7 +81,7 @@ function appendCopyCodeBtns() {
 		$('.acf-field-object[data-type="repeater"], .acf-field-object[data-type="group"]')
 			.children(".handle")
 			.find(".row-options")
-			.append('<a class="button button-secondary button-small copy-field-code include-sub-fields" title="Copy PHP code for this field and inner fields" href="#">Copy code with sub fields</a>');
+			.append('<a class="button button-primary button-small copy-field-code include-sub-fields" title="Copy PHP code for this field and inner fields" href="#">Copy code with sub fields</a>');
 	}
 	appendCopyAllCodeBtn();
 

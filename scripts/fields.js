@@ -1,4 +1,4 @@
-function acf_field(fieldName, typeOfField, returnType, seniority, place) {
+function acf_field(fieldName, typeOfField, returnType, seniority, place, subFields) {
 	switch (typeOfField) {
 		// Basic
 		case "text":
@@ -188,11 +188,11 @@ function acf_field(fieldName, typeOfField, returnType, seniority, place) {
 
 		// Layout
 		case "group":
-			var fieldCode = "<?php if( have_rows('" + fieldName + "') ): ?>\n" + "\t<?php while( have_rows('" + fieldName + "') ): the_row(); ?>\n" + "\t\t\n" + "\t<?php endwhile; ?>\n" + "<?php endif; ?>";
+			var fieldCode = "<?php if( have_rows('" + fieldName + "') ): ?>\n" + "\t<?php while( have_rows('" + fieldName + "') ): the_row(); ?>\n" + "\t\t" + subFields + "\n" + "\t<?php endwhile; ?>\n" + "<?php endif; ?>";
 			break;
 
 		case "repeater":
-			var fieldCode = "<?php if( have_rows('" + fieldName + "') ): ?>\n" + "\t<?php while( have_rows('" + fieldName + "') ): the_row(); ?>\n" + "\t\t\n" + "\t<?php endwhile; ?>\n" + "<?php endif; ?>";
+			var fieldCode = "<?php if( have_rows('" + fieldName + "') ): ?>\n" + "\t<?php while( have_rows('" + fieldName + "') ): the_row(); ?>\n" + "\t\t" + subFields + "\n" + "\t<?php endwhile; ?>\n" + "<?php endif; ?>";
 			break;
 
 		case "flexible_content":
@@ -204,23 +204,22 @@ function acf_field(fieldName, typeOfField, returnType, seniority, place) {
 			break;
 
 		default:
-			fieldError()
-
+			fieldError();
 	}
 
-	if (typeof typeOfField != "undefined") {
-		// Change to sub field if sub field
-		if (seniority == 'sub') {
-			fieldCode = fieldCode.replace('get_field', 'get_sub_field');
-			fieldCode = fieldCode.replace('the_field', 'the_sub_field');
-		}
-		// Add options if options page
-		if (place == 'options_page') {
-			var fieldNameRe = new RegExp("'" + fieldName + "'", 'g');
-			fieldCode = fieldCode.replace(fieldNameRe, "'" + fieldName + "', 'options'");
-		}
-		 
-		// Copy to clipboard
-		copyCodeToClipboard(fieldCode);
+	// Change to sub field if sub field
+	if (seniority == 'sub') {
+		fieldCode = fieldCode.replace('get_field', 'get_sub_field');
+		fieldCode = fieldCode.replace('the_field', 'the_sub_field');
 	}
+	// Add options if options page
+	if (place == 'options_page') {
+		var fieldNameRe = new RegExp("'" + fieldName + "'", 'g');
+		fieldCode = fieldCode.replace(fieldNameRe, "'" + fieldName + "', 'options'");
+	}
+		
+	// Copy to clipboard
+	sessionStorage.removeItem('fieldcode');
+	sessionStorage.setItem('fieldcode', '\n' + fieldCode + '\n');
+	copyCodeToClipboard(fieldCode);
 }

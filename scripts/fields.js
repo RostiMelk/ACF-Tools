@@ -1,4 +1,4 @@
-function acf_field(fieldName, typeOfField, returnType, seniority, place, subFields) {
+function acf_field(copyCode, fieldName, typeOfField, returnType, seniority, place, subFields) {
 	switch (typeOfField) {
 		// Basic
 		case "text":
@@ -221,5 +221,8 @@ function acf_field(fieldName, typeOfField, returnType, seniority, place, subFiel
 	// Copy to clipboard
 	sessionStorage.removeItem('fieldcode');
 	sessionStorage.setItem('fieldcode', '\n' + fieldCode + '\n');
-	copyCodeToClipboard(fieldCode);
+
+	if(copyCode) {
+		copyCodeToClipboard(fieldCode);
+	}
 }

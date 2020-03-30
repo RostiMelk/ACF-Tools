@@ -1,17 +1,13 @@
 $(document).ready(function() {
-  copyFieldName();
-  openDocs();
-  copyFieldCode();
-  appendCopyCodeBtns();
+	copyFieldName();
+	openDocs();
+	copyFieldCode();
+	appendCopyCodeBtns();
 });
 
 function copyMessage() {
-  $("body").append(
-	'<div class="button button-primary button-small acftools-message">Copied to clipboard!</div>'
-  );
-  setTimeout(function() {
 	$(".acftools-message").remove();
-  }, 3000);
+	$("body").append('<div class="acftools-message">Copied to clipboard!</div>');
 }
 
 function copyToClipboard(element) {
@@ -19,9 +15,9 @@ function copyToClipboard(element) {
   $("body").append(temp);
   temp
 	.val(
-	  $(element)
-		.text()
-		.trim()
+		$(element)
+			.text()
+			.trim()
 	)
 	.select();
   document.execCommand("copy");
@@ -30,138 +26,127 @@ function copyToClipboard(element) {
 }
 
 function copyCodeToClipboard(element) {
-  var temp = $("<textarea></textarea>")
-	.val(element)
-	.appendTo("body")
-	.select();
-  document.execCommand("copy");
-  copyMessage();
+	var temp = $("<textarea></textarea>")
+		.val(element)
+		.appendTo("body")
+		.select();
+	document.execCommand("copy");
+	temp.remove();
+	copyMessage();
 }
 
 function copyFieldName() {
-  $("body").on("click", ".li-field-name", function() {
-	copyToClipboard(this);
-  });
+	$("body").on("click", ".li-field-name", function() {
+		copyToClipboard(this);
+	});
 }
 
 function openDocs() {
-  $("body").on("click", ".li-field-type", function() {
-	var type = $(this)
-	  .closest(".acf-field-object")
-	  .attr("data-type");
-	var url = type.replace("_", "-");
-	window.open(
-	  "https://www.advancedcustomfields.com/resources/" + url,
-	  "_blank"
-	);
-  });
+	$("body").on("click", ".li-field-type", function() {
+		var type = $(this)
+			.closest(".acf-field-object")
+			.attr("data-type");
+		var url = type.replace("_", "-");
+		window.open("https://www.advancedcustomfields.com/resources/" + url, "_blank");
+	});
 }
 
 function fieldError() {
-  alert(
-	"Unsupported field, submit an issue on: \nhttps://github.com/RostiMelk/ACF-Tools"
-  );
-  throw new Error(
-	"Unsupported field, submit an issue on: \nhttps://github.com/RostiMelk/ACF-Tools"
-  );
+	alert("Unsupported field, submit an issue on: \nhttps://github.com/RostiMelk/ACF-Tools");
+	throw new Error("Unsupported field, submit an issue on: \nhttps://github.com/RostiMelk/ACF-Tools");
 }
 
 function appendCopyCodeBtns() {
-  // Append copy field code button
-  function appendCopyCodeBtn() {
-	$(
-	  '.acf-field-object:not([data-type="accordion"], [data-type="message"], [data-type="tab"]) .row-options'
-	).append(
-	  '<a class="button button-primary button-small copy-field-code exclude-sub-fields" title="Copy PHP code for this field" href="#">Copy code</a>'
-	);
-  }
-  appendCopyCodeBtn();
-  // Append buttons to new fields
-  $("body").on("click", ".add-field", function() {
-	$(".copy-field-code").remove();
-	setTimeout(function() {
-	  appendCopyCodeBtn();
-	}, 10);
-  });
-  // Append copy all fields code button
-  function appendCopyAllCodeBtn() {
-	$(
-	  '.acf-field-object[data-type="repeater"], .acf-field-object[data-type="group"]'
-	)
-	  .children(".handle")
-	  .find(".row-options")
-	  .append(
-		'<a class="button button-secondary button-small copy-field-code include-sub-fields" title="Copy PHP code for this field and inner fields" href="#">Copy with sub fields</a>'
-	  );
-  }
-  appendCopyAllCodeBtn();
-  // Append copy all fields code button new fields
-  $("body").on("click", ".add-field", function() {
-	$(".copy-field-code").remove();
-	setTimeout(function() {
-	  appendCopyAllCodeBtn();
-	}, 10);
-  });
-  $("body").on("change", ".acf-field-setting-type .field-type", function() {
-	$(".copy-field-code.include-sub-fields").remove();
-	setTimeout(function() {
-	  appendCopyAllCodeBtn();
-	}, 1000);
-  });
+	// Append copy field code button
+	function appendCopyCodeBtn() {
+		$('.acf-field-object:not([data-type="accordion"], [data-type="message"], [data-type="tab"]) .row-options')
+			.append('<a class="button button-primary button-small copy-field-code exclude-sub-fields" title="Copy PHP code for this field" href="#">Copy code</a>');
+	}
+	appendCopyCodeBtn();
+	// Append buttons to new fields
+	$("body").on("click", ".add-field", function() {
+		$(".copy-field-code").remove();
+		setTimeout(function() {
+			appendCopyCodeBtn();
+		}, 10);
+	});
+
+	// Append copy all fields code button
+	function appendCopyAllCodeBtn() {
+		$('.acf-field-object[data-type="repeater"], .acf-field-object[data-type="group"]')
+			.children(".handle")
+			.find(".row-options")
+			.append('<a class="button button-secondary button-small copy-field-code include-sub-fields" title="Copy PHP code for this field and inner fields" href="#">Copy code with sub fields</a>');
+	}
+	appendCopyAllCodeBtn();
+
+	// Append copy all fields code button new fields
+	$("body").on("click", ".add-field", function() {
+		$(".copy-field-code").remove();
+		setTimeout(function() {
+			appendCopyAllCodeBtn();
+		}, 10);
+	});
+	$("body").on("change", ".acf-field-setting-type .field-type", function() {
+		$(".copy-field-code.include-sub-fields").remove();
+		setTimeout(function() {
+			appendCopyAllCodeBtn();
+		}, 1000);
+	});
 }
 
 function getTypeOfField(thisField) {
-  // Get type of field
-  return thisField.closest(".acf-field-object").attr("data-type");
+	// Get type of field
+	return thisField.closest(".acf-field-object").attr("data-type");
 }
 
 function getFieldName(thisField) {
-  // Get field name
-  return thisField
-	.closest(".handle")
-	.find(".li-field-name")
-	.text()
-	.trim();
+	// Get field name
+	return thisField
+		.closest(".handle")
+		.find(".li-field-name")
+		.text()
+		.trim();
 }
 
 function getReturnType(thisField, typeOfField) {
-  // Output type for supported fields (This is used if a field has multiple types of output methods, such as Array, ID or URL)
-  if (
-	typeOfField == "image" ||
-	typeOfField == "gallery" ||
-	typeOfField == "link" ||
-	typeOfField == "taxonomy" ||
-	typeOfField == "user" ||
-	typeOfField == "file"
-  ) {
-	return thisField
-	  .closest(".acf-field-object")
-	  .find(".acf-field-setting-return_format li label.selected input")
-	  .val();
-  } else {
-	return null;
-  }
+	// Output type for supported fields (This is used if a field has multiple types of output methods, such as Array, ID or URL)
+	if (
+		typeOfField == "image" ||
+		typeOfField == "gallery" ||
+		typeOfField == "link" ||
+		typeOfField == "taxonomy" ||
+		typeOfField == "user" ||
+		typeOfField == "file"
+	) {
+		return thisField
+			.closest(".acf-field-object")
+			.find(".acf-field-setting-return_format li label.selected input")
+			.val();
+	} else {
+		return null;
+	}
 }
 
 function getSeniority(thisField) {
-  // Check if sub element or not
-  if (
-	thisField
-	  .closest(".acf-field-object")
-	  .parents(".acf-field-setting-fc_layout").length ||
-	thisField
-	  .closest(".acf-field-object")
-	  .parents(".acf-field-setting-sub_fields").length
-  ) {
-	return "sub";
-  } else {
-	return "parent";
-  }
+	// Check if sub element or not
+	if (
+		thisField
+			.closest(".acf-field-object")
+			.parents(".acf-field-setting-fc_layout").length ||
+		thisField
+			.closest(".acf-field-object")
+			.parents(".acf-field-setting-sub_fields").length
+	) {
+		return "sub";
+	} else {
+		return "parent";
+	}
 }
 
 function getPlace() {
-  // Get field group place (basically checks if field is in options page or not)
-  return $('.refresh-location-rule option[selected="selected"]').val();
+	// Get field group place (basically checks if field is in options page or not)
+	return $('.refresh-location-rule option[selected="selected"]').val();
 }
 
 function copyFieldCode() {
@@ -174,6 +159,8 @@ function copyFieldCode() {
 		seniority = getSeniority(thisField),
 		place = getPlace(thisField),
 		subFields = "";
+
+		// If user clicked copy code with sub fields. This will get the first level of child items.
 		if (thisField.hasClass("include-sub-fields")) {
 			thisField
 				.closest(".acf-field-object")

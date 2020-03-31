@@ -49,13 +49,13 @@ function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, pl
 		case "file":
 			switch (returnType) {
 				case "array":
-					var fieldCode = "<?php\n" + "$file = get_field('" + fieldName + "');\n" + "if ($file): ?>;\n" + "\t<a href=\"<? php echo $file['url']; ?>\"><?php echo $file['filename']; ?></a>\n" + "<?php endif; ?>";
+					var fieldCode = "<?php\n" + "$file = get_field('" + fieldName + "');\n" + "if ($file): ?>;\n" + "\t<a href=\"<?php echo $file['url']; ?>\"><?php echo $file['filename']; ?></a>\n" + "<?php endif; ?>";
 					break;
 				case "url":
 					var fieldCode = "<?php if( get_field('file') ): ?>\n" + "\t<a href=\"<?php the_field('" + fieldName + "'); ?>'>Download File</a>\n" + "<?php endif; ?>\n";
 					break;
 				case "id":
-					var fieldCode = "<?php\n" + "$file = get_field('" + fieldName + "');\n" + "if( $file ):\n" + "\t$url = wp_get_attachment_url( $file ); ?>\n" + "\t<a href=\"<? php echo esc_html($url); ?>\">Download File</a>\n" + "<?php endif; ?>";
+					var fieldCode = "<?php\n" + "$file = get_field('" + fieldName + "');\n" + "if( $file ):\n" + "\t$url = wp_get_attachment_url( $file ); ?>\n" + "\t<a href=\"<?php echo esc_html($url); ?>\">Download File</a>\n" + "<?php endif; ?>";
 					break;
 				default:
 					fieldError();
@@ -73,7 +73,7 @@ function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, pl
 		case "gallery":
 			switch (returnType) {
 				case "array":
-					var fieldCode = "<?php\n" + "$images = get_field('" + fieldName + "');\n" + "if( $images ): ?>\n" + "\t<?php foreach( $images as $image ): ?>\n" + "\t\t<a href=\"<? php echo esc_url($image['url']); ?>\">\n" + "\t\t\t<img src=\"<? php echo esc_url($image['sizes']['thumbnail']); ?>\" alt=\"<? php echo esc_attr($image['alt']); ?>\"/>\n" + "\t\t</a>\n" + "\t<?php endforeach; ?>\n" + "<?php endif; ?>";
+					var fieldCode = "<?php\n" + "$images = get_field('" + fieldName + "');\n" + "if( $images ): ?>\n" + "\t<?php foreach( $images as $image ): ?>\n" + "\t\t<a href=\"<?php echo esc_url($image['url']); ?>\">\n" + "\t\t\t<img src=\"<?php echo esc_url($image['sizes']['thumbnail']); ?>\" alt=\"<?php echo esc_attr($image['alt']); ?>\"/>\n" + "\t\t</a>\n" + "\t<?php endforeach; ?>\n" + "<?php endif; ?>";
 					break;
 				case "url":
 					var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
@@ -126,7 +126,7 @@ function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, pl
 			break;
 
 		case "page_link":
-			var fieldCode = "<?php\n" + "$urls = get_field('" + fieldName + "');\n" + "if( $urls ): ?>\n" + "\t<?php foreach( $urls as $url ): ?>\n" + "\t\t<a href=\"<? php echo esc_url($url); ?>\" ><?php echo esc_html( $url ); ?></a>\n" + "\t<?php endforeach; ?>\n" + "<?php endif; ?>";
+			var fieldCode = "<?php\n" + "$urls = get_field('" + fieldName + "');\n" + "if( $urls ): ?>\n" + "\t<?php foreach( $urls as $url ): ?>\n" + "\t\t<a href=\"<?php echo esc_url($url); ?>\" ><?php echo esc_html( $url ); ?></a>\n" + "\t<?php endforeach; ?>\n" + "<?php endif; ?>";
 			break;
 
 		case "relationship":

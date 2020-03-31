@@ -1,4 +1,4 @@
-function acf_field(fieldName, typeOfField, returnType, seniority, place) {
+function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, place, subFields) {
 	switch (typeOfField) {
 		// Basic
 		case "text":
@@ -49,13 +49,13 @@ function acf_field(fieldName, typeOfField, returnType, seniority, place) {
 		case "file":
 			switch (returnType) {
 				case "array":
-					var fieldCode = "<?php\n" + "$file = get_field('" + fieldName + "');\n" + "if ($file): ?>;\n" + "\t<a href=\"<? php echo $file['url']; ?>\"><?php echo $file['filename']; ?></a>\n" + "<?php endif; ?>";
+					var fieldCode = "<?php\n" + "$file = get_field('" + fieldName + "');\n" + "if ($file): ?>;\n" + "\t<a href=\"<?php echo $file['url']; ?>\"><?php echo $file['filename']; ?></a>\n" + "<?php endif; ?>";
 					break;
 				case "url":
 					var fieldCode = "<?php if( get_field('file') ): ?>\n" + "\t<a href=\"<?php the_field('" + fieldName + "'); ?>'>Download File</a>\n" + "<?php endif; ?>\n";
 					break;
 				case "id":
-					var fieldCode = "<?php\n" + "$file = get_field('" + fieldName + "');\n" + "if( $file ):\n" + "\t$url = wp_get_attachment_url( $file ); ?>\n" + "\t<a href=\"<? php echo esc_html($url); ?>\">Download File</a>\n" + "<?php endif; ?>";
+					var fieldCode = "<?php\n" + "$file = get_field('" + fieldName + "');\n" + "if( $file ):\n" + "\t$url = wp_get_attachment_url( $file ); ?>\n" + "\t<a href=\"<?php echo esc_html($url); ?>\">Download File</a>\n" + "<?php endif; ?>";
 					break;
 				default:
 					fieldError();
@@ -73,7 +73,7 @@ function acf_field(fieldName, typeOfField, returnType, seniority, place) {
 		case "gallery":
 			switch (returnType) {
 				case "array":
-					var fieldCode = "<?php\n" + "$images = get_field('" + fieldName + "');\n" + "if( $images ): ?>\n" + "\t<?php foreach( $images as $image ): ?>\n" + "\t\t<a href=\"<? php echo esc_url($image['url']); ?>\">\n" + "\t\t\t<img src=\"<? php echo esc_url($image['sizes']['thumbnail']); ?>\" alt=\"<? php echo esc_attr($image['alt']); ?>\"/>\n" + "\t\t</a>\n" + "\t<?php endforeach; ?>\n" + "<?php endif; ?>";
+					var fieldCode = "<?php\n" + "$images = get_field('" + fieldName + "');\n" + "if( $images ): ?>\n" + "\t<?php foreach( $images as $image ): ?>\n" + "\t\t<a href=\"<?php echo esc_url($image['url']); ?>\">\n" + "\t\t\t<img src=\"<?php echo esc_url($image['sizes']['thumbnail']); ?>\" alt=\"<?php echo esc_attr($image['alt']); ?>\"/>\n" + "\t\t</a>\n" + "\t<?php endforeach; ?>\n" + "<?php endif; ?>";
 					break;
 				case "url":
 					var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
@@ -126,7 +126,7 @@ function acf_field(fieldName, typeOfField, returnType, seniority, place) {
 			break;
 
 		case "page_link":
-			var fieldCode = "<?php\n" + "$urls = get_field('" + fieldName + "');\n" + "if( $urls ): ?>\n" + "\t<?php foreach( $urls as $url ): ?>\n" + "\t\t<a href=\"<? php echo esc_url($url); ?>\" ><?php echo esc_html( $url ); ?></a>\n" + "\t<?php endforeach; ?>\n" + "<?php endif; ?>";
+			var fieldCode = "<?php\n" + "$urls = get_field('" + fieldName + "');\n" + "if( $urls ): ?>\n" + "\t<?php foreach( $urls as $url ): ?>\n" + "\t\t<a href=\"<?php echo esc_url($url); ?>\" ><?php echo esc_html( $url ); ?></a>\n" + "\t<?php endforeach; ?>\n" + "<?php endif; ?>";
 			break;
 
 		case "relationship":
@@ -188,11 +188,11 @@ function acf_field(fieldName, typeOfField, returnType, seniority, place) {
 
 		// Layout
 		case "group":
-			var fieldCode = "<?php if( have_rows('" + fieldName + "') ): ?>\n" + "\t<?php while( have_rows('" + fieldName + "') ): the_row(); ?>\n" + "\t\t\n" + "\t<?php endwhile; ?>\n" + "<?php endif; ?>";
+			var fieldCode = "<?php if( have_rows('" + fieldName + "') ): ?>\n" + "\t<?php while( have_rows('" + fieldName + "') ): the_row(); ?>\n" + "\t\t" + subFields + "\n" + "\t<?php endwhile; ?>\n" + "<?php endif; ?>";
 			break;
 
 		case "repeater":
-			var fieldCode = "<?php if( have_rows('" + fieldName + "') ): ?>\n" + "\t<?php while( have_rows('" + fieldName + "') ): the_row(); ?>\n" + "\t\t\n" + "\t<?php endwhile; ?>\n" + "<?php endif; ?>";
+			var fieldCode = "<?php if( have_rows('" + fieldName + "') ): ?>\n" + "\t<?php while( have_rows('" + fieldName + "') ): the_row(); ?>\n" + "\t\t" + subFields + "\n" + "\t<?php endwhile; ?>\n" + "<?php endif; ?>";
 			break;
 
 		case "flexible_content":
@@ -204,23 +204,32 @@ function acf_field(fieldName, typeOfField, returnType, seniority, place) {
 			break;
 
 		default:
-			fieldError()
-
+			fieldError();
 	}
 
-	if (typeof typeOfField != "undefined") {
-		// Change to sub field if sub field
-		if (seniority == 'sub') {
-			fieldCode = fieldCode.replace('get_field', 'get_sub_field');
-			fieldCode = fieldCode.replace('the_field', 'the_sub_field');
-		}
-		// Add options if options page
-		if (place == 'options_page') {
-			var fieldNameRe = new RegExp("'" + fieldName + "'", 'g');
-			fieldCode = fieldCode.replace(fieldNameRe, "'" + fieldName + "', 'options'");
-		}
-		 
-		// Copy to clipboard
-		copyCodeToClipboard(fieldCode);
+	// Change to sub field if sub field
+	if (seniority == 'sub') {
+		fieldCode = fieldCode.replace('get_field', 'get_sub_field');
+		fieldCode = fieldCode.replace('the_field', 'the_sub_field');
+	}
+	// Add options if options page
+	if (place == 'options_page') {
+		var fieldNameRe = new RegExp("'" + fieldName + "'", 'g');
+		fieldCode = fieldCode.replace(fieldNameRe, "'" + fieldName + "', 'options'");
+	}
+
+	// Adjust tabs for appended sub fields
+	if(appendCode) {
+		fieldCode = fieldCode.replace(/\n/g, '\n\t\t')
+	}
+		
+	// Copy to clipboard
+	sessionStorage.removeItem('fieldcode');
+	sessionStorage.setItem('fieldcode', '\n\t\t' + fieldCode + '\n');
+
+
+
+	if(!appendCode) {
+		copyCodeToClipboard(fieldCode, subFields);
 	}
 }

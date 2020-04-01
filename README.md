@@ -1,6 +1,6 @@
-# ACF Tools
-
 ![ACF Tools screenshot](https://i.gyazo.com/e114083bc28dd9148088633a54fc6dc8.jpg)
+
+# ACF Tools
 
 ### General info
 
@@ -18,7 +18,7 @@ This is a Google Chrome extension/Firefox add-on for Advanced Custom Fields to h
 
 ### Chrome web store
 
-You can [find the extension on the Chrome web store](https://chrome.google.com/webstore/detail/acf-tools/ogliegjmpalokmaaeckcdgbhdeedcnmf), but keep in mind that the version may be 2-4 days older than the one on Github. 
+You can [find the extension on the Chrome web store](https://chrome.google.com/webstore/detail/acf-tools/ogliegjmpalokmaaeckcdgbhdeedcnmf), but keep in mind that the version may be 2-4 days older than the one on Github.
 
 ### Firefox browser add-ons
 

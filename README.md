@@ -1,4 +1,4 @@
-![ACF Tools screenshot](https://user-images.githubusercontent.com/25268506/78194798-6b1d3900-747e-11ea-86b2-d9013ca90810.gif)
+![ACF Tools GIF](https://user-images.githubusercontent.com/25268506/78194798-6b1d3900-747e-11ea-86b2-d9013ca90810.gif)
 
 # ACF Tools - ACF Meta field code made simple
 

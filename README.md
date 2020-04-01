@@ -1,4 +1,4 @@
-![ACF Tools screenshot](https://i.gyazo.com/e114083bc28dd9148088633a54fc6dc8.jpg)
+![ACF Tools screenshot](https://user-images.githubusercontent.com/25268506/78194798-6b1d3900-747e-11ea-86b2-d9013ca90810.gif)
 
 # ACF Tools
 

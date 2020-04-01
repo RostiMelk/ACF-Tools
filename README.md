@@ -4,7 +4,7 @@
 
 ### General info
 
-This is a Chrome extension for Advanced Custom Fields to help with developing sites faster.
+This is a Google Chrome extension/Firefox add-on for Advanced Custom Fields to help with developing sites faster.
 
 ### Features
 
@@ -12,17 +12,23 @@ This is a Chrome extension for Advanced Custom Fields to help with developing si
 - Quickly copy an ACF field name by just clicking the field name
 - Quickly open documentation for field by just clicking the field type
 
-### Installation
+### Chrome web store
+
+You can [find the extension on the Chrome web store](https://chrome.google.com/webstore/detail/acf-tools/ogliegjmpalokmaaeckcdgbhdeedcnmf), but keep in mind that the version may be 2-4 days older than the one on Github. 
+
+---
+
+### Firefox browser add-ons
+
+You can [find the extension on the Firefox add-on libary](https://addons.mozilla.org/en-US/firefox/addon/acf-tools/).
+
+---
+
+### Manual installation for Google Chrome
 
 1. Download files
 2. Extract ZIP
 3. Drag and drop folder into chrome://extensions/
-
----
-
-### Chrome web store
-
-You can also [find the extension on the Chrome web store](https://chrome.google.com/webstore/detail/acf-tools/ogliegjmpalokmaaeckcdgbhdeedcnmf?utm_source=chrome-ntp-icon), but keep in mind that the version may be 2-4 days older than the one on Github. 
 
 ---
 

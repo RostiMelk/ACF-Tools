@@ -13,6 +13,7 @@ This is a Google Chrome extension/Firefox add-on for Advanced Custom Fields to h
 - Quickly open documentation for field by just clicking the field type
 
 ---
+
 ## Installation
 
 ### Chrome web store
@@ -21,7 +22,7 @@ You can [find the extension on the Chrome web store](https://chrome.google.com/w
 
 ### Firefox browser add-ons
 
-You can [find the extension on the Firefox add-on libary](https://addons.mozilla.org/en-US/firefox/addon/acf-tools/).
+You can [find the extension in the Firefox add-on libary](https://addons.mozilla.org/en-US/firefox/addon/acf-tools/).
 
 ### Manual installation for Google Chrome
 

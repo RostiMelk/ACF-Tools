@@ -16,13 +16,9 @@ This is a Google Chrome extension/Firefox add-on for Advanced Custom Fields to h
 
 You can [find the extension on the Chrome web store](https://chrome.google.com/webstore/detail/acf-tools/ogliegjmpalokmaaeckcdgbhdeedcnmf), but keep in mind that the version may be 2-4 days older than the one on Github. 
 
----
-
 ### Firefox browser add-ons
 
 You can [find the extension on the Firefox add-on libary](https://addons.mozilla.org/en-US/firefox/addon/acf-tools/).
-
----
 
 ### Manual installation for Google Chrome
 

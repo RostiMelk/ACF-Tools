@@ -1,4 +1,4 @@
-![ACF Tools GIF](https://user-images.githubusercontent.com/25268506/78198440-e683e800-7488-11ea-8db2-058a92d4e6e6.gif)
+![ACF Tools GIF](https://user-images.githubusercontent.com/25268506/78199610-868f4080-748c-11ea-8467-e0e6e9f7e1ec.gif)
 
 ## ACF Tools - Advanced Custom Fields code made simple
 

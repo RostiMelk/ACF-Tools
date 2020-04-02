@@ -1,6 +1,6 @@
 ![ACF Tools GIF](https://user-images.githubusercontent.com/25268506/78199610-868f4080-748c-11ea-8467-e0e6e9f7e1ec.gif)
 
-## ACF Tools - Advanced Custom Fields code made simple
+# ACF Tools - Advanced Custom Fields code made simple
 
 [![License](http://img.shields.io/:license-mit-semigreen.svg)](https://opensource.org/licenses/MIT)
 [![Google Web Store version](https://img.shields.io/chrome-web-store/v/ogliegjmpalokmaaeckcdgbhdeedcnmf)](https://chrome.google.com/webstore/detail/acf-tools/ogliegjmpalokmaaeckcdgbhdeedcnmf)

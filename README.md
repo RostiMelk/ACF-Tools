@@ -1,16 +1,18 @@
-![ACF Tools GIF](https://user-images.githubusercontent.com/25268506/78194798-6b1d3900-747e-11ea-86b2-d9013ca90810.gif)
+![ACF Tools GIF](https://user-images.githubusercontent.com/25268506/78198440-e683e800-7488-11ea-8db2-058a92d4e6e6.gif)
 
-# ACF Tools - ACF Meta field code made simple
+## ACF Tools - Advanced Custom Fields code made simple
 
-### General info
+[![License](http://img.shields.io/:license-mit-semigreen.svg)](https://opensource.org/licenses/MIT)
+[![License](https://img.shields.io/chrome-web-store/v/ogliegjmpalokmaaeckcdgbhdeedcnmf)](https://chrome.google.com/webstore/detail/acf-tools/ogliegjmpalokmaaeckcdgbhdeedcnmf)
+[![License](https://img.shields.io/amo/v/ACF-Tools?color=orange)](https://addons.mozilla.org/en-US/firefox/addon/acf-tools/)
 
-This is a Google Chrome extension/Firefox add-on for Advanced Custom Fields to help with developing sites faster.
+This is a Google Chrome extension/Firefox add-on for Advanced Custom Fields to help with speeding up development. 🔥
 
-### Features
+### But what does it do?
 
 - Copy code for field with the matching selected setting and field name ([video demo here](https://youtu.be/_gyqUem8jKo))
 - Quickly copy an ACF field name by just clicking the field name
-- Quickly open documentation for field by just clicking the field type
+- Easily open documentation for field by just clicking the field type
 
 ---
 
@@ -24,12 +26,30 @@ You can [find the extension on the Chrome web store](https://chrome.google.com/w
 
 You can [find the extension in the Firefox add-on libary](https://addons.mozilla.org/en-US/firefox/addon/acf-tools/).
 
-### Manual installation for Google Chrome
+---
 
-1. Download files
-2. Extract ZIP
-3. Drag and drop folder into chrome://extensions/
+## Development setup
+
+### Google Chrome
+
+1. Clone repo
+2. Go to chrome://extensions/
+3. Drag and drop folder into this window
+4. Write code
+5. Refresh Chrome Extension to test and debug as you develop
+
+### Mozilla Firefox
+
+1. Clone repo
+2. Go to about:debugging
+3. Click "Load Temporary Add-on"
+4. Refresh Firefox Add-on to test and debug as you develop
 
 ---
 
-_View more of my work on [rosti.no](https://rosti.no)_
+## Contact details
+
+Rostislav Melkumyan - @RostiMelk - hello@rosti.no \
+Project Link: https://github.com/RostiMelk/ACF-Tools
+
+Distributed under the MIT license. See LICENSE for more information.

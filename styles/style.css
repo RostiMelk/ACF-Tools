@@ -1,24 +1,16 @@
 .acftools-message {
-  position: fixed;
-  top: 40px;
+  position: fixed !important;
+  top: 50px;
   left: 50%;
   transform: translate(-50%, 0px);
-  pointer-events: none;
   opacity: 0;
-  animation: fade-in-slide 2.5s ease-in-out;
-  display: block;
-  font-size: 14.4px;
-  background-color: #C7E8CA;
-  padding: 8px;
-  text-align: center;
-  max-width: 100%;
-  width: 900px;
+  animation: fade-in 5s ease-in-out;
+  z-index: 10000;
 }
 
-@keyframes fade-in-slide {
+@keyframes fade-in {
   0% {
     opacity: 0;
-    transform: translate(-50%, 0px);
   }
   10% {
     opacity: 1;
@@ -28,7 +20,6 @@
   }
   100% {
     opacity: 0;
-    transform: translate(-50%, 20px);
   }
 }
 
@@ -51,4 +42,22 @@
 }
 .acf-field-object.open>.handle a.button-secondary {
   color: #0071a1 !important;
+}
+
+.post-edit-field-name-info {
+  padding: 0 10px;
+  color: #191e23;
+  font-size: 0 !important;
+  color: #AAAAAA;
+  opacity: 0;
+}
+.acf-field:hover > .acf-label > label > .post-edit-field-name-info, 
+.acf-field:focus > .acf-label > label > .post-edit-field-name-info {
+  opacity: 1;
+}
+.post-edit-field-name-info:hover, .post-edit-field-name-info:focus {
+  color: #777777;
+}
+.post-edit-field-name-info::before {
+  font-size: 20px !important;
 }

@@ -3,11 +3,16 @@ $(document).ready(function() {
 	openDocs();
 	copyFieldCode();
 	appendCopyCodeBtns();
+	appendFieldNameOnEdit();
 });
 
 function copyMessage(message) {
 	$(".acftools-message").remove();
-	$("body").append('<div class="acftools-message">'+message+'</div>');
+	var dismissBtn = '<button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button>';
+	$("body").append('<div class="acftools-message notice notice-success is-dismissible"><p>'+message+'</p>'+dismissBtn+'</div>');
+	$("body").on('click', '.acftools-message .notice-dismiss', function() {
+		$(".acftools-message").remove();
+	})
 }
 
 function copyStringToClipboard(element) {
@@ -197,4 +202,17 @@ function copyFieldCode() {
 		// Clear session storage
 		sessionStorage.removeItem("fieldcode");
 	});
+}
+
+function appendFieldNameOnEdit() {
+	$('body:not(.post-type-acf-field-group)').find('.acf-field').each(function() {
+		var fieldName = $(this).attr('data-name'),
+			fieldNameInfo = '<a href="#" class="post-edit-field-name-info dashicons dashicons-info acf-js-tooltip" title="'+fieldName+'">'+fieldName+'</a>';
+		$(this).children('.acf-label').children('label').append(fieldNameInfo);
+	});
+	$('body').on('click', '.post-edit-field-name-info', function(e) {
+		e.preventDefault();
+		copyMessage('Copied field name to clipboard!');
+		copyStringToClipboard($(this));
+	})
 }

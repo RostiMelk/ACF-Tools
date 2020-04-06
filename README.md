@@ -13,6 +13,7 @@ This is a Google Chrome extension/Firefox add-on for Advanced Custom Fields to h
 - Copy code for field with the matching selected setting and field name ([video demo here](https://youtu.be/_gyqUem8jKo))
 - Quickly copy an ACF field name by just clicking the field name
 - Easily open documentation for field by just clicking the field type
+- Check a fields field name when editing a post or a page
 
 ---
 

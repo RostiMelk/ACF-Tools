@@ -4,16 +4,24 @@ $(document).ready(function() {
 	copyFieldCode();
 	appendCopyCodeBtns();
 	appendFieldNameOnEdit();
-	appendFCExportBtn();
-	exportFCLayout();
 });
+
+// Running some functions again when edits are made
+$("body").on('click', function() {
+	setTimeout(function() {
+		copyFieldName();
+		openDocs();
+	}, 100);
+})
 
 // Copy the field name feature:
 function copyFieldName() {
 	$(".acf-tbody .li-field-name").each(function() {
-		var str = $(this).text();
-		$(this).text('');
-		$(this).append('<a href="#" class="copy-field-name">'+str+'</a>');
+		if(!$(this).children('.copy-field-name').length) {
+			var str = $(this).text();
+			$(this).text('');
+			$(this).append('<a href="#" class="copy-field-name">'+str+'</a>');
+		}
 	})
 	$("body").on("click", ".copy-field-name", function(e) {
 		e.preventDefault();
@@ -25,11 +33,13 @@ function copyFieldName() {
 // Open ACF Field documentation:
 function openDocs() {
 	$(".acf-tbody .li-field-type").each(function() {
-		var str = $(this).text(),
-			slug = $(this).closest('.acf-field-object').attr('data-type').replace("_", "-"),
-			url = "https://www.advancedcustomfields.com/resources/"+slug;
-		$(this).text('');
-		$(this).append('<a href="'+url+'" target="_blank" class="open-field-docs">'+str+'</a>');
+		if(!$(this).children('.open-field-docs').length) {
+			var str = $(this).text(),
+				slug = $(this).closest('.acf-field-object').attr('data-type').replace("_", "-"),
+				url = "https://www.advancedcustomfields.com/resources/"+slug;
+			$(this).text('');
+			$(this).append('<a href="'+url+'" target="_blank" class="open-field-docs">'+str+'</a>');
+		}
 	})
 }
 
@@ -182,18 +192,5 @@ function appendFieldNameOnEdit() {
 		e.preventDefault();
 		copyMessage('Copied field name to clipboard!');
 		copyStringToClipboard($(this));
-	})
-}
-
-// Export/import flexble content fields feature:
-function appendFCExportBtn() {
-	$(".acf-bl.acf-fl-actions").append('<li><a class="export-layout" href="#" title="Export Layout">Export</a></li>');
-}
-function exportFCLayout() {
-	$("body").on('click', '.export-layout', function(e) {
-		e.preventDefault();
-		var thisFCLayout = $(this).closest('.acf-field.acf-field-setting-fc_layout');
-		generateFCLayoutJson(thisFCLayout);
-		console.log('export clicked');
 	})
 }

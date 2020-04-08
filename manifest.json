@@ -17,9 +17,7 @@
         "lib/jquery-3.4.1.min.js",
         "scripts/app.js",
         "scripts/misc.js",
-        "scripts/fields.js",
-        "scripts/fc-export.js",
-        "scripts/fc-import.js"
+        "scripts/fields.js"
       ]
     }
   ]

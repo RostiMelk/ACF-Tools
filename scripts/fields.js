@@ -226,9 +226,7 @@ function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, pl
 	// Copy to clipboard
 	sessionStorage.removeItem('fieldcode');
 	sessionStorage.setItem('fieldcode', '\n\t\t' + fieldCode + '\n');
-
-
-
+	// Copy the code to the clipboard if sub fields are done appending to a repeater or group field
 	if(!appendCode) {
 		copyCodeToClipboard(fieldCode, subFields);
 	}

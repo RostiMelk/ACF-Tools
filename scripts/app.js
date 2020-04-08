@@ -4,31 +4,11 @@ $(document).ready(function() {
 	copyFieldCode();
 	appendCopyCodeBtns();
 	appendFieldNameOnEdit();
+	appendFCExportBtn();
+	exportFCLayout();
 });
 
-function copyMessage(message) {
-	$(".acftools-message").remove();
-	var dismissBtn = '<button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button>';
-	$("body").append('<div class="acftools-message notice notice-success is-dismissible"><p>'+message+'</p>'+dismissBtn+'</div>');
-	$("body").on('click', '.acftools-message .notice-dismiss', function() {
-		$(".acftools-message").remove();
-	})
-}
-
-function copyStringToClipboard(element) {
-  var temp = $("<input>");
-  $("body").append(temp);
-  temp
-	.val(
-		$(element)
-			.text()
-			.trim()
-	)
-	.select();
-  document.execCommand("copy");
-  temp.remove();
-}
-
+// Copy the field name feature:
 function copyFieldName() {
 	$("body").on("click", ".li-field-name", function() {
 		copyStringToClipboard(this);
@@ -36,36 +16,18 @@ function copyFieldName() {
 	});
 }
 
-function copyCodeToClipboard(fieldCode, subFields) {
-	var temp = $("<textarea></textarea>")
-		.val(fieldCode)
-		.appendTo("body")
-		.select();
-	document.execCommand("copy");
-	temp.remove();
-	
-	if(subFields.length) {
-		copyMessage('Copied code with sub fields to clipboard!');
-	} else {
-		copyMessage('Copied code to clipboard!');
-	}
-}
-
+// Open ACF Field documentation:
 function openDocs() {
 	$("body").on("click", ".li-field-type", function() {
 		var type = $(this)
-			.closest(".acf-field-object")
-			.attr("data-type");
+		.closest(".acf-field-object")
+		.attr("data-type");
 		var url = type.replace("_", "-");
 		window.open("https://www.advancedcustomfields.com/resources/" + url, "_blank");
 	});
 }
 
-function fieldError() {
-	alert("Unsupported field, submit an issue on: \nhttps://github.com/RostiMelk/ACF-Tools");
-	throw new Error("Unsupported field, submit an issue on: \nhttps://github.com/RostiMelk/ACF-Tools");
-}
-
+// Copy ACF meta field code feature:
 function appendCopyCodeBtns() {
 	// Append copy field code button
 	function appendCopyCodeBtn() {
@@ -214,5 +176,18 @@ function appendFieldNameOnEdit() {
 		e.preventDefault();
 		copyMessage('Copied field name to clipboard!');
 		copyStringToClipboard($(this));
+	})
+}
+
+// Export/import flexble content fields feature:
+function appendFCExportBtn() {
+	$(".acf-bl.acf-fl-actions").append('<li><a class="export-layout" href="#" title="Export Layout">Export</a></li>');
+}
+function exportFCLayout() {
+	$("body").on('click', '.export-layout', function(e) {
+		e.preventDefault();
+		var thisFCLayout = $(this).closest('.acf-field.acf-field-setting-fc_layout');
+		generateFCLayoutJson(thisFCLayout);
+		console.log('export clicked');
 	})
 }

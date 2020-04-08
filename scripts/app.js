@@ -10,7 +10,13 @@ $(document).ready(function() {
 
 // Copy the field name feature:
 function copyFieldName() {
-	$("body").on("click", ".li-field-name", function() {
+	$(".acf-tbody .li-field-name").each(function() {
+		var str = $(this).text();
+		$(this).text('');
+		$(this).append('<a href="#" class="copy-field-name">'+str+'</a>');
+	})
+	$("body").on("click", ".copy-field-name", function(e) {
+		e.preventDefault();
 		copyStringToClipboard(this);
 		copyMessage('Copied field name to clipboard!');
 	});
@@ -18,13 +24,13 @@ function copyFieldName() {
 
 // Open ACF Field documentation:
 function openDocs() {
-	$("body").on("click", ".li-field-type", function() {
-		var type = $(this)
-		.closest(".acf-field-object")
-		.attr("data-type");
-		var url = type.replace("_", "-");
-		window.open("https://www.advancedcustomfields.com/resources/" + url, "_blank");
-	});
+	$(".acf-tbody .li-field-type").each(function() {
+		var str = $(this).text(),
+			slug = $(this).closest('.acf-field-object').attr('data-type').replace("_", "-"),
+			url = "https://www.advancedcustomfields.com/resources/"+slug;
+		$(this).text('');
+		$(this).append('<a href="'+url+'" target="_blank" class="open-field-docs">'+str+'</a>');
+	})
 }
 
 // Copy ACF meta field code feature:

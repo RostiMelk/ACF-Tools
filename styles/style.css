@@ -23,15 +23,6 @@
   }
 }
 
-.li-field-name,
-.li-field-type {
-  cursor: pointer;
-}
-.li-field-name:hover,
-.li-field-type:hover {
-  text-decoration: underline;
-}
-
 .row-options {
   display: flex;
   align-items: center;

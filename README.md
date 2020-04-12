@@ -4,6 +4,22 @@
 [![Google Web Store version](https://img.shields.io/chrome-web-store/v/ogliegjmpalokmaaeckcdgbhdeedcnmf)](https://chrome.google.com/webstore/detail/acf-tools/ogliegjmpalokmaaeckcdgbhdeedcnmf)
 [![Mozilla Firefox add-on libary version](https://img.shields.io/amo/v/ACF-Tools?color=orange)](https://addons.mozilla.org/en-US/firefox/addon/acf-tools/)
 
+## Table of content
+
+- [What does it do?](#but-what-does-it-do)
+- [Installation](#installation)
+    - [Chrome Web Store](#chrome-web-store)
+    - [Firefox browser add-ons](#firefox-browser-add-ons)
+- [Contributing](#contributing)
+    - [Translation](#translation)
+- [Development setup](#development-setup)
+    - [Google Chrome](#google-chrome)
+    - [Mozilla Firefox](#mozilla-firefox)
+- [Contact Details](#contact-details)
+- [License](#license)
+
+---
+
 This is a Google Chrome extension/Firefox add-on for Advanced Custom Fields to help with speeding up development. 🔥
 
 ### But what does it do?
@@ -66,4 +82,8 @@ Rostislav Melkumyan - @RostiMelk - hello@rosti.no \
 Project Link: https://github.com/RostiMelk/ACF-Tools \
 Feeling generous? Donations are accepted on paypal: hello@rosti.no
 
-Distributed under the MIT license. See LICENSE for more information.
+---
+
+## License
+
+Distributed under the MIT license. See `LICENSE` for more information.

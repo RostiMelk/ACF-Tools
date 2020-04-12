@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "ACF Tools",
-  "version": "2.4.0",
-  "description": "This is a Chrome extension for Advanced Custom Fields to help with developing sites faster.",
+  "version": "2.4.2",
+  "description": "Advanced Custom Fields code made simple!",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
@@ -15,7 +15,8 @@
       "css": ["styles/style.css"],
       "js": [
         "lib/jquery-3.4.1.min.js",
-        "scripts/scripts.js",
+        "scripts/app.js",
+        "scripts/misc.js",
         "scripts/fields.js"
       ]
     }

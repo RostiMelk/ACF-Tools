@@ -6,66 +6,44 @@ $(document).ready(function() {
 	appendFieldNameOnEdit();
 });
 
-function copyMessage(message) {
-	$(".acftools-message").remove();
-	var dismissBtn = '<button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button>';
-	$("body").append('<div class="acftools-message notice notice-success is-dismissible"><p>'+message+'</p>'+dismissBtn+'</div>');
-	$("body").on('click', '.acftools-message .notice-dismiss', function() {
-		$(".acftools-message").remove();
-	})
-}
+// Running some functions again when edits are made
+$("body").on('click', function() {
+	setTimeout(function() {
+		copyFieldName();
+		openDocs();
+	}, 100);
+})
 
-function copyStringToClipboard(element) {
-  var temp = $("<input>");
-  $("body").append(temp);
-  temp
-	.val(
-		$(element)
-			.text()
-			.trim()
-	)
-	.select();
-  document.execCommand("copy");
-  temp.remove();
-}
-
+// Copy the field name feature:
 function copyFieldName() {
-	$("body").on("click", ".li-field-name", function() {
+	$(".acf-tbody .li-field-name").each(function() {
+		if(!$(this).children('.copy-field-name').length) {
+			var str = $(this).text();
+			$(this).text('');
+			$(this).append('<a href="#" class="copy-field-name">'+str+'</a>');
+		}
+	})
+	$("body").on("click", ".copy-field-name", function(e) {
+		e.preventDefault();
 		copyStringToClipboard(this);
 		copyMessage('Copied field name to clipboard!');
 	});
 }
 
-function copyCodeToClipboard(fieldCode, subFields) {
-	var temp = $("<textarea></textarea>")
-		.val(fieldCode)
-		.appendTo("body")
-		.select();
-	document.execCommand("copy");
-	temp.remove();
-	
-	if(subFields.length) {
-		copyMessage('Copied code with sub fields to clipboard!');
-	} else {
-		copyMessage('Copied code to clipboard!');
-	}
-}
-
+// Open ACF Field documentation:
 function openDocs() {
-	$("body").on("click", ".li-field-type", function() {
-		var type = $(this)
-			.closest(".acf-field-object")
-			.attr("data-type");
-		var url = type.replace("_", "-");
-		window.open("https://www.advancedcustomfields.com/resources/" + url, "_blank");
-	});
+	$(".acf-tbody .li-field-type").each(function() {
+		if(!$(this).children('.open-field-docs').length) {
+			var str = $(this).text(),
+				slug = $(this).closest('.acf-field-object').attr('data-type').replace("_", "-"),
+				url = "https://www.advancedcustomfields.com/resources/"+slug;
+			$(this).text('');
+			$(this).append('<a href="'+url+'" target="_blank" class="open-field-docs">'+str+'</a>');
+		}
+	})
 }
 
-function fieldError() {
-	alert("Unsupported field, submit an issue on: \nhttps://github.com/RostiMelk/ACF-Tools");
-	throw new Error("Unsupported field, submit an issue on: \nhttps://github.com/RostiMelk/ACF-Tools");
-}
-
+// Copy ACF meta field code feature:
 function appendCopyCodeBtns() {
 	// Append copy field code button
 	function appendCopyCodeBtn() {

@@ -39,9 +39,13 @@ You can [find the extension in the Firefox add-on libary](https://addons.mozilla
 ### Mozilla Firefox
 
 1. Clone repo
-2. Go to about:debugging
-3. Click "Load Temporary Add-on"
-4. Refresh Firefox Add-on to test and debug as you develop
+2. cd into ACF-Tools folder
+3. Build Project with $ sh build.sh
+4. Go to about:debugging
+5. Click "This Firefox"
+6. Click "Load Temporary Add-on"
+7. Navigate into ACF-Tools/dist
+8. Select acf-tools-vX.X.X-firefox.zip to test
 
 ---
 

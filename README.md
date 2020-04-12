@@ -1,6 +1,4 @@
-![Intro](https://user-images.githubusercontent.com/25268506/79060058-1a2cf200-7c81-11ea-956a-9d9ff00055a3.jpg)
-
-# ACF Tools - Advanced Custom Fields code made simple
+![ACF Tools - Advanced Custom Fields code made simple](https://user-images.githubusercontent.com/25268506/79060144-bd7e0700-7c81-11ea-958f-4de9aff2bc01.jpg)
 
 [![License](http://img.shields.io/:license-mit-semigreen.svg)](https://opensource.org/licenses/MIT)
 [![Google Web Store version](https://img.shields.io/chrome-web-store/v/ogliegjmpalokmaaeckcdgbhdeedcnmf)](https://chrome.google.com/webstore/detail/acf-tools/ogliegjmpalokmaaeckcdgbhdeedcnmf)
@@ -10,9 +8,9 @@ This is a Google Chrome extension/Firefox add-on for Advanced Custom Fields to h
 
 ### But what does it do?
 
-![Copy-code](https://user-images.githubusercontent.com/25268506/79060055-14cfa780-7c81-11ea-8893-8f951471d4ac.jpg)
-![Field-name-edit](https://user-images.githubusercontent.com/25268506/79060056-18fbc500-7c81-11ea-9b5a-b816fc116f14.jpg)
-![Open-docs](https://user-images.githubusercontent.com/25268506/79060057-19945b80-7c81-11ea-92c2-2fe46f8750cf.jpg)
+![Copy ACF meta field code with just one click](https://user-images.githubusercontent.com/25268506/79060055-14cfa780-7c81-11ea-8893-8f951471d4ac.jpg)
+![Look up field names when edition posts and pages](https://user-images.githubusercontent.com/25268506/79060056-18fbc500-7c81-11ea-9b5a-b816fc116f14.jpg)
+![open documentation for a field type with just a click](https://user-images.githubusercontent.com/25268506/79060057-19945b80-7c81-11ea-92c2-2fe46f8750cf.jpg)
 
 ---
 
@@ -50,6 +48,7 @@ You can [find the extension in the Firefox add-on libary](https://addons.mozilla
 ## Contact details
 
 Rostislav Melkumyan - @RostiMelk - hello@rosti.no \
-Project Link: https://github.com/RostiMelk/ACF-Tools
+Project Link: https://github.com/RostiMelk/ACF-Tools \
+Feeling generous? Donations are accepted on paypal: hello@rosti.no
 
 Distributed under the MIT license. See LICENSE for more information.

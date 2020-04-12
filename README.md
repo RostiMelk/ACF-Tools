@@ -1,6 +1,4 @@
-![ACF Tools GIF](https://user-images.githubusercontent.com/25268506/78199610-868f4080-748c-11ea-8467-e0e6e9f7e1ec.gif)
-
-# ACF Tools - Advanced Custom Fields code made simple
+![ACF Tools - Advanced Custom Fields code made simple](https://user-images.githubusercontent.com/25268506/79060144-bd7e0700-7c81-11ea-958f-4de9aff2bc01.jpg)
 
 [![License](http://img.shields.io/:license-mit-semigreen.svg)](https://opensource.org/licenses/MIT)
 [![Google Web Store version](https://img.shields.io/chrome-web-store/v/ogliegjmpalokmaaeckcdgbhdeedcnmf)](https://chrome.google.com/webstore/detail/acf-tools/ogliegjmpalokmaaeckcdgbhdeedcnmf)
@@ -10,10 +8,9 @@ This is a Google Chrome extension/Firefox add-on for Advanced Custom Fields to h
 
 ### But what does it do?
 
-- Copy code for field with the matching selected setting and field name ([video demo here](https://youtu.be/_gyqUem8jKo))
-- Quickly copy an ACF field name by just clicking the field name
-- Easily open documentation for field by just clicking the field type
-- Check a fields field name when editing a post or a page
+![Copy ACF meta field code with just one click](https://user-images.githubusercontent.com/25268506/79060055-14cfa780-7c81-11ea-8893-8f951471d4ac.jpg)
+![Look up field names when edition posts and pages](https://user-images.githubusercontent.com/25268506/79060056-18fbc500-7c81-11ea-9b5a-b816fc116f14.jpg)
+![open documentation for a field type with just a click](https://user-images.githubusercontent.com/25268506/79060057-19945b80-7c81-11ea-92c2-2fe46f8750cf.jpg)
 
 ---
 
@@ -51,6 +48,7 @@ You can [find the extension in the Firefox add-on libary](https://addons.mozilla
 ## Contact details
 
 Rostislav Melkumyan - @RostiMelk - hello@rosti.no \
-Project Link: https://github.com/RostiMelk/ACF-Tools
+Project Link: https://github.com/RostiMelk/ACF-Tools \
+Feeling generous? Donations are accepted on paypal: hello@rosti.no
 
 Distributed under the MIT license. See LICENSE for more information.

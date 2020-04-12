@@ -18,15 +18,16 @@ $("body").on('click', function() {
 function copyFieldName() {
 	$(".acf-tbody .li-field-name").each(function() {
 		if(!$(this).children('.copy-field-name').length) {
-			var str = $(this).text();
+			var str = $(this).text(),
+				title = chrome.i18n.getMessage('copyFieldName');
 			$(this).text('');
-			$(this).append('<a href="#" class="copy-field-name">'+str+'</a>');
+			$(this).append('<a href="#" class="copy-field-name" title="'+title+'">'+str+'</a>');
 		}
 	})
 	$("body").on("click", ".copy-field-name", function(e) {
 		e.preventDefault();
 		copyStringToClipboard(this);
-		copyMessage('Copied field name to clipboard!');
+		copyMessage(chrome.i18n.getMessage('copiedFieldName'));
 	});
 }
 
@@ -35,10 +36,11 @@ function openDocs() {
 	$(".acf-tbody .li-field-type").each(function() {
 		if(!$(this).children('.open-field-docs').length) {
 			var str = $(this).text(),
+				title = chrome.i18n.getMessage('openDocsTitle'),
 				slug = $(this).closest('.acf-field-object').attr('data-type').replace("_", "-"),
 				url = "https://www.advancedcustomfields.com/resources/"+slug;
 			$(this).text('');
-			$(this).append('<a href="'+url+'" target="_blank" class="open-field-docs">'+str+'</a>');
+			$(this).append('<a href="'+url+'" target="_blank" title="'+title+'" class="open-field-docs">'+str+'</a>');
 		}
 	})
 }
@@ -46,9 +48,12 @@ function openDocs() {
 // Copy ACF meta field code feature:
 function appendCopyCodeBtns() {
 	// Append copy field code button
+
 	function appendCopyCodeBtn() {
+		var btnStr = chrome.i18n.getMessage('copyCodeBtn'),
+			btnTitle = chrome.i18n.getMessage('copyCodeBtnTitle');
 		$('.acf-field-object:not([data-type="accordion"], [data-type="message"], [data-type="tab"]) .row-options')
-			.append('<a class="button button-primary button-small copy-field-code exclude-sub-fields" title="Copy PHP code for this field" href="#">Copy code</a>');
+			.append('<a class="button button-primary button-small copy-field-code exclude-sub-fields" title="'+btnTitle+'" href="#">'+btnStr+'</a>');
 	}
 	appendCopyCodeBtn();
 	// Append buttons to new fields
@@ -61,10 +66,12 @@ function appendCopyCodeBtns() {
 
 	// Append copy all fields code button
 	function appendCopyAllCodeBtn() {
+		var btnStr = chrome.i18n.getMessage('copyAllCodeBtn'),
+			btnTitle = chrome.i18n.getMessage('copyAllCodeBtnTitle');
 		$('.acf-field-object[data-type="repeater"], .acf-field-object[data-type="group"]')
 			.children(".handle")
 			.find(".row-options")
-			.append('<a class="button button-primary button-small copy-field-code include-sub-fields" title="Copy PHP code for this field and inner fields" href="#">Copy code with sub fields</a>');
+			.append('<a class="button button-primary button-small copy-field-code include-sub-fields" title="'+btnTitle+'" href="#">'+btnStr+'</a>');
 	}
 	appendCopyAllCodeBtn();
 
@@ -190,7 +197,7 @@ function appendFieldNameOnEdit() {
 	});
 	$('body').on('click', '.post-edit-field-name-info', function(e) {
 		e.preventDefault();
-		copyMessage('Copied field name to clipboard!');
+		copyMessage(chrome.i18n.getMessage('copiedFieldName'));
 		copyStringToClipboard($(this));
 	})
 }

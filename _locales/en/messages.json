@@ -1,0 +1,35 @@
+{
+    "extDescription": {
+        "message": "Advanced Custom Fields code made simple!"
+    },
+    "copyFieldName": {
+        "message": "Copy field name to clipboard"
+    },
+    "copiedFieldName": {
+        "message": "Copied field name to clipboard!"
+    },
+    "openDocsTitle": {
+        "message": "Open ACF documentation for this field"
+    },
+    "copyCodeBtn": {
+        "message": "Copy code"
+    },
+    "copyCodeBtnTitle": {
+        "message": "Copy PHP code for this field"
+    },
+    "copyAllCodeBtn": {
+        "message": "Copy code with sub fields"
+    },
+    "copyAllCodeBtnTitle": {
+        "message": "Copy PHP code for this field and inner fields"
+    },
+    "copiedCode": {
+        "message": "Copied code to clipboard!"
+    },
+    "copiedCodeSub": {
+        "message": "Copied code with sub fields to clipboard!"
+    },
+    "fieldError": {
+        "message": "Unsupported field, submit an issue on: https://github.com/RostiMelk/ACF-Tools/issues"
+    }
+}

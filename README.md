@@ -51,7 +51,7 @@ I need your help with translations
 
 1. Clone repo
 2. cd into `ACF-Tools` folder
-3. Build Project with $ sh build.sh
+3. Build Project with `$ sh build.sh`
 4. Go to `about:debugging`
 5. Click "This Firefox"
 6. Click "Load Temporary Add-on"

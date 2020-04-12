@@ -26,6 +26,17 @@ You can [find the extension in the Firefox add-on libary](https://addons.mozilla
 
 ---
 
+## Contributing
+
+### Translation
+I need your help with translations
+
+1. Fork this repository.
+2. Edit `messages.json` in `src/_locales/[localeCode]`. If it does not already exist, create a directory according to the [supported locales](https://developer.chrome.com/webstore/i18n?csw=1#localeTable).
+3. Create a new pull request.
+
+---
+
 ## Development setup
 
 ### Google Chrome

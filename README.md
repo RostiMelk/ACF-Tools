@@ -42,21 +42,21 @@ I need your help with translations
 ### Google Chrome
 
 1. Clone repo
-2. Go to chrome://extensions/
-3. Drag and drop folder into this window
+2. Go to `chrome://extensions/`
+3. Drag and drop the `src` folder into this window
 4. Write code
 5. Refresh Chrome Extension to test and debug as you develop
 
 ### Mozilla Firefox
 
 1. Clone repo
-2. cd into ACF-Tools folder
+2. cd into `ACF-Tools` folder
 3. Build Project with $ sh build.sh
-4. Go to about:debugging
+4. Go to `about:debugging`
 5. Click "This Firefox"
 6. Click "Load Temporary Add-on"
 7. Navigate into ACF-Tools/dist
-8. Select acf-tools-vX.X.X-firefox.zip to test
+8. Select `acf-tools-vX.X.X-firefox.zip` to test
 
 ---
 

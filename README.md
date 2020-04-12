@@ -1,5 +1,7 @@
 ![ACF Tools - Advanced Custom Fields code made simple](https://user-images.githubusercontent.com/25268506/79060144-bd7e0700-7c81-11ea-958f-4de9aff2bc01.jpg)
 
+This is a Google Chrome extension/Firefox add-on for Advanced Custom Fields to help with speeding up development. 🔥
+
 [![License](http://img.shields.io/:license-mit-semigreen.svg)](https://opensource.org/licenses/MIT)
 [![Google Web Store version](https://img.shields.io/chrome-web-store/v/ogliegjmpalokmaaeckcdgbhdeedcnmf)](https://chrome.google.com/webstore/detail/acf-tools/ogliegjmpalokmaaeckcdgbhdeedcnmf)
 [![Mozilla Firefox add-on libary version](https://img.shields.io/amo/v/ACF-Tools?color=orange)](https://addons.mozilla.org/en-US/firefox/addon/acf-tools/)
@@ -20,7 +22,6 @@
 
 ---
 
-This is a Google Chrome extension/Firefox add-on for Advanced Custom Fields to help with speeding up development. 🔥
 
 ### But what does it do?
 

@@ -1,0 +1,35 @@
+{
+    "extDescription": {
+        "message": "Advanced Custom Fields Code einfach gemacht!"
+    },
+    "copyFieldName": {
+        "message": "Feldname in Zwischenablage kopieren"
+    },
+    "copiedFieldName": {
+        "message": "Feldname in Zwischenablage kopiert!"
+    },
+    "openDocsTitle": {
+        "message": "Öffne die ACF Dokumentation für dieses Feld"
+    },
+    "copyCodeBtn": {
+        "message": "Code kopieren"
+    },
+    "copyCodeBtnTitle": {
+        "message": "PHP Code für dieses Feld kopieren"
+    },
+    "copyAllCodeBtn": {
+        "message": "Code mit Unterfeldern kopieren"
+    },
+    "copyAllCodeBtnTitle": {
+        "message": "PHP Code für dieses Feld und Unterfelder kopieren"
+    },
+    "copiedCode": {
+        "message": "Code in Zwischenablage kopiert!"
+    },
+    "copiedCodeSub": {
+        "message": "Code mit Unterfeldern in Zwischenablage kopiert!"
+    },
+    "fieldError": {
+        "message": "Nicht unterstütztes Feld, reiche hier ein Issue ein: https://github.com/RostiMelk/ACF-Tools/issues"
+    }
+}

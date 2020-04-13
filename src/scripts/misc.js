@@ -30,13 +30,13 @@ function copyCodeToClipboard(fieldCode, subFields) {
 	temp.remove();
 	
 	if(subFields.length) {
-		copyMessage('Copied code with sub fields to clipboard!');
+		copyMessage(chrome.i18n.getMessage('copiedCodeSub'));
 	} else {
-		copyMessage('Copied code to clipboard!');
+		copyMessage(chrome.i18n.getMessage('copiedCode'));
 	}
 }
 
 function fieldError() {
-	alert("Unsupported field, submit an issue on: \nhttps://github.com/RostiMelk/ACF-Tools");
-	throw new Error("Unsupported field, submit an issue on: https://github.com/RostiMelk/ACF-Tools");
+	alert(chrome.i18n.getMessage('fieldError'));
+	throw new Error(chrome.i18n.getMessage('fieldError'));
 }

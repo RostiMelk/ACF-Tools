@@ -1,10 +1,27 @@
 ![ACF Tools - Advanced Custom Fields code made simple](https://user-images.githubusercontent.com/25268506/79060144-bd7e0700-7c81-11ea-958f-4de9aff2bc01.jpg)
 
+This is a Google Chrome extension/Firefox add-on for Advanced Custom Fields to help with speeding up development. 🔥
+
 [![License](http://img.shields.io/:license-mit-semigreen.svg)](https://opensource.org/licenses/MIT)
 [![Google Web Store version](https://img.shields.io/chrome-web-store/v/ogliegjmpalokmaaeckcdgbhdeedcnmf)](https://chrome.google.com/webstore/detail/acf-tools/ogliegjmpalokmaaeckcdgbhdeedcnmf)
 [![Mozilla Firefox add-on libary version](https://img.shields.io/amo/v/ACF-Tools?color=orange)](https://addons.mozilla.org/en-US/firefox/addon/acf-tools/)
 
-This is a Google Chrome extension/Firefox add-on for Advanced Custom Fields to help with speeding up development. 🔥
+## Table of content
+
+- [What does it do?](#but-what-does-it-do)
+- [Installation](#installation)
+    - [Chrome Web Store](#chrome-web-store)
+    - [Firefox browser add-ons](#firefox-browser-add-ons)
+- [Contributing](#contributing)
+    - [Translation](#translation)
+- [Development setup](#development-setup)
+    - [Google Chrome](#google-chrome)
+    - [Mozilla Firefox](#mozilla-firefox)
+- [Contact Details](#contact-details)
+- [License](#license)
+
+---
+
 
 ### But what does it do?
 
@@ -26,22 +43,37 @@ You can [find the extension in the Firefox add-on libary](https://addons.mozilla
 
 ---
 
+## Contributing
+
+### Translation
+I need your help with translations
+
+1. Fork this repository.
+2. Edit `messages.json` in `src/_locales/[localeCode]`. If it does not already exist, create a directory according to the [supported locales](https://developer.chrome.com/webstore/i18n?csw=1#localeTable).
+3. Create a new pull request.
+
+---
+
 ## Development setup
 
 ### Google Chrome
 
 1. Clone repo
-2. Go to chrome://extensions/
-3. Drag and drop folder into this window
+2. Go to `chrome://extensions/`
+3. Drag and drop the `src` folder into this window
 4. Write code
 5. Refresh Chrome Extension to test and debug as you develop
 
 ### Mozilla Firefox
 
 1. Clone repo
-2. Go to about:debugging
-3. Click "Load Temporary Add-on"
-4. Refresh Firefox Add-on to test and debug as you develop
+2. cd into `ACF-Tools` folder
+3. Build Project with `$ sh build.sh`
+4. Go to `about:debugging`
+5. Click "This Firefox"
+6. Click "Load Temporary Add-on"
+7. Navigate into ACF-Tools/dist
+8. Select `acf-tools-vX.X.X-firefox.zip` to test
 
 ---
 
@@ -51,4 +83,8 @@ Rostislav Melkumyan - @RostiMelk - hello@rosti.no \
 Project Link: https://github.com/RostiMelk/ACF-Tools \
 Feeling generous? Donations are accepted on paypal: hello@rosti.no
 
-Distributed under the MIT license. See LICENSE for more information.
+---
+
+## License
+
+Distributed under the MIT license. See `LICENSE` for more information.

@@ -203,8 +203,10 @@ function appendFieldNameOnEdit() {
 		var fieldName = $(this).attr('data-name'),
 			fieldNameInfo = '<a href="#" class="post-edit-field-name-info dashicons dashicons-info acf-js-tooltip" title="'+fieldName+'">'+fieldName+'</a>';
 		if($(this).hasClass('acf-th')) {
+			// If ACF display mode is table
 			$(this).children('label').append(fieldNameInfo);
 		} else {
+			// If ACF display mode is anything else (block or row)
 			$(this).children('.acf-label').children('label').append(fieldNameInfo);
 		}
 	});

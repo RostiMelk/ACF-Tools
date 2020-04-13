@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "ACF Tools",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "__MSG_extDescription__",
   "default_locale": "en",
   "icons": {
@@ -15,7 +15,7 @@
       "matches": ["*://*/wp-admin/*", "*://*/**/wp-admin/*"],
       "css": ["styles/style.css"],
       "js": [
-        "lib/jquery-3.4.1.min.js",
+        "lib/jquery-3.5.0.slim.min.js",
         "scripts/app.js",
         "scripts/misc.js",
         "scripts/fields.js"

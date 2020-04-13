@@ -14,7 +14,9 @@ $("body").on('click', function() {
 	}, 100);
 })
 
-// Copy the field name feature:
+/* --------------------
+Copy the field name feature:
+----------------------*/
 function copyFieldName() {
 	$(".acf-tbody .li-field-name").each(function() {
 		if(!$(this).children('.copy-field-name').length) {
@@ -31,7 +33,9 @@ function copyFieldName() {
 	});
 }
 
-// Open ACF Field documentation:
+/* --------------------
+Open ACF Field documentation:
+----------------------*/
 function openDocs() {
 	$(".acf-tbody .li-field-type").each(function() {
 		if(!$(this).children('.open-field-docs').length) {
@@ -45,7 +49,9 @@ function openDocs() {
 	})
 }
 
-// Copy ACF meta field code feature:
+/* --------------------
+Copy ACF meta field code feature:
+----------------------*/
 function appendCopyCodeBtns() {
 	// Append copy field code button
 
@@ -189,11 +195,18 @@ function copyFieldCode() {
 	});
 }
 
+/* --------------------
+Show and copy the field name in posts and pages editor feature:
+----------------------*/
 function appendFieldNameOnEdit() {
-	$('body:not(.post-type-acf-field-group)').find('.acf-field').each(function() {
+	$('body:not(.post-type-acf-field-group)').find('.acf-field, .acf-th').each(function() {
 		var fieldName = $(this).attr('data-name'),
 			fieldNameInfo = '<a href="#" class="post-edit-field-name-info dashicons dashicons-info acf-js-tooltip" title="'+fieldName+'">'+fieldName+'</a>';
-		$(this).children('.acf-label').children('label').append(fieldNameInfo);
+		if($(this).hasClass('acf-th')) {
+			$(this).children('label').append(fieldNameInfo);
+		} else {
+			$(this).children('.acf-label').children('label').append(fieldNameInfo);
+		}
 	});
 	$('body').on('click', '.post-edit-field-name-info', function(e) {
 		e.preventDefault();

@@ -36,14 +36,16 @@
 }
 
 .post-edit-field-name-info {
-  padding: 0 10px;
+  margin: 0 8px;
   color: #191e23;
   font-size: 0 !important;
   color: #AAAAAA;
   opacity: 0;
 }
 .acf-field:hover > .acf-label > label > .post-edit-field-name-info, 
-.acf-field:focus > .acf-label > label > .post-edit-field-name-info {
+.acf-field:focus > .acf-label > label > .post-edit-field-name-info,
+.acf-th:hover > label > .post-edit-field-name-info, 
+.acf-th:focus > label > .post-edit-field-name-info  {
   opacity: 1;
 }
 .post-edit-field-name-info:hover, .post-edit-field-name-info:focus {

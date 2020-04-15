@@ -3,6 +3,7 @@
 This is a Google Chrome extension/Firefox add-on for Advanced Custom Fields to help with speeding up development. 🔥
 
 [![License](http://img.shields.io/:license-mit-semigreen.svg)](https://opensource.org/licenses/MIT)
+[![Latest release](https://img.shields.io/github/v/release/RostiMelk/ACF-Tools)](https://github.com/RostiMelk/ACF-Tools/releases/latest)
 [![Google Web Store version](https://img.shields.io/chrome-web-store/v/ogliegjmpalokmaaeckcdgbhdeedcnmf)](https://chrome.google.com/webstore/detail/acf-tools/ogliegjmpalokmaaeckcdgbhdeedcnmf)
 [![Mozilla Firefox add-on libary version](https://img.shields.io/amo/v/ACF-Tools?color=orange)](https://addons.mozilla.org/en-US/firefox/addon/acf-tools/)
 
@@ -10,18 +11,17 @@ This is a Google Chrome extension/Firefox add-on for Advanced Custom Fields to h
 
 - [What does it do?](#but-what-does-it-do)
 - [Installation](#installation)
-    - [Chrome Web Store](#chrome-web-store)
-    - [Firefox browser add-ons](#firefox-browser-add-ons)
+  - [Chrome Web Store](#chrome-web-store)
+  - [Firefox browser add-ons](#firefox-browser-add-ons)
 - [Contributing](#contributing)
-    - [Translation](#translation)
+  - [Translation](#translation)
 - [Development setup](#development-setup)
-    - [Google Chrome](#google-chrome)
-    - [Mozilla Firefox](#mozilla-firefox)
+  - [Google Chrome](#google-chrome)
+  - [Mozilla Firefox](#mozilla-firefox)
 - [Contact Details](#contact-details)
 - [License](#license)
 
 ---
-
 
 ### But what does it do?
 
@@ -46,6 +46,7 @@ You can [find the extension in the Firefox add-on libary](https://addons.mozilla
 ## Contributing
 
 ### Translation
+
 I need your help with translations
 
 1. Fork this repository.

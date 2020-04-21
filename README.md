@@ -56,8 +56,9 @@ I need your help with translations
 4. Create a new pull request.
 
 ### Contributors
-
-![Contributors](https://contributors-img.web.app/image?repo=RostiMelk/ACF-Tools)
+<a href="https://github.com/rostimelk/acf-tools/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=rostimelk/acf-tools" alt="Image list of contributors" />
+</a>
 
 ---
 

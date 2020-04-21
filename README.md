@@ -52,7 +52,8 @@ I need your help with translations
 
 1. Fork this repository.
 2. Edit `messages.json` in `src/_locales/[localeCode]`. If it does not already exist, create a directory according to the [supported locales](https://developer.chrome.com/webstore/i18n?csw=1#localeTable).
-3. Create a new pull request.
+3. Increase the last version number in `src/manifest.json` on line 4
+4. Create a new pull request.
 
 ### Contributors
 

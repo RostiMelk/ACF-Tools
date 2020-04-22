@@ -15,6 +15,7 @@ This is a Google Chrome extension/Firefox add-on for Advanced Custom Fields to h
   - [Firefox browser add-ons](#firefox-browser-add-ons)
 - [Contributing](#contributing)
   - [Translation](#translation)
+  - [Field code output](#field-code-output)
   - [Contributors](#contributors)
 - [Development setup](#development-setup)
   - [Google Chrome](#google-chrome)
@@ -54,6 +55,10 @@ I need your help with translations
 2. Edit `messages.json` in `src/_locales/[localeCode]`. If it does not already exist, create a directory according to the [supported locales](https://developer.chrome.com/webstore/i18n?csw=1#localeTable).
 3. Increase the last version number in `src/manifest.json` on line 4
 4. Create a new pull request.
+
+### Field code output
+
+I am always looking for suggestions on how to make the field code output better. If you have a suggestion, [submit an issue](https://github.com/RostiMelk/ACF-Tools/issues/new).
 
 ### Contributors
 <a href="https://github.com/rostimelk/acf-tools/graphs/contributors">

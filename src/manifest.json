@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "ACF Tools",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "description": "__MSG_extDescription__",
   "default_locale": "en",
   "icons": {

@@ -78,18 +78,22 @@ function codeModal(openModal, fieldName, seniority, place) {
 		$(modalInner).append(modalClose);
 		
 		// Get modal HTML from /static/
-		$.get(chrome.extension.getURL('/static/'+openModal+'.html'), function(data){
+		var modalContent = $.get(chrome.extension.getURL('/static/'+openModal+'.html'), function(data){
 			$('#acftoolsCodeModal .acftools-modal-inner').append(data);
 		});
 
-		// Import gists to static file
-		setTimeout(function() {
-			$('#acftoolsCodeModal pre code').each(function() {
+		// Import gists to static file once HTML is finished loading
+		modalContent.done(function() {
+
+			var codeBlock = $('#acftoolsCodeModal pre code'),
+				countCodeBlocks = codeBlock.length;
+
+				codeBlock.each(function(i) {
 				if (typeof $(this).attr('data-gist') !== 'undefined') {
 					var codeBlock = $(this),
 						gist = codeBlock.attr('data-gist');
 
-					$.get(chrome.extension.getURL('/static/gists-'+openModal+'/'+gist+'.txt'), function(data){
+					codeBlocks = $.get(chrome.extension.getURL('/static/gists-'+openModal+'/'+gist+'.txt'), function(data){
 						// HTML tags should not be output as HTML
 						data = data.replace(/</g, "&lt;");
 						data = data.replace(/>/g, "&gt;");
@@ -107,14 +111,19 @@ function codeModal(openModal, fieldName, seniority, place) {
 						
 						codeBlock.html(data);
 					});
+					if (i+1 === countCodeBlocks) {
+						// Ready to open once the last code block is done loading
+						codeBlocks.done(function() {
+							activateModal();
+						})
+					}
 				}
 			});
 			// Add a function to copy code
 			copyModalCode();
-		},50);
+		});
 
-		// Importing takes some time, so we add another delay
-		setTimeout(function() {
+		function activateModal() {
 			// Perform localization
 			localizeModal();
 			// Syntax highlighting to gist
@@ -123,7 +132,7 @@ function codeModal(openModal, fieldName, seniority, place) {
 			});
 			// Show modal
 			modal.addClass('active');
-		},100);
+		};
 	}
 	// Close modal when X is clicked
 	$("body").on('click', '#closeModal', function(e) {

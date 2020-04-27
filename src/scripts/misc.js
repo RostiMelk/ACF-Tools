@@ -41,7 +41,25 @@ function copyModalCode() {
 		code = $(this).text();
 		copyCodeToClipboard(code, subFields = false);
 	});
-	$('#acftoolsCodeModal').find('pre').append('<span class="copy-code-info">Click to copy code.</span>');
+	var str = chrome.i18n.getMessage('clickToCopyCode')
+	$('#acftoolsCodeModal').find('pre').append('<span class="copy-code-info">'+str+'</span>');
+}
+
+function localizeModal() {
+    //Localize by replacing __MSG_***__ meta tags
+    var objects = $('#acftoolsCodeModal');
+    for (var j = 0; j < objects.length; j++) {
+        var obj = objects[j];
+
+        var valStrH = obj.innerHTML.toString();
+        var valNewH = valStrH.replace(/__MSG_(\w+)__/g, function(match, v1) {
+            return v1 ? chrome.i18n.getMessage(v1) : "";
+        });
+
+        if(valNewH != valStrH) {
+            obj.innerHTML = valNewH;
+        }
+    }
 }
 
 function codeModal(openModal, fieldName, seniority, place) {
@@ -97,6 +115,8 @@ function codeModal(openModal, fieldName, seniority, place) {
 
 		// Importing takes some time, so we add another delay
 		setTimeout(function() {
+			// Perform localization
+			localizeModal();
 			// Syntax highlighting to gist
 			document.querySelectorAll('#acftoolsCodeModal pre code').forEach((block) => {
 				hljs.highlightBlock(block);

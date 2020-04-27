@@ -23,5 +23,5 @@
       ]
     }
   ],
-  "web_accessible_resources": ["static/gmaps.html"]
+  "web_accessible_resources": ["static/*"]
 }

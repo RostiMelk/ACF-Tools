@@ -164,9 +164,8 @@ function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, pl
 
 		//jQuery
 		case "google_map":
-			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
-			codeModal();
-			gmapsCode();
+			var fieldCode = "<?php $location = get_field('" + fieldName + "');\n" + "if( !empty($location) ): ?>\n" + "\t<div class=\"acf-map\">\n" + "\t\t<div class=\"marker\" data-lat=\"<?php echo $location['lat']; ?>\" data-lng=\"<?php echo $location['lng']; ?>\"></div>\n" + "\t</div>\n" + "<?php endif; ?>";
+			codeModal('gmaps', fieldName, seniority, place);
 			break;
 
 		case "date_picker":

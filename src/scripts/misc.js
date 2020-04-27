@@ -36,39 +36,83 @@ function copyCodeToClipboard(fieldCode, subFields) {
 	}
 }
 
-function fieldError() {
-	alert(chrome.i18n.getMessage('fieldError'));
-	throw new Error(chrome.i18n.getMessage('fieldError'));
-}
-
-function codeModal(openModal) {
-	var modal = $('<div id="acftoolsCodeModal"></div>')
-
-	if(openModal == false) {
-		$("#acftoolsCodeModal").remove();
-	} else {
-		$('body').append(modal);
-		setTimeout(function() {
-			modal.addClass('active');
-			document.querySelectorAll('pre code').forEach((block) => {
-				hljs.highlightBlock(block);
-			});
-			copyModalCode();
-		},300);
-	}
-}
-
-function closeModal() {
-	$("body").on('click', '#closeModal', function(e) {
-		e.preventDefault();
-		codeModal(false);
-	})
-}
-
 function copyModalCode() {
 	$("body").on('click', '#acftoolsCodeModal pre code', function() {
 		code = $(this).text();
 		copyCodeToClipboard(code, subFields = false);
 	});
 	$('#acftoolsCodeModal').find('pre').append('<span class="copy-code-info">Click to copy code.</span>');
+}
+
+function codeModal(openModal, fieldName, seniority, place) {
+	var modal = $('<div id="acftoolsCodeModal"></div>'),
+		modalInner = $('<div class="acftools-modal-inner"></div>'),
+		modalClose = $('<a href="#" id="closeModal"><span class="dashicons dashicons-no"></span></a>');
+
+	if(openModal == false) {
+		// Remove existing modal if openModal is false
+		$("#acftoolsCodeModal").remove();
+	} else {
+		// Create modal
+		$('body').append(modal);
+		// Append some general elements to the modal
+		$(modal).append(modalInner);
+		$(modalInner).append(modalClose);
+		
+		// Get modal HTML from /static/
+		$.get(chrome.extension.getURL('/static/'+openModal+'.html'), function(data){
+			$('#acftoolsCodeModal .acftools-modal-inner').append(data);
+		});
+
+		// Import gists to static file
+		setTimeout(function() {
+			$('#acftoolsCodeModal pre code').each(function() {
+				if (typeof $(this).attr('data-gist') !== 'undefined') {
+					var codeBlock = $(this),
+						gist = codeBlock.attr('data-gist');
+
+					$.get(chrome.extension.getURL('/static/gists-'+openModal+'/'+gist+'.txt'), function(data){
+						// HTML tags should not be output as HTML
+						data = data.replace(/</g, "&lt;");
+						data = data.replace(/>/g, "&gt;");
+						data = data.replace(/REPLACE_WITH_FIELD_NAME/g, fieldName);
+						// Change to sub field if sub field
+						if (seniority == 'sub') {
+							data = data.replace('get_field', 'get_sub_field');
+							data = data.replace('the_field', 'the_sub_field');
+						}
+						// Add options if options page
+						if (place == 'options_page') {
+							var fieldNameRe = new RegExp("'" + fieldName + "'", 'g');
+							data = data.replace(fieldNameRe, "'" + fieldName + "', 'options'");
+						}
+						
+						codeBlock.html(data);
+					});
+				}
+			});
+			// Add a function to copy code
+			copyModalCode();
+		},150);
+
+		// Importing takes some time, so we add another delay
+		setTimeout(function() {
+			// Syntax highlighting to gist
+			document.querySelectorAll('#acftoolsCodeModal pre code').forEach((block) => {
+				hljs.highlightBlock(block);
+			});
+			// Show modal
+			modal.addClass('active');
+		},300);
+	}
+	// Close modal when X is clicked
+	$("body").on('click', '#closeModal', function(e) {
+		e.preventDefault();
+		codeModal(false);
+	})
+}
+
+function fieldError() {
+	alert(chrome.i18n.getMessage('fieldError'));
+	throw new Error(chrome.i18n.getMessage('fieldError'));
 }

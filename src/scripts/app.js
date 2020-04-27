@@ -4,7 +4,6 @@ $(document).ready(function() {
 	copyFieldCode();
 	appendCopyCodeBtns();
 	appendFieldNameOnEdit();
-	closeModal();
 });
 
 // Running some functions again when edits are made
@@ -149,12 +148,6 @@ function getSeniority(thisField) {
 function getPlace() {
 	// Get field group place (basically checks if field is in options page or not)
 	return $('.refresh-location-rule option[selected="selected"]').val();
-}
-
-function gmapsCode() {
-	$.get(chrome.extension.getURL('/static/gmaps.html'), function(data){
-		$("#acftoolsCodeModal").html(data);
-	});
 }
 
 function copyFieldCode() {

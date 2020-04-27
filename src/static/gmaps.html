@@ -3,32 +3,28 @@
     <h2>Google Maps code</h2>
     <p>The Google Maps field requires some configuration, so here is a step by step process to help you out.</p>
 
-    <ul>
+    <ol>
+
         <li>
-            <p>Add this code to your <code>functions.php</code> file. Replace 'YOUR_KEY_HERE' with your Google Maps API key.</p>
-            <textarea class="php">
-// Register Google Maps API key
+            <p>Add this code to your functions.php file. Replace 'YOUR_KEY_HERE' with your Google Maps API key.</p>
+            <pre><code class="language-php">// Register Google Maps API key
 function my_acf_google_map_api( $api ){
     $api['key'] = 'YOUR_KEY_HERE';
     return $api;
 }
-add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
-            </textarea>
+add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');</code></pre>
             <p>The Google Maps field requires the following APIs; Maps JavaScript API, Geocoding API and Places API.</p>
         </li>
 
         <li>
-            <p>Add this code to your <code>functions.php</code> file. Replace 'YOUR_KEY_HERE' with your Google Maps API key.</p>
-            <textarea class="php">
-// Enqueue Google Maps script
-wp_enqueue_script('google-maps', '//maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE&callback=acfmap', array(), '3', true);
-            </textarea>
+            <p>Add this code to your functions.php file. Replace 'YOUR_KEY_HERE' with your Google Maps API key.</p>
+            <pre><code class="language-php">// Enqueue Google Maps script
+wp_enqueue_script('google-maps', '//maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE&callback=acfmap', array(), '3', true);</code></pre>
         </li>
 
         <li>
             <p>Add this code to your scripts file.</p>
-            <textarea class="javascript">
-function acfmap() {
+            <pre><code class="language-javascript">function acfmap() {
 /*
     *  new_map
     *
@@ -250,9 +246,8 @@ $(document).ready(function () {
     map = new_map($(this));
     });
 });
-}
-            </textarea>
+}</code></pre>
         </li>
 
-    </ul>
+    </ol>
 </div>

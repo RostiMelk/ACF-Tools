@@ -151,6 +151,12 @@ function getPlace() {
 	return $('.refresh-location-rule option[selected="selected"]').val();
 }
 
+function gmapsCode() {
+	$.get(chrome.extension.getURL('/static/gmaps.html'), function(data){
+		$("#acftoolsCodeModal").html(data);
+	});
+}
+
 function copyFieldCode() {
 	// Copy field code
 	$("body").on("click", ".copy-field-code", function() {

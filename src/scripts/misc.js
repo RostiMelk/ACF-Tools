@@ -111,7 +111,7 @@ function codeModal(openModal, fieldName, seniority, place) {
 			});
 			// Add a function to copy code
 			copyModalCode();
-		},150);
+		},50);
 
 		// Importing takes some time, so we add another delay
 		setTimeout(function() {
@@ -123,7 +123,7 @@ function codeModal(openModal, fieldName, seniority, place) {
 			});
 			// Show modal
 			modal.addClass('active');
-		},300);
+		},100);
 	}
 	// Close modal when X is clicked
 	$("body").on('click', '#closeModal', function(e) {

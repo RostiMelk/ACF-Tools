@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "ACF Tools",
-  "version": "2.5.1",
+  "version": "2.6.0",
   "description": "__MSG_extDescription__",
   "default_locale": "en",
   "icons": {
@@ -13,13 +13,15 @@
   "content_scripts": [
     {
       "matches": ["*://*/wp-admin/*", "*://*/**/wp-admin/*"],
-      "css": ["styles/style.css"],
+      "css": ["styles/style.css", "styles/modal.css", "styles/highlight.css"],
       "js": [
-        "lib/jquery-3.5.0.slim.min.js",
+        "lib/jquery-3.5.0.min.js",
+        "lib/highlight.pack.js",
         "scripts/app.js",
         "scripts/misc.js",
         "scripts/fields.js"
       ]
     }
-  ]
+  ],
+  "web_accessible_resources": ["static/gmaps.html"]
 }

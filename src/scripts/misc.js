@@ -40,3 +40,35 @@ function fieldError() {
 	alert(chrome.i18n.getMessage('fieldError'));
 	throw new Error(chrome.i18n.getMessage('fieldError'));
 }
+
+function codeModal(openModal) {
+	var modal = $('<div id="acftoolsCodeModal"></div>')
+
+	if(openModal == false) {
+		$("#acftoolsCodeModal").remove();
+	} else {
+		$('body').append(modal);
+		setTimeout(function() {
+			modal.addClass('active');
+			document.querySelectorAll('pre code').forEach((block) => {
+				hljs.highlightBlock(block);
+			});
+			copyModalCode();
+		},300);
+	}
+}
+
+function closeModal() {
+	$("body").on('click', '#closeModal', function(e) {
+		e.preventDefault();
+		codeModal(false);
+	})
+}
+
+function copyModalCode() {
+	$("body").on('click', '#acftoolsCodeModal pre code', function() {
+		code = $(this).text();
+		copyCodeToClipboard(code, subFields = false);
+	});
+	$('#acftoolsCodeModal').find('pre').append('<span class="copy-code-info">Click to copy code.</span>');
+}

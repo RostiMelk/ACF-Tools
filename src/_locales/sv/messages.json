@@ -1,0 +1,35 @@
+{
+    "extDescription": {
+        "message": "Advanced Custom Fields kod på ett enklare sätt! 🙌"
+    },
+    "copyFieldName": {
+        "message": "Kopiera fältnamn till urklipp"
+    },
+    "copiedFieldName": {
+        "message": "Kopierade fältnamn till urklipp."
+    },
+    "openDocsTitle": {
+        "message": "Öppna ACF-dokumentationen för den här fältgruppen"
+    },
+    "copyCodeBtn": {
+        "message": "Kopiera kod"
+    },
+    "copyCodeBtnTitle": {
+        "message": "Kopiera PHP-koden för det här fältet"
+    },
+    "copyAllCodeBtn": {
+        "message": "Kopiera PHP-koden för underfält"
+    },
+    "copyAllCodeBtnTitle": {
+        "message": "Kopiera PHP-koden för det här fältet med underfält"
+    },
+    "copiedCode": {
+        "message": "Kopierade koden till urklipp"
+    },
+    "copiedCodeSub": {
+        "message": "Kopierade koden med underfält till urklipp"
+    },
+    "fieldError": {
+        "message": "Det här fältet stöds inte. Skicka in en issue här: https://github.com/RostiMelk/ACF-Tools/issues"
+    }
+}

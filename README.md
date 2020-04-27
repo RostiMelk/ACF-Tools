@@ -3,7 +3,7 @@
 This is a Google Chrome extension/Firefox add-on for Advanced Custom Fields to help with speeding up development. 🔥
 
 [![License](http://img.shields.io/:license-mit-semigreen.svg)](https://opensource.org/licenses/MIT)
-[![Latest release](https://img.shields.io/github/v/release/RostiMelk/ACF-Tools)](https://github.com/RostiMelk/ACF-Tools/releases/latest)
+[![Latest release](https://img.shields.io/github/v/release/RostiMelk/ACF-Tools?label=Github%20release)](https://github.com/RostiMelk/ACF-Tools/releases/latest)
 [![Google Web Store version](https://img.shields.io/chrome-web-store/v/ogliegjmpalokmaaeckcdgbhdeedcnmf)](https://chrome.google.com/webstore/detail/acf-tools/ogliegjmpalokmaaeckcdgbhdeedcnmf)
 [![Mozilla Firefox add-on libary version](https://img.shields.io/amo/v/ACF-Tools?color=orange)](https://addons.mozilla.org/en-US/firefox/addon/acf-tools/)
 
@@ -15,6 +15,8 @@ This is a Google Chrome extension/Firefox add-on for Advanced Custom Fields to h
   - [Firefox browser add-ons](#firefox-browser-add-ons)
 - [Contributing](#contributing)
   - [Translation](#translation)
+  - [Field code output](#field-code-output)
+  - [Contributors](#contributors)
 - [Development setup](#development-setup)
   - [Google Chrome](#google-chrome)
   - [Mozilla Firefox](#mozilla-firefox)
@@ -51,7 +53,17 @@ I need your help with translations
 
 1. Fork this repository.
 2. Edit `messages.json` in `src/_locales/[localeCode]`. If it does not already exist, create a directory according to the [supported locales](https://developer.chrome.com/webstore/i18n?csw=1#localeTable).
-3. Create a new pull request.
+3. Increase the last version number in `src/manifest.json` on line 4
+4. Create a new pull request.
+
+### Field code output
+
+I am always looking for suggestions on how to make the field code output better. If you have a suggestion, [submit an issue](https://github.com/RostiMelk/ACF-Tools/issues/new).
+
+### Contributors
+<a href="https://github.com/rostimelk/acf-tools/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=rostimelk/acf-tools" alt="Image list of contributors" />
+</a>
 
 ---
 

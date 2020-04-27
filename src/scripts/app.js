@@ -4,6 +4,7 @@ $(document).ready(function() {
 	copyFieldCode();
 	appendCopyCodeBtns();
 	appendFieldNameOnEdit();
+	closeModal();
 });
 
 // Running some functions again when edits are made
@@ -150,6 +151,12 @@ function getPlace() {
 	return $('.refresh-location-rule option[selected="selected"]').val();
 }
 
+function gmapsCode() {
+	$.get(chrome.extension.getURL('/static/gmaps.html'), function(data){
+		$("#acftoolsCodeModal").html(data);
+	});
+}
+
 function copyFieldCode() {
 	// Copy field code
 	$("body").on("click", ".copy-field-code", function() {
@@ -160,6 +167,9 @@ function copyFieldCode() {
 		seniority = getSeniority(thisField),
 		place = getPlace(thisField),
 		subFields = "";
+
+		// Get rid of modal if it is open
+		codeModal(false);
 
 		// If user clicked copy code with sub fields. This will get the first level of child items.
 		if (thisField.hasClass("include-sub-fields")) {

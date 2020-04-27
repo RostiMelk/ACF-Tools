@@ -31,5 +31,32 @@
     },
     "fieldError": {
         "message": "Unsupported field, submit an issue on: https://github.com/RostiMelk/ACF-Tools/issues"
+    },
+    "clickToCopyCode": {
+        "message": "Click to copy code."
+    },
+    "gmapsTitle": {
+        "message": "Google Maps field code"
+    },
+    "gmapsIntro": {
+        "message": "The Google Maps field requires some configuration, so here is a step by step process to help you out."
+    },
+    "gmapsInstruction1_1": {
+        "message": "Add this code to your functions.php file to register you API key. Replace 'YOUR_KEY_HERE' with your Google Maps API key."
+    },
+    "gmapsInstruction1_2": {
+        "message": "The Google Maps field requires the following APIs; Maps JavaScript API, Geocoding API and Places API."
+    },
+    "gmapsInstruction2_1": {
+        "message": "Add this code to your scripts file. It is important that this code is ran before the one you get in step 3."
+    },
+    "gmapsInstruction3_1": {
+        "message": "Add this code to your functions.php file to enqueue the maps script. Replace 'YOUR_KEY_HERE' with your Google Maps API key."
+    },
+    "gmapsInstruction4_1": {
+        "message": "Add this code to your php template file to display the map."
+    },
+    "gmapsInstruction5_1": {
+        "message": "Add this code to your css file to display the map. You can tweak this to your liking."
     }
 }

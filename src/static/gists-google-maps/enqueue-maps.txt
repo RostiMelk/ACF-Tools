@@ -1,0 +1,2 @@
+// Enqueue Google Maps script
+wp_enqueue_script('google-maps', '//maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE&callback=acfmap', array(), '3', true);

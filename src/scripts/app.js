@@ -4,6 +4,7 @@ $(document).ready(function() {
 	copyFieldCode();
 	appendCopyCodeBtns();
 	appendFieldNameOnEdit();
+	closeModal();
 });
 
 // Running some functions again when edits are made
@@ -160,6 +161,9 @@ function copyFieldCode() {
 		seniority = getSeniority(thisField),
 		place = getPlace(thisField),
 		subFields = "";
+
+		// Get rid of modal if it is open
+		codeModal(false);
 
 		// If user clicked copy code with sub fields. This will get the first level of child items.
 		if (thisField.hasClass("include-sub-fields")) {

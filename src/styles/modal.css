@@ -1,0 +1,32 @@
+#acftoolsCodeModal {
+  width: 100%;
+  max-width: 500px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateX(100%);
+  background-color: #f1f1f1;
+  border-left: #d5d9dd solid 1px;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+#acftoolsCodeModal.active {
+  transform: translateX(0);
+}
+.acftools-modal-inner {
+  margin-top: 32px;
+  padding: 20px;
+  height: calc(100% - 72px);
+  overflow-y: auto;
+}
+#closeModal {
+  color: #23282d;
+  text-decoration: none;
+  float: right;
+}
+#acftoolsCodeModal textarea {
+    width: 100%;
+    height: 130px;
+    resize: vertical;
+}

@@ -40,3 +40,29 @@ function fieldError() {
 	alert(chrome.i18n.getMessage('fieldError'));
 	throw new Error(chrome.i18n.getMessage('fieldError'));
 }
+
+function codeModal(openModal) {
+	var modal = $('<div id="acftoolsCodeModal"></div>')
+
+	if(openModal == false) {
+		$("#acftoolsCodeModal").remove();
+	} else {
+		$('body').append(modal);
+		setTimeout(function() {
+			modal.addClass('active');
+		},300)
+	}
+}
+
+function closeModal() {
+	$("body").on('click', '#closeModal', function(e) {
+		e.preventDefault();
+		codeModal(false);
+	})
+}
+
+function gmapsCode() {
+	$.get(chrome.extension.getURL('/static/gmaps.html'), function(data){
+		$("#acftoolsCodeModal").html(data);
+	});
+}

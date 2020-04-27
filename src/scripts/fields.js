@@ -165,8 +165,8 @@ function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, pl
 		//jQuery
 		case "google_map":
 			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
-			alert('This field type requires more configuration.\nRead documentation at:\nhttps://www.advancedcustomfields.com/resources/google-map/');
-			window.open("https://www.advancedcustomfields.com/resources/google-map/", "_blank");
+			codeModal();
+			gmapsCode();
 			break;
 
 		case "date_picker":
@@ -227,7 +227,8 @@ function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, pl
 	sessionStorage.removeItem('fieldcode');
 	sessionStorage.setItem('fieldcode', '\n\t\t' + fieldCode + '\n');
 	// Copy the code to the clipboard if sub fields are done appending to a repeater or group field
-	if(!appendCode) {
+	// Skip running copy code funtion if the field type is google_map
+	if(!appendCode && typeOfField !== 'google_map') {
 		copyCodeToClipboard(fieldCode, subFields);
 	}
 }

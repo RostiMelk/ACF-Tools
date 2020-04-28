@@ -7,7 +7,7 @@ $(document).ready(function() {
 });
 
 // Running some functions again when edits are made
-$("body").on('click', function() {
+$("body").on('mouseup', function() {
 	setTimeout(function() {
 		copyFieldName();
 		openDocs();

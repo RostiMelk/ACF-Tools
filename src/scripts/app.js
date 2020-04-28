@@ -152,7 +152,10 @@ function getPlace() {
 
 function copyFieldCode() {
 	// Copy field code
-	$("body").on("click", ".copy-field-code", function() {
+	$("body").on("click", ".copy-field-code", function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		
 		var thisField = $(this),
 		fieldName = getFieldName(thisField),
 		typeOfField = getTypeOfField(thisField),

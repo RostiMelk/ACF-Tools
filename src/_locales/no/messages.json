@@ -33,30 +33,33 @@
         "message": "Dette feltet støttes. Send inn en issue her: https://github.com/RostiMelk/ACF-Tools/issues"
     },
     "clickToCopyCode": {
-        "message": "Click to copy code."
+        "message": "Klikk for å kopiere kode."
     },
     "gmapsTitle": {
-        "message": "Google Maps field code"
+        "message": "Google Maps feltkode"
     },
     "gmapsIntro": {
-        "message": "The Google Maps field requires some configuration, so here is a step by step process to help you out."
+        "message": "Google Maps-feltet krever litt manuell konfigurasjon. Her er en trinnvis prosess for å hjelpe deg."
     },
     "gmapsInstruction1_1": {
-        "message": "Add this code to your functions.php file to register you API key. Replace 'YOUR_KEY_HERE' with your Google Maps API key."
+        "message": "Legg denne koden inn i functions.php filen for å registere API-nøkkeln din. Erstatt 'YOUR_KEY_HERE' med Google Maps API-nøkkelen."
     },
     "gmapsInstruction1_2": {
-        "message": "The Google Maps field requires the following APIs; Maps JavaScript API, Geocoding API and Places API."
+        "message": "Google Maps-feltet krever følgende APIer; Maps JavaScript API, Geocoding API og Places API."
+    },
+    "gmapsInstruction1_3": {
+        "message": "Du kan generere en Google Maps API-nøkkel her."
     },
     "gmapsInstruction2_1": {
-        "message": "Add this code to your scripts file. It is important that this code is ran before the one you get in step 3."
+        "message": "Legg til denne koden i javascript-filen din. Det er viktig at denne koden kjøres før koden du får i trinn 3."
     },
     "gmapsInstruction3_1": {
-        "message": "Add this code to your functions.php file to enqueue the maps script. Replace 'YOUR_KEY_HERE' with your Google Maps API key."
+        "message": "Legg denne koden inn i functions.php filen for å importere Google Maps javascript. Erstatt 'YOUR_KEY_HERE' med Google Maps API-nøkkelen din."
     },
     "gmapsInstruction4_1": {
-        "message": "Add this code to your php template file to display the map."
+        "message": "Legg til denne koden i php-malfilen din for å vise kartet."
     },
     "gmapsInstruction5_1": {
-        "message": "Add this code to your css file to display the map. You can tweak this to your liking."
+        "message": "Legg til denne koden i css-filen din for å vise kartet. Du kan redigere denne koden som du selv ønsker."
     }
 }

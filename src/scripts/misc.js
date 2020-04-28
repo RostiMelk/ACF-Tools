@@ -139,6 +139,13 @@ function codeModal(openModal, fieldName, seniority, place) {
 		e.preventDefault();
 		codeModal(false);
 	})
+	// Close modal user clicks outside the modal
+	$("body").on('click', '#acftoolsCodeModal', function(e) {
+		e.stopPropagation();
+	})
+	$("body").on('click', function() {
+		codeModal(false);
+	})
 }
 
 function fieldError() {

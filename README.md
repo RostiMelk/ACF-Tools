@@ -9,7 +9,8 @@ This is a Google Chrome extension/Firefox add-on for Advanced Custom Fields to h
 
 ## Table of content
 
-- [What does it do?](#but-what-does-it-do)
+- [See what it does](#see-what-it-does)
+  - [Supported fields](#supported-fields)
 - [Installation](#installation)
   - [Chrome Web Store](#chrome-web-store)
   - [Firefox browser add-ons](#firefox-browser-add-ons)
@@ -25,11 +26,61 @@ This is a Google Chrome extension/Firefox add-on for Advanced Custom Fields to h
 
 ---
 
-### But what does it do?
+## See what it does
 
 ![Copy ACF meta field code with just one click](https://user-images.githubusercontent.com/25268506/79060055-14cfa780-7c81-11ea-8893-8f951471d4ac.jpg)
 ![Look up field names when edition posts and pages](https://user-images.githubusercontent.com/25268506/79060056-18fbc500-7c81-11ea-9b5a-b816fc116f14.jpg)
 ![open documentation for a field type with just a click](https://user-images.githubusercontent.com/25268506/79060057-19945b80-7c81-11ea-92c2-2fe46f8750cf.jpg)
+
+### Supported fields
+
+**Basic**
+- Text
+- Text area
+- Number
+- Range
+- Email
+- Url
+- Passord
+
+**Content**
+- Image
+- File
+- Wysiwyg Editor
+- oEmbed
+- Gallery
+
+**Choice**
+- Select
+- Checkbox
+- Radio Button
+- Button Group
+- True / False
+
+**Relational**
+- Link
+- Post Object
+- Page Link
+- Relationship
+- Taxonomy
+- User
+
+**jQuery**
+- Google Map
+- Date Picker
+- Date Time Picker
+- Time Picker
+- Color Picker
+
+**Layout**
+- Group
+- Repeater
+- Flexible content
+
+**3rd Party**
+- Coming soon. 
+
+_Missing a field? [Submit an issue](https://github.com/RostiMelk/ACF-Tools/issues/new) if there is a field you want ACF Tools to support._
 
 ---
 

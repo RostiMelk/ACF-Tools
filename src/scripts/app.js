@@ -7,7 +7,7 @@ $(document).ready(function() {
 });
 
 // Running some functions again when edits are made
-$("body").on('click', function() {
+$("body").on('mouseup', function() {
 	setTimeout(function() {
 		copyFieldName();
 		openDocs();
@@ -152,7 +152,10 @@ function getPlace() {
 
 function copyFieldCode() {
 	// Copy field code
-	$("body").on("click", ".copy-field-code", function() {
+	$("body").on("click", ".copy-field-code", function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		
 		var thisField = $(this),
 		fieldName = getFieldName(thisField),
 		typeOfField = getTypeOfField(thisField),
@@ -160,6 +163,9 @@ function copyFieldCode() {
 		seniority = getSeniority(thisField),
 		place = getPlace(thisField),
 		subFields = "";
+
+		// Get rid of modal if it is open
+		codeModal(false);
 
 		// If user clicked copy code with sub fields. This will get the first level of child items.
 		if (thisField.hasClass("include-sub-fields")) {

@@ -1,6 +1,6 @@
 {
     "extDescription": {
-        "message": "Advanced Custom Fields kode gjort enkelt!"
+        "message": "Advanced Custom Fields kode gjort enkelt! 🙌"
     },
     "copyFieldName": {
         "message": "Kopier feltnavn til utklippstavlen"
@@ -31,5 +31,35 @@
     },
     "fieldError": {
         "message": "Dette feltet støttes. Send inn en issue her: https://github.com/RostiMelk/ACF-Tools/issues"
+    },
+    "clickToCopyCode": {
+        "message": "Klikk for å kopiere kode."
+    },
+    "gmapsTitle": {
+        "message": "Google Maps feltkode"
+    },
+    "gmapsIntro": {
+        "message": "Google Maps-feltet krever litt manuell konfigurasjon. Her er en trinnvis prosess for å hjelpe deg."
+    },
+    "gmapsInstruction1_1": {
+        "message": "Legg denne koden inn i functions.php filen for å registere API-nøkkeln din. Erstatt 'YOUR_KEY_HERE' med Google Maps API-nøkkelen."
+    },
+    "gmapsInstruction1_2": {
+        "message": "Google Maps-feltet krever følgende APIer; Maps JavaScript API, Geocoding API og Places API."
+    },
+    "gmapsInstruction1_3": {
+        "message": "Du kan generere en Google Maps API-nøkkel her."
+    },
+    "gmapsInstruction2_1": {
+        "message": "Legg til denne koden i javascript-filen din. Det er viktig at denne koden kjøres før koden du får i trinn 3."
+    },
+    "gmapsInstruction3_1": {
+        "message": "Legg denne koden inn i functions.php filen for å importere Google Maps javascript. Erstatt 'YOUR_KEY_HERE' med Google Maps API-nøkkelen din."
+    },
+    "gmapsInstruction4_1": {
+        "message": "Legg til denne koden i php-malfilen din for å vise kartet."
+    },
+    "gmapsInstruction5_1": {
+        "message": "Legg til denne koden i css-filen din for å vise kartet. Du kan redigere denne koden som du selv ønsker."
     }
 }

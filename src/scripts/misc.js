@@ -36,6 +36,118 @@ function copyCodeToClipboard(fieldCode, subFields) {
 	}
 }
 
+function copyModalCode() {
+	$("body").on('click', '#acftoolsCodeModal pre code', function() {
+		code = $(this).text();
+		copyCodeToClipboard(code, subFields = false);
+	});
+	var str = chrome.i18n.getMessage('clickToCopyCode')
+	$('#acftoolsCodeModal').find('pre').append('<span class="copy-code-info">'+str+'</span>');
+}
+
+function localizeModal() {
+    //Localize by replacing __MSG_***__ meta tags
+    var objects = $('#acftoolsCodeModal');
+    for (var j = 0; j < objects.length; j++) {
+        var obj = objects[j];
+
+        var valStrH = obj.innerHTML.toString();
+        var valNewH = valStrH.replace(/__MSG_(\w+)__/g, function(match, v1) {
+            return v1 ? chrome.i18n.getMessage(v1) : "";
+        });
+
+        if(valNewH != valStrH) {
+            obj.innerHTML = valNewH;
+        }
+    }
+}
+
+function codeModal(openModal, fieldName, seniority, place) {
+	var modal = $('<div id="acftoolsCodeModal"></div>'),
+		modalInner = $('<div class="acftools-modal-inner"></div>'),
+		modalClose = $('<a href="#" id="closeModal"><span class="dashicons dashicons-no"></span></a>');
+
+	if(openModal == false) {
+		// Remove existing modal if openModal is false
+		$("#acftoolsCodeModal").remove();
+	} else {
+		// Create modal
+		$('body').append(modal);
+		// Append some general elements to the modal
+		$(modal).append(modalInner);
+		$(modalInner).append(modalClose);
+		
+		// Get modal HTML from /static/
+		var modalContent = $.get(chrome.extension.getURL('/static/'+openModal+'.html'), function(data){
+			$('#acftoolsCodeModal .acftools-modal-inner').append(data);
+		});
+
+		// Import gists to static file once HTML is finished loading
+		modalContent.done(function() {
+
+			var codeBlock = $('#acftoolsCodeModal pre code'),
+				countCodeBlocks = codeBlock.length;
+
+				codeBlock.each(function(i) {
+				if (typeof $(this).attr('data-gist') !== 'undefined') {
+					var codeBlock = $(this),
+						gist = codeBlock.attr('data-gist');
+
+					codeBlocks = $.get(chrome.extension.getURL('/static/gists-'+openModal+'/'+gist+'.txt'), function(data){
+						// HTML tags should not be output as HTML
+						data = data.replace(/</g, "&lt;");
+						data = data.replace(/>/g, "&gt;");
+						data = data.replace(/REPLACE_WITH_FIELD_NAME/g, fieldName);
+						// Change to sub field if sub field
+						if (seniority == 'sub') {
+							data = data.replace('get_field', 'get_sub_field');
+							data = data.replace('the_field', 'the_sub_field');
+						}
+						// Add options if options page
+						if (place == 'options_page') {
+							var fieldNameRe = new RegExp("'" + fieldName + "'", 'g');
+							data = data.replace(fieldNameRe, "'" + fieldName + "', 'options'");
+						}
+						
+						codeBlock.html(data);
+					});
+					if (i+1 === countCodeBlocks) {
+						// Ready to open once the last code block is done loading
+						codeBlocks.done(function() {
+							activateModal();
+						})
+					}
+				}
+			});
+			// Add a function to copy code
+			copyModalCode();
+		});
+
+		function activateModal() {
+			// Perform localization
+			localizeModal();
+			// Syntax highlighting to gist
+			document.querySelectorAll('#acftoolsCodeModal pre code').forEach((block) => {
+				hljs.highlightBlock(block);
+			});
+			// Show modal
+			modal.addClass('active');
+		};
+	}
+	// Close modal when X is clicked
+	$("body").on('click', '#closeModal', function(e) {
+		e.preventDefault();
+		codeModal(false);
+	})
+	// Close modal user clicks outside the modal
+	$("body").on('click', '#acftoolsCodeModal', function(e) {
+		e.stopPropagation();
+	})
+	$("body").on('click', function() {
+		codeModal(false);
+	})
+}
+
 function fieldError() {
 	alert(chrome.i18n.getMessage('fieldError'));
 	throw new Error(chrome.i18n.getMessage('fieldError'));

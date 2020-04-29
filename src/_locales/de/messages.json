@@ -33,33 +33,33 @@
         "message": "Nicht unterstütztes Feld, reiche hier ein Issue ein: https://github.com/RostiMelk/ACF-Tools/issues"
     },
     "clickToCopyCode": {
-        "message": "Click to copy code."
+        "message": "Klicke um den Code zu kopieren"
     },
     "gmapsTitle": {
-        "message": "Google Maps field code"
+        "message": "Google Maps Feld Code"
     },
     "gmapsIntro": {
-        "message": "The Google Maps field requires some configuration. Here is a step by step process to help you out."
+        "message": "Das Google Maps Feld benötigt eine Konfiguration. Hier ist eine Schritt für Schritt Anleitung um dir zu helfen."
     },
     "gmapsInstruction1_1": {
-        "message": "Add this code to your functions.php file to register you API key. Replace 'YOUR_KEY_HERE' with your Google Maps API key."
+        "message": "Füge diesen Code zu deiner functions.php Datei hinzu um einen API Schlüssel zu registrieren. Ersetze 'YOUR_KEY_HERE' mit deinem Google Maps API Schlüssel."
     },
     "gmapsInstruction1_2": {
-        "message": "The Google Maps field requires the following APIs; Maps JavaScript API, Geocoding API and Places API."
+        "message": "Das Google Maps Feld benötigt die folgenden APIs; Maps JavaScript API, Geocoding API und Places API."
     },
     "gmapsInstruction1_3": {
-        "message": "You can generate a Google Maps API key here."
+        "message": "Du kannst hier einen Google Maps API Schlüssel generieren."
     },
     "gmapsInstruction2_1": {
-        "message": "Add this code to your scripts file. It is important that this code is ran before the one you get in step 3."
+        "message": "Füge diesen Code zu deiner Script Datei hinzu. Es ist wichtig, dass dieser Code vor dem in Schritt 3 erhaltenen Code ausgeführt wird."
     },
     "gmapsInstruction3_1": {
-        "message": "Add this code to your functions.php file to enqueue the maps script. Replace 'YOUR_KEY_HERE' with your Google Maps API key."
+        "message": "Füge diesen Code zu deiner functions.php Datei hinzu um das Maps Skript zu laden. Ersetze 'YOUR_KEY_HERE' mit deinem Google Maps API Schlüssel."
     },
     "gmapsInstruction4_1": {
-        "message": "Add this code to your php template file to display the map."
+        "message": "Füge diesen Code zu deiner PHP Template Datei hinzu um die Karte anzeigen zu lassen."
     },
     "gmapsInstruction5_1": {
-        "message": "Add this code to your css file to display the map. You can tweak this to your liking."
+        "message": "Füge diesen Code zu deiner CSS Datei hinzu um die Karte anzeigen zu lassen. Du kannst diesen Code nach deinen Wünschen anpassen."
     }
 }

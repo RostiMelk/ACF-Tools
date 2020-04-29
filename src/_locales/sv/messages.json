@@ -33,33 +33,33 @@
         "message": "Det här fältet stöds inte. Skicka in en issue här: https://github.com/RostiMelk/ACF-Tools/issues"
     },
     "clickToCopyCode": {
-        "message": "Click to copy code."
+        "message": "Klicka för att kopiera kod."
     },
     "gmapsTitle": {
-        "message": "Google Maps field code"
+        "message": "Google Maps fältkod"
     },
     "gmapsIntro": {
-        "message": "The Google Maps field requires some configuration. Here is a step by step process to help you out."
+        "message": "Google Maps-fältet behöver en del manuell konfiguration. Här komer en stegvis guide för att hjälpa dig."
     },
     "gmapsInstruction1_1": {
-        "message": "Add this code to your functions.php file to register you API key. Replace 'YOUR_KEY_HERE' with your Google Maps API key."
+        "message": "Lägg till det här i filen functions.php för att registera din API-nyckel. Byt ut 'YOUR_KEY_HERE' din nyckel för Google Maps API."
     },
     "gmapsInstruction1_2": {
-        "message": "The Google Maps field requires the following APIs; Maps JavaScript API, Geocoding API and Places API."
+        "message": "Fältet för Google Maps behöver tillgång till följande API; Maps JavaScript API, Geocoding API och Places API."
     },
     "gmapsInstruction1_3": {
-        "message": "You can generate a Google Maps API key here."
+        "message": "Här kan du generera nyckel för Google Maps API."
     },
     "gmapsInstruction2_1": {
-        "message": "Add this code to your scripts file. It is important that this code is ran before the one you get in step 3."
+        "message": "Lägg till den här koden i din javascript-fil. Det är viktigt att den här koden körs före den som kommer i steg 3."
     },
     "gmapsInstruction3_1": {
-        "message": "Add this code to your functions.php file to enqueue the maps script. Replace 'YOUR_KEY_HERE' with your Google Maps API key."
+        "message": "Lägg till den här koden i filen functions.php för att importera javascript för Google Maps. Byt ut 'YOUR_KEY_HERE' med din nyckel för Google Maps API."
     },
     "gmapsInstruction4_1": {
-        "message": "Add this code to your php template file to display the map."
-    },
+        "message": "Lägg till den här koden i php-mallfilen för att visa kartan."
+    },k
     "gmapsInstruction5_1": {
-        "message": "Add this code to your css file to display the map. You can tweak this to your liking."
+        "message": "Lägg till den här koden i din CSS-stilmallsfil för att visa kartan. Du kan redigera detta själv om du vill."
     }
 }

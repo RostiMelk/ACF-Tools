@@ -161,10 +161,10 @@ function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, pl
 					var fieldCode = "<?php\n" + "$" + fieldName + " = get_field('" + fieldName + "');\n" + "if( $" + fieldName + " ): ?>\n" + "\t<a href=\"<?php echo get_author_posts_url( $" + fieldName + "['ID'] ); ?>\"><?php echo esc_html( $" + fieldName + "['display_name'] ); ?></a>\n" + "<?php endif; ?>";
 					break;
 				case "object":
-					var fieldCode = "<?php $" + fieldName + " = get_sub_field('" + fieldName + "'); ?>\n" + "<?php if ( $" + fieldName + " ) : ?>\n" + "\t<a href=\"<?php echo get_author_posts_url( $" + fieldName + "->ID ); ?>\"><?php echo esc_html( $" + fieldName + "->display_name ); ?></a>\n" + "<?php endif; ?>";
+					var fieldCode = "<?php $" + fieldName + " = get_field('" + fieldName + "'); ?>\n" + "<?php if ( $" + fieldName + " ) : ?>\n" + "\t<a href=\"<?php echo get_author_posts_url( $" + fieldName + "->ID ); ?>\"><?php echo esc_html( $" + fieldName + "->display_name ); ?></a>\n" + "<?php endif; ?>";
 					break;
 				case "id":
-					var fieldCode = "<?php $" + fieldName + " = get_sub_field('" + fieldName + "'); ?>\n" + "<?php if ( $" + fieldName + " ) : ?>\n" + "\t<?php $user_data = get_userdata( $" + fieldName + " ); ?>\n" + "\t<?php if ( $user_data ) : ?>\n" + "\t\t<a href=\"<?php echo get_author_posts_url( $" + fieldName + " ); ?>\"><?php echo esc_html( $user_data->display_name ); ?></a>\n" + "\t<?php endif; ?>\n" + "<?php endif; ?>";
+					var fieldCode = "<?php $" + fieldName + " = get_field('" + fieldName + "'); ?>\n" + "<?php if ( $" + fieldName + " ) : ?>\n" + "\t<?php $user_data = get_userdata( $" + fieldName + " ); ?>\n" + "\t<?php if ( $user_data ) : ?>\n" + "\t\t<a href=\"<?php echo get_author_posts_url( $" + fieldName + " ); ?>\"><?php echo esc_html( $user_data->display_name ); ?></a>\n" + "\t<?php endif; ?>\n" + "<?php endif; ?>";
 					break;
 				default:
 					fieldError();

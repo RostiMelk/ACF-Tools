@@ -34,51 +34,66 @@ This is a Google Chrome extension/Firefox add-on for Advanced Custom Fields to h
 
 ### Supported fields
 
-**Basic**
-- Text
-- Text area
-- Number
-- Range
-- Email
-- Url
-- Passord
+<details>
+  <summary>Basic</summary>
 
-**Content**
-- Image
-- File
-- Wysiwyg Editor
-- oEmbed
-- Gallery
+  - Text
+  - Text area
+  - Number
+  - Range
+  - Email
+  - Url
+  - Passord
+</details>
+<details>
+  <summary>Content</summary>
 
-**Choice**
+  - Image
+  - File
+  - Wysiwyg Editor
+  - oEmbed
+  - Gallery
+</details>
+<details>
+  <summary>Choice</summary>
+
 - Select
 - Checkbox
 - Radio Button
 - Button Group
 - True / False
+</details>
+<details>
+  <summary>Relational</summary>
 
-**Relational**
 - Link
 - Post Object
 - Page Link
 - Relationship
 - Taxonomy
 - User
+</details>
+<details>
+  <summary>jQuery</summary>
 
-**jQuery**
 - Google Map
 - Date Picker
 - Date Time Picker
 - Time Picker
 - Color Picker
+</details>
+<details>
+  <summary>Layout</summary>
 
-**Layout**
 - Group
 - Repeater
 - Flexible content
+</details>
+<details>
+  <summary>3rd Party</summary>
 
-**3rd Party**
 - Coming soon. 
+</details>
 
 _Missing a field? [Submit an issue](https://github.com/RostiMelk/ACF-Tools/issues/new) if there is a field you want ACF Tools to support._
 

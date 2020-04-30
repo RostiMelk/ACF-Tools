@@ -118,7 +118,8 @@ function getReturnType(thisField, typeOfField) {
 		typeOfField == "link" ||
 		typeOfField == "taxonomy" ||
 		typeOfField == "user" ||
-		typeOfField == "file"
+		typeOfField == "file" ||
+		typeOfField == "post_object"
 	) {
 		return thisField
 			.closest(".acf-field-object")

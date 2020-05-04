@@ -77,12 +77,12 @@ function codeModal(openModal, fieldName, seniority, place) {
 		$(modal).append(modalInner);
 		$(modalInner).append(modalClose);
 		
-		// Get modal HTML from /static/
-		var modalContent = $.get(chrome.extension.getURL('/static/'+openModal+'.html'), function(data){
+		// Get modal HTML from /static/modals/
+		var modalContent = $.get(chrome.extension.getURL('/static/modals/'+openModal+'.html'), function(data){
 			$('#acftoolsCodeModal .acftools-modal-inner').append(data);
 		});
 
-		// Import gists to static file once HTML is finished loading
+		// Import gists to HTML file once the file is finished loading
 		modalContent.done(function() {
 
 			var codeBlock = $('#acftoolsCodeModal pre code'),
@@ -93,7 +93,7 @@ function codeModal(openModal, fieldName, seniority, place) {
 					var codeBlock = $(this),
 						gist = codeBlock.attr('data-gist');
 
-					codeBlocks = $.get(chrome.extension.getURL('/static/gists-'+openModal+'/'+gist+'.txt'), function(data){
+					codeBlocks = $.get(chrome.extension.getURL('/static/modals/gists-'+openModal+'/'+gist+'.txt'), function(data){
 						// HTML tags should not be output as HTML
 						data = data.replace(/</g, "&lt;");
 						data = data.replace(/>/g, "&gt;");

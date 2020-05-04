@@ -1,20 +1,20 @@
-function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, place, subFields) {
+function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, place, subFields, ifStatement) {
 	switch (typeOfField) {
 		// Basic
 		case "text":
-			var fieldCode = "<?php if ( $" + fieldName + " = get_field('" + fieldName + "') ): ?>\n" + "\t<?php echo esc_html($" + fieldName + "); ?>\n" + "<?php endif; ?>";
+			var fieldCode = "<?php echo esc_html($" + fieldName + "); ?>";
 			break;
 
 		case "textarea":
-			var fieldCode = "<?php if ( $" + fieldName + " = get_field('" + fieldName + "') ): ?>\n" + "\t<?php echo esc_html($" + fieldName + "); ?>\n" + "<?php endif; ?>";
-			break;
+			var fieldCode = "<?php echo $" + fieldName + "; ?>";
+			break;''
 
 		case "number":
-			var fieldCode = "<?php if ( $" + fieldName + " = get_field('" + fieldName + "') ): ?>\n" + "\t<?php echo $" + fieldName + "; ?>\n" + "<?php endif; ?>";
+			var fieldCode = "<?php echo $" + fieldName + "; ?>";
 			break;
 
 		case "range":
-			var fieldCode = "<?php the_field('" + fieldName + "'); ?>";
+			var fieldCode = "<?php echo $" + fieldName + "; ?>";
 			break;
 
 		case "email":
@@ -22,11 +22,11 @@ function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, pl
 			break;
 
 		case "url":
-			var fieldCode = "<?php echo esc_url(get_field('" + fieldName + "')); ?>";
+			var fieldCode = "<?php echo esc_url($" + fieldName + "); ?>";
 			break;
 
 		case "password":
-			var fieldCode = "<?php $" + fieldName + " = get_field('" + fieldName + "'); ?>";
+			var fieldCode = "<?php echo esc_html($" + fieldName + "); ?>";
 			break;
 
 		//  Content
@@ -63,7 +63,7 @@ function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, pl
 			break;
 
 		case "wysiwyg":
-			var fieldCode = "<?php if ( $" + fieldName + " = get_field('" + fieldName + "') ): ?>\n" + "\t<?php echo $" + fieldName + "; ?>\n" + "<?php endif; ?>";
+			var fieldCode = "<?php echo $" + fieldName + "; ?>";
 			break;
 
 		case "oembed":
@@ -213,6 +213,15 @@ function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, pl
 
 		default:
 			fieldError();
+	}
+
+	if (ifStatement) {
+		var phpif = "<?php if ( $" + fieldName + " = get_field('" + fieldName + "') ): ?>\n" + "\t";
+		var phpendif = "\n<?php endif; ?>";
+		fieldCode = phpif + fieldCode + phpendif;
+	} else {
+		// Replace php variable with get_field instead
+		fieldCode = fieldCode.replace("$"+fieldName, "get_field('"+fieldName+"')");
 	}
 
 	// Change to sub field if sub field

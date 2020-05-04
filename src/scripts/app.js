@@ -4,6 +4,7 @@ $(document).ready(function() {
 	copyFieldCode();
 	appendCopyCodeBtns();
 	appendFieldNameOnEdit();
+	setDefaultUserSettings();
 });
 
 // Running some functions again when edits are made
@@ -158,12 +159,13 @@ function copyFieldCode() {
 		e.stopPropagation();
 		
 		var thisField = $(this),
-		fieldName = getFieldName(thisField),
-		typeOfField = getTypeOfField(thisField),
-		returnType = getReturnType(thisField, typeOfField),
-		seniority = getSeniority(thisField),
-		place = getPlace(thisField),
-		subFields = "";
+			fieldName = getFieldName(thisField),
+			typeOfField = getTypeOfField(thisField),
+			returnType = getReturnType(thisField, typeOfField),
+			seniority = getSeniority(thisField),
+			place = getPlace(thisField),
+			subFields = "",
+			ifStatement = false;
 
 		// Get rid of modal if it is open
 		codeModal(false);
@@ -195,7 +197,30 @@ function copyFieldCode() {
 				subFields += sessionStorage.getItem("fieldcode");
 			});
 		}
-		acf_field(appendCode = false, fieldName, typeOfField, returnType, seniority, place, subFields);
+
+		// Only allow if statement setting on certain fields
+		if(
+			typeOfField == "text" ||
+			typeOfField == "textarea" ||
+			typeOfField == "number" ||
+			typeOfField == "range" ||
+			typeOfField == "url" ||
+			typeOfField == "passord" ||
+			typeOfField == "wysiwyg"
+		) {
+			var ifStatementAllow = true;
+		}
+
+		// Get user settings
+		chrome.storage.sync.get(settingsKey, function(data) {
+			var userSettings = JSON.parse(data[settingsKey]);
+
+			if( userSettings["ifStatement"] == true && ifStatementAllow) {
+				ifStatement = true;
+			}
+
+			acf_field(appendCode = false, fieldName, typeOfField, returnType, seniority, place, subFields, ifStatement);
+		});
 
 		// Clear session storage
 		sessionStorage.removeItem("fieldcode");

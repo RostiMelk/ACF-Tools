@@ -10,7 +10,7 @@
 #acfToolsUserSettingsModal h1 {
     padding: 14px;
     color: #fff;
-    background-color: #0173AA;
+    background-color: #4d5cf1;
     font-size: 16px;
 }
 #acfToolsUserSettings {
@@ -58,7 +58,7 @@
 }
 
 #acfToolsUserSettings input:checked + label::before {
-    background-color: #0173AA;
+    background-color: #4d5cf1;
 }
 #acfToolsUserSettings input:checked + label::after {
     transform: translateX(100%);

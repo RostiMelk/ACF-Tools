@@ -45,23 +45,6 @@ function copyModalCode() {
 	$('#acftoolsCodeModal').find('pre').append('<span class="copy-code-info">'+str+'</span>');
 }
 
-function localizeModal() {
-    //Localize by replacing __MSG_***__ meta tags
-    var objects = $('#acftoolsCodeModal');
-    for (var j = 0; j < objects.length; j++) {
-        var obj = objects[j];
-
-        var valStrH = obj.innerHTML.toString();
-        var valNewH = valStrH.replace(/__MSG_(\w+)__/g, function(match, v1) {
-            return v1 ? chrome.i18n.getMessage(v1) : "";
-        });
-
-        if(valNewH != valStrH) {
-            obj.innerHTML = valNewH;
-        }
-    }
-}
-
 function codeModal(openModal, fieldName, seniority, place) {
 	var modal = $('<div id="acftoolsCodeModal"></div>'),
 		modalInner = $('<div class="acftools-modal-inner"></div>'),
@@ -125,7 +108,7 @@ function codeModal(openModal, fieldName, seniority, place) {
 
 		function activateModal() {
 			// Perform localization
-			localizeModal();
+			LocalizeStrings();
 			// Syntax highlighting to gist
 			document.querySelectorAll('#acftoolsCodeModal pre code').forEach((block) => {
 				hljs.highlightBlock(block);

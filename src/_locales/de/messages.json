@@ -35,6 +35,12 @@
     "clickToCopyCode": {
         "message": "Klicke um den Code zu kopieren"
     },
+    "settingsTitle": {
+        "message": "ACF Tools user settings"
+    },
+    "settingLabel1": {
+        "message": "If statements for basic fields"
+    },
     "gmapsTitle": {
         "message": "Google Maps Feld Code"
     },

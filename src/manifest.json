@@ -40,7 +40,8 @@
         "scripts/app.js",
         "scripts/user-settings.js",
         "scripts/misc.js",
-        "scripts/fields.js"
+        "scripts/fields.js",
+        "scripts/i18n.js"
       ]
     }
   ],

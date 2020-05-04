@@ -1,4 +1,4 @@
-#acfToolsUserSettingsModal {
+#acfToolsUserSettingsPopup {
     width: 260px;
     max-width: 100%;
     margin: 0;
@@ -7,7 +7,7 @@
     font-family: "Segoe UI",Helvetica,"Helvetica Neue",Arial,sans-serif;
 
 }
-#acfToolsUserSettingsModal h1 {
+#acfToolsUserSettingsPopup h1 {
     padding: 14px;
     color: #fff;
     background-color: #4d5cf1;
@@ -26,6 +26,10 @@
     padding: 8px 0;
     border-bottom: 1px solid #e4e4e4;
     transition: none;
+}
+#acfToolsUserSettings label:last-of-type {
+    border-bottom: 0;
+    padding-bottom: 16px;
 }
 #acfToolsUserSettings label.animate {
     transition: all .1s ease-in-out;

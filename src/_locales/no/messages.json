@@ -35,6 +35,12 @@
     "clickToCopyCode": {
         "message": "Klikk for å kopiere kode."
     },
+    "settingsTitle": {
+        "message": "ACF Tools user settings"
+    },
+    "settingLabel1": {
+        "message": "If statements for basic fields"
+    },
     "gmapsTitle": {
         "message": "Google Maps feltkode"
     },

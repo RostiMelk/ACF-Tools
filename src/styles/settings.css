@@ -40,7 +40,6 @@
     height: 16px;
     border-radius: 99px;
     background-color: #b0b0b0;
-    margin-top: 2px;
     margin-right: 6px;
     transition: inherit;
 }
@@ -52,7 +51,7 @@
     background-color: #fff;
     border-radius: 50%;
     position: absolute;
-    top: 11px;
+    top: 9px;
     left: 1px;
     transition: inherit;
 }

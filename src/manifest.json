@@ -31,7 +31,6 @@
       "css": [
         "styles/style.css",
         "styles/modal.css",
-        "styles/settings.css",
         "styles/highlight.css"
       ],
       "js": [

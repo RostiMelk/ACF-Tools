@@ -2,7 +2,7 @@ function setDefaultUserSettings() {
     settingsKey = "acf_tools_settings",
 
     userSettings = JSON.stringify({
-        'ifStatement': true,
+        'ifStatement': true
     });
 
     var settings = {};

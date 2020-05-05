@@ -6,6 +6,9 @@ ready = (callback) => {
 ready(() => { 
     var settingsKey = "acf_tools_settings";
 
+    //Get strings
+    LocalizeStrings();
+
     // Add animations after the popup is visible so we don't get that animate effect on load
     setTimeout(() => {
         document.querySelectorAll("#acfToolsUserSettings label").forEach(label => {
@@ -44,6 +47,4 @@ ready(() => {
         });
     });
 
-    //Get strings
-    LocalizeStrings();
 });

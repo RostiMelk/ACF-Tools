@@ -1,7 +1,6 @@
 function LocalizeStrings() {
     //Localize by replacing __MSG_***__ meta tags
     var objects = document.querySelectorAll("#acftoolsCodeModal, #acfToolsUserSettingsPopup");
-    console.log(objects.length);
     for (var j = 0; j < objects.length; j++) {
         var obj = objects[j];
 

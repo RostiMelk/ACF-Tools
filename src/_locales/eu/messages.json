@@ -1,0 +1,65 @@
+{
+    "extDescription": {
+        "message": "Advanced Custom Fields code sinple egina! 🙌"
+    },
+    "copyFieldName": {
+        "message": "Kopiatu eremuaren izena arbelean"
+    },
+    "copiedFieldName": {
+        "message": "Eremuaren izena arbelean kopiatuta!"
+    },
+    "openDocsTitle": {
+        "message": "Ireki eremu honen ACF dokumentazioa"
+    },
+    "copyCodeBtn": {
+        "message": "Kopiatu kodea"
+    },
+    "copyCodeBtnTitle": {
+        "message": "Kopiatu PHP kodea eremu honetarako"
+    },
+    "copyAllCodeBtn": {
+        "message": "Kopiatu azpieremuaren kodea"
+    },
+    "copyAllCodeBtnTitle": {
+        "message": "Kopiatu PHP kodea eremu honetarako eta barneko eremuetarako"
+    },
+    "copiedCode": {
+        "message": "Kodea arbelean kopiatuta!"
+    },
+    "copiedCodeSub": {
+        "message": "Kodea azpi eremuekin arbelean kopiatuta!"
+    },
+    "fieldError": {
+        "message": "Eremu hori ez da onartzen, idatzi arazoa hemen: https://github.com/RostiMelk/ACF-Tools/issues"
+    },
+    "clickToCopyCode": {
+        "message": "Klikatu kodea kopiatzeko."
+    },
+    "gmapsTitle": {
+        "message": "Google Maps eremuaren kodea"
+    },
+    "gmapsIntro": {
+        "message": "Google Maps eremuak konfigurazio jakin bat behar du. Hemen duzu pausoz pauso prozesu bat laguntzeko."
+    },
+    "gmapsInstruction1_1": {
+        "message": "Gehitu kode hau funtzions.php fitxategiari, API kodea erregistratzeko. Ordeztu 'YOUR_KEY_HERE' Google Maps-en API giltzarekin."
+    },
+    "gmapsInstruction1_2": {
+        "message": "Google Maps eremuak API hauek behar ditu: Maps JavaScript API, Geocoding API and Places API."
+    },
+    "gmapsInstruction1_3": {
+        "message": "Google Maps API giltza hemen sortu dezakezu."
+    },
+    "gmapsInstruction2_1": {
+        "message": "Gehitu kode hau zure script-fitxategiari. Garrantzitsua da kode hori 3. urratsean lortzen dena baino lehen exekutatzea."
+    },
+    "gmapsInstruction3_1": {
+        "message": "Gehitu kode hau funtzions.php fitxategiari mapen script-a gehitzeko. Ordeztu 'YOUR_KEY_HERE' Google Maps-en API key-arekin."
+    },
+    "gmapsInstruction4_1": {
+        "message": "Gehitu kode hau php txantiloi-fitxategiari mapa bistaratzeko."
+    },
+    "gmapsInstruction5_1": {
+        "message": "Gehitu kode hau css fitxategiari mapa erakusteko. Zure gustura doitu dezakezu."
+    }
+}

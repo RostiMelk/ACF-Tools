@@ -7,7 +7,7 @@ function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, pl
 
 		case "textarea":
 			var fieldCode = "<?php echo $" + fieldName + "; ?>";
-			break;''
+			break;
 
 		case "number":
 			var fieldCode = "<?php echo $" + fieldName + "; ?>";
@@ -247,5 +247,8 @@ function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, pl
 	// Skip running copy code funtion if the field type is google_map
 	if(!appendCode && typeOfField !== 'google_map') {
 		copyCodeToClipboard(fieldCode, subFields);
+
+		// Clear session storage
+		sessionStorage.removeItem("fieldcode");
 	}
 }

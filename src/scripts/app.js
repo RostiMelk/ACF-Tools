@@ -190,11 +190,34 @@ function copyFieldCode() {
 					typeOfField = getTypeOfField(thisField),
 					returnType = getReturnType(thisField, typeOfField),
 					seniority = getSeniority(thisField),
-					place = getPlace(thisField);
+					place = getPlace(thisField),
+					ifStatement = false;
 
-				acf_field(appendCode = true, fieldName, typeOfField, returnType, seniority, place, "");
+				// Only allow if statement setting on certain fields
+				if(
+					typeOfField == "text" ||
+					typeOfField == "textarea" ||
+					typeOfField == "number" ||
+					typeOfField == "range" ||
+					typeOfField == "url" ||
+					typeOfField == "passord" ||
+					typeOfField == "wysiwyg" 
+				) {
+					var ifStatementAllow = true;
+				}
 
-				subFields += sessionStorage.getItem("fieldcode");
+				// Get user settings
+				chrome.storage.sync.get(settingsKey, function(data) {
+					var userSettings = JSON.parse(data[settingsKey]);
+
+					if( userSettings["ifStatement"] == true && ifStatementAllow) {
+						ifStatement = true;
+					}
+					acf_field(appendCode = true, fieldName, typeOfField, returnType, seniority, place, "", ifStatement);
+					subFields += sessionStorage.getItem("fieldcode");
+
+				});
+
 			});
 		}
 
@@ -206,7 +229,7 @@ function copyFieldCode() {
 			typeOfField == "range" ||
 			typeOfField == "url" ||
 			typeOfField == "passord" ||
-			typeOfField == "wysiwyg"
+			typeOfField == "wysiwyg" 
 		) {
 			var ifStatementAllow = true;
 		}
@@ -218,12 +241,9 @@ function copyFieldCode() {
 			if( userSettings["ifStatement"] == true && ifStatementAllow) {
 				ifStatement = true;
 			}
-
 			acf_field(appendCode = false, fieldName, typeOfField, returnType, seniority, place, subFields, ifStatement);
 		});
 
-		// Clear session storage
-		sessionStorage.removeItem("fieldcode");
 	});
 }
 

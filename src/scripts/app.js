@@ -152,7 +152,7 @@ function getPlace() {
 	return $('.refresh-location-rule option[selected="selected"]').val();
 }
 
-function isFieldIsAllowedIf(typeOfField) {
+function isFieldIsAllowedIf(typeOfField, ifStatementAllow) {
 	// Only allow if statement setting on certain fields
 	if(
 		typeOfField == "text" ||
@@ -166,6 +166,7 @@ function isFieldIsAllowedIf(typeOfField) {
 		ifStatementAllow = true;
 	}
 
+	return ifStatementAllow;
 }
 
 function copyFieldCode() {
@@ -211,7 +212,7 @@ function copyFieldCode() {
 					ifStatement = false,
 					ifStatementAllow = false;
 
-				isFieldIsAllowedIf(typeOfField);
+				isFieldIsAllowedIf(typeOfField, ifStatementAllow);
 
 				// Get user settings
 				chrome.storage.sync.get(settingsKey, function(data) {
@@ -220,15 +221,13 @@ function copyFieldCode() {
 					if( userSettings["ifStatement"] == true && ifStatementAllow) {
 						ifStatement = true;
 					}
-					acf_field(appendCode = true, fieldName, typeOfField, returnType, seniority, place, "", ifStatement);
+					acf_field(appendCode = true, fieldName, typeOfField, returnType, seniority, place, "", ifStatement, ifStatementAllow);
 					subFields += sessionStorage.getItem("fieldcode");
-
 				});
-
 			});
 		}
 
-		isFieldIsAllowedIf(typeOfField);
+		ifStatementAllow = isFieldIsAllowedIf(typeOfField, ifStatementAllow);
 
 		// Get user settings
 		chrome.storage.sync.get(settingsKey, function(data) {
@@ -237,9 +236,8 @@ function copyFieldCode() {
 			if( userSettings["ifStatement"] == true && ifStatementAllow) {
 				ifStatement = true;
 			}
-			acf_field(appendCode = false, fieldName, typeOfField, returnType, seniority, place, subFields, ifStatement);
+			acf_field(appendCode = false, fieldName, typeOfField, returnType, seniority, place, subFields, ifStatement, ifStatementAllow);
 		});
-
 	});
 }
 

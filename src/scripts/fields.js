@@ -1,4 +1,4 @@
-function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, place, subFields, ifStatement) {
+function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, place, subFields, ifStatement, ifStatementAllow) {
 	switch (typeOfField) {
 		// Basic
 		case "text":
@@ -215,11 +215,11 @@ function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, pl
 			fieldError();
 	}
 
-	if (ifStatement) {
+	if (ifStatement && ifStatementAllow) {
 		var phpif = "<?php if ( $" + fieldName + " = get_field('" + fieldName + "') ): ?>\n" + "\t";
 		var phpendif = "\n<?php endif; ?>";
 		fieldCode = phpif + fieldCode + phpendif;
-	} else {
+	} else if (ifStatementAllow) {
 		// Replace php variable with get_field instead
 		fieldCode = fieldCode.replace("$"+fieldName, "get_field('"+fieldName+"')");
 	}

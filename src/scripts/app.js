@@ -152,6 +152,22 @@ function getPlace() {
 	return $('.refresh-location-rule option[selected="selected"]').val();
 }
 
+function isFieldIsAllowedIf(typeOfField) {
+	// Only allow if statement setting on certain fields
+	if(
+		typeOfField == "text" ||
+		typeOfField == "textarea" ||
+		typeOfField == "number" ||
+		typeOfField == "range" ||
+		typeOfField == "url" ||
+		typeOfField == "password" ||
+		typeOfField == "wysiwyg" 
+	) {
+		ifStatementAllow = true;
+	}
+
+}
+
 function copyFieldCode() {
 	// Copy field code
 	$("body").on("click", ".copy-field-code", function(e) {
@@ -165,7 +181,8 @@ function copyFieldCode() {
 			seniority = getSeniority(thisField),
 			place = getPlace(thisField),
 			subFields = "",
-			ifStatement = false;
+			ifStatement = false,
+			ifStatementAllow = false;
 
 		// Get rid of modal if it is open
 		codeModal(false);
@@ -191,20 +208,10 @@ function copyFieldCode() {
 					returnType = getReturnType(thisField, typeOfField),
 					seniority = getSeniority(thisField),
 					place = getPlace(thisField),
-					ifStatement = false;
+					ifStatement = false,
+					ifStatementAllow = false;
 
-				// Only allow if statement setting on certain fields
-				if(
-					typeOfField == "text" ||
-					typeOfField == "textarea" ||
-					typeOfField == "number" ||
-					typeOfField == "range" ||
-					typeOfField == "url" ||
-					typeOfField == "passord" ||
-					typeOfField == "wysiwyg" 
-				) {
-					var ifStatementAllow = true;
-				}
+				isFieldIsAllowedIf(typeOfField);
 
 				// Get user settings
 				chrome.storage.sync.get(settingsKey, function(data) {
@@ -221,18 +228,7 @@ function copyFieldCode() {
 			});
 		}
 
-		// Only allow if statement setting on certain fields
-		if(
-			typeOfField == "text" ||
-			typeOfField == "textarea" ||
-			typeOfField == "number" ||
-			typeOfField == "range" ||
-			typeOfField == "url" ||
-			typeOfField == "passord" ||
-			typeOfField == "wysiwyg" 
-		) {
-			var ifStatementAllow = true;
-		}
+		isFieldIsAllowedIf(typeOfField);
 
 		// Get user settings
 		chrome.storage.sync.get(settingsKey, function(data) {

@@ -165,7 +165,13 @@ function isFieldIsAllowedIf(typeOfField, ifStatementAllow) {
 		typeOfField == "url" ||
 		typeOfField == "password" ||
 		typeOfField == "wysiwyg" ||
-		typeOfField == "font-awesome" 
+		typeOfField == "font-awesome" ||
+		typeOfField == "date_picker" ||
+		typeOfField == "date_time_picker" ||
+		typeOfField == "time_picker" ||
+		typeOfField == "color_picker" ||
+		typeOfField == "extended-color-picker" ||
+		typeOfField == "acf_code_field"
 	) {
 		ifStatementAllow = true;
 	}

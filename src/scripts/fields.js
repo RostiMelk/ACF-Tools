@@ -178,20 +178,20 @@ function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, pl
 			break;
 
 		case "date_picker":
-			var fieldCode = "<?php the_field( '" + fieldName + "' ); ?>";
+			var fieldCode = "<?php echo esc_html( $" + fieldName + " ); ?>";
 			break;
 
 		case "date_time_picker":
-			var fieldCode = "<?php the_field( '" + fieldName + "' ); ?>";
+			var fieldCode = "<?php echo esc_html( $" + fieldName + " ); ?>";
 			break;
 
 
 		case "time_picker":
-			var fieldCode = "<?php the_field( '" + fieldName + "' ); ?>";
+			var fieldCode = "<?php echo esc_html( $" + fieldName + " ); ?>";
 			break;
 
 		case "color_picker":
-			var fieldCode = "<?php the_field( '" + fieldName + "' ); ?>";
+			var fieldCode = "<?php echo esc_html( $" + fieldName + " ); ?>";
 			break;
 
 		// Layout
@@ -245,11 +245,11 @@ function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, pl
 			break;
 
 		case "extended-color-picker":
-			var fieldCode = "<?php the_field( '" + fieldName + "' ); ?>";
+			var fieldCode = "<?php echo esc_html( $" + fieldName + " ); ?>";
 			break;
 			
 		case "acf_code_field":
-			var fieldCode = "<?php the_field( '" + fieldName + "' ); ?>";
+			var fieldCode = "<?php echo esc_html( $" + fieldName + " ); ?>";
 			break;
 
 		// Error and fallback

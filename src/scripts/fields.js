@@ -207,10 +207,52 @@ function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, pl
 			var fieldCode = "<?php\n" + "$flexibleContentPath = dirname(__FILE__) . '/flexible-content/';\n" + "if ( have_rows( '" + fieldName + "' ) ) :\n" + s+"while ( have_rows( '" + fieldName + "' ) ) :\n" + s+s+"the_row();\n" + s+s+"$layout = get_row_layout();\n" + s+s+"$file = ( $flexibleContentPath . str_replace( '_', '-', $layout) . '.php' );\n" + s+s+"if ( file_exists( $file ) ) {\n" + s+s+s+"include( $file );\n" + s+s+"}\n" + s+"endwhile;\n" + "endif; ?>";
 			break;
 
-		case "clone":
+		// Third party
+		case "font-awesome":
+			var fieldCode = "<?php echo $" + fieldName + "; ?>";
+			break;
+
+		case "image_aspect_ratio_crop":
+			switch (returnType) {
+				case "array":
+					var fieldCode = "<?php\n" + "$" + fieldName + " = get_field( '" + fieldName + "' );\n" + "if ( $" + fieldName + " ) : ?>\n" + s+"<img src=\"<?php echo esc_url( $" + fieldName + "['url'] ); ?>\" alt=\"<?php echo esc_attr( $" + fieldName + "['alt'] ); ?>\" />\n" + "<?php endif; ?>";
+					break;
+				case "url":
+					var fieldCode = "<?php echo esc_url( get_field( '" + fieldName + "' ) ); ?>";
+					break;
+				case "id":
+					var fieldCode = "<?php\n" + "$" + fieldName + " = get_field( '" + fieldName + "' );\n" + "$size = 'full';\n" + "if ( $" + fieldName + " ) {\n" + s+"$url = wp_get_attachment_url( $" + fieldName + " );\n" + s+"echo wp_get_attachment_image( $" + fieldName + ", $size );\n" + "}; ?>";
+					break;
+				default:
+					fieldError();
+			}
+			break;
+
+		case "nav_menu":
+			switch (returnType) {
+				case "object":
+					var fieldCode = "<?php the_field( '" + fieldName + "' ); ?>";
+					break;
+				case "menu":
+					var fieldCode = "<?php the_field( '" + fieldName + "' ); ?>";
+					break;
+				case "id":
+					var fieldCode = "<?php the_field( '" + fieldName + "' ); ?>";
+					break;
+				default:
+					fieldError();
+			}
+			break;
+
+		case "extended-color-picker":
+			var fieldCode = "<?php the_field( '" + fieldName + "' ); ?>";
+			break;
+			
+		case "acf_code_field":
 			var fieldCode = "<?php the_field( '" + fieldName + "' ); ?>";
 			break;
 
+		// Error and fallback
 		default:
 			var fieldCode = "<?php the_field( '" + fieldName + "' ); ?>";
 			fieldError();

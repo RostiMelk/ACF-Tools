@@ -92,7 +92,12 @@ This is a Google Chrome extension/Firefox add-on for Advanced Custom Fields to h
 <details>
   <summary>3rd Party</summary>
 
-- Coming soon. 
+- Font Awesome (mattkeys)
+- Image Aspect Ratio Crop (Johannes Siipola)
+- Nav Menu Field (Faison Zutavern)
+- RGBA Color Picker (Thomas Meyer )
+- Code Field (Peter Tasker)
+
 </details>
 
 _Missing a field? [Submit an issue](https://github.com/RostiMelk/ACF-Tools/issues/new) if there is a field you want ACF Tools to support._

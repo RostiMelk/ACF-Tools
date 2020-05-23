@@ -59,7 +59,7 @@ function appendCopyCodeBtns() {
 	function appendCopyCodeBtn() {
 		var btnStr = chrome.i18n.getMessage('copyCodeBtn'),
 			btnTitle = chrome.i18n.getMessage('copyCodeBtnTitle');
-		$('.acf-field-object:not([data-type="accordion"], [data-type="message"], [data-type="tab"]) .row-options')
+		$('.acf-field-object:not([data-type="accordion"], [data-type="message"], [data-type="tab"], [data-type="clone"]) .row-options')
 			.append('<a class="button button-primary button-small copy-field-code exclude-sub-fields" title="'+btnTitle+'" href="#">'+btnStr+'</a>');
 	}
 	appendCopyCodeBtn();
@@ -120,11 +120,14 @@ function getReturnType(thisField, typeOfField) {
 		typeOfField == "taxonomy" ||
 		typeOfField == "user" ||
 		typeOfField == "file" ||
-		typeOfField == "post_object"
+		typeOfField == "post_object" ||
+		typeOfField == "image_aspect_ratio_crop" ||
+		typeOfField == "nav_menu"
 	) {
 		return thisField
 			.closest(".acf-field-object")
-			.find(".acf-field-setting-return_format li label.selected input")
+			.find(".acf-field-setting-return_format, .acf-field-setting-save_format")
+			.find("li label.selected input")
 			.val();
 	} else {
 		return null;
@@ -161,7 +164,8 @@ function isFieldIsAllowedIf(typeOfField, ifStatementAllow) {
 		typeOfField == "range" ||
 		typeOfField == "url" ||
 		typeOfField == "password" ||
-		typeOfField == "wysiwyg" 
+		typeOfField == "wysiwyg" ||
+		typeOfField == "font-awesome" 
 	) {
 		ifStatementAllow = true;
 	}

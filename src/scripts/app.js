@@ -169,6 +169,17 @@ function isFieldIsAllowedIf(typeOfField, ifStatementAllow) {
 	return ifStatementAllow;
 }
 
+function spacingSetting(spacing) {
+	if(spacing == "tab") {
+		spacing = "\t";
+	} else if (spacing.includes("sp")) {
+		var numSp = spacing.replace( /^\D+/g, '');
+		spacing = " "
+		spacing = spacing.repeat(numSp);
+	}
+	return spacing;
+}
+
 function copyFieldCode() {
 	// Copy field code
 	$("body").on("click", ".copy-field-code", function(e) {
@@ -212,7 +223,7 @@ function copyFieldCode() {
 					ifStatement = false,
 					ifStatementAllow = false;
 
-				isFieldIsAllowedIf(typeOfField, ifStatementAllow);
+				ifStatementAllow = isFieldIsAllowedIf(typeOfField, ifStatementAllow);
 
 				// Get user settings
 				chrome.storage.sync.get(settingsKey, function(data) {
@@ -221,7 +232,10 @@ function copyFieldCode() {
 					if( userSettings["ifStatement"] == true && ifStatementAllow) {
 						ifStatement = true;
 					}
-					acf_field(appendCode = true, fieldName, typeOfField, returnType, seniority, place, "", ifStatement, ifStatementAllow);
+
+					var spacing = spacingSetting(userSettings["spacing"]);
+
+					acf_field(appendCode = true, fieldName, typeOfField, returnType, seniority, place, "", ifStatement, ifStatementAllow, spacing);
 					subFields += sessionStorage.getItem("fieldcode");
 				});
 			});
@@ -236,7 +250,10 @@ function copyFieldCode() {
 			if( userSettings["ifStatement"] == true && ifStatementAllow) {
 				ifStatement = true;
 			}
-			acf_field(appendCode = false, fieldName, typeOfField, returnType, seniority, place, subFields, ifStatement, ifStatementAllow);
+
+			var spacing = spacingSetting(userSettings["spacing"]);
+
+			acf_field(appendCode = false, fieldName, typeOfField, returnType, seniority, place, subFields, ifStatement, ifStatementAllow, spacing);
 		});
 	});
 }

@@ -133,5 +133,4 @@ function codeModal(openModal, fieldName, seniority, place) {
 
 function fieldError() {
 	alert(chrome.i18n.getMessage('fieldError'));
-	throw new Error(chrome.i18n.getMessage('fieldError'));
 }

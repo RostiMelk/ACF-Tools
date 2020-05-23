@@ -19,15 +19,24 @@ ready(() => {
     // Check every checkbox that has setting = true
     chrome.storage.sync.get(settingsKey, function(data) {
         var userSettings = JSON.parse(data[settingsKey]);
-        console.log(userSettings);
         Object.keys(userSettings).forEach(function(key) {
-            console.log(key);
             document.querySelector("#acfToolsUserSettings #"+key ).checked = userSettings[key];
         })
     });
 
-    // Update setting on change
-    document.querySelectorAll("#acfToolsUserSettings input").forEach(setting => {
+    // Display selected value in select
+    chrome.storage.sync.get(settingsKey, function(data) {
+        var userSettings = JSON.parse(data[settingsKey]);
+        for (i in userSettings) {
+            var currentVal = userSettings[i];
+            if(document.querySelector('#acfToolsUserSettings #'+i+' option') !== null) {
+                document.querySelector('#acfToolsUserSettings #'+i+' option[value="'+currentVal+'"]').selected = 'selected';
+            }
+        }
+    });
+
+    // Update setting on change for checkbox
+    document.querySelectorAll("#acfToolsUserSettings input[type=checkbox]").forEach(setting => {
         setting.addEventListener("click", (e) => {
             var settingID = e.currentTarget.id;
             chrome.storage.sync.get(settingsKey, function(data) {
@@ -36,12 +45,38 @@ ready(() => {
                     updatedSettingsVal = settingsVal == true ? false : true,
                     settings = {};
 
-                userSettings = JSON.stringify({
-                    [settingID]: updatedSettingsVal
-                });
-            
-                settings[settingsKey] = userSettings;
 
+                for (i in userSettings) {
+                    if ( i == settingID ) {
+                        userSettings[settingID] = updatedSettingsVal;
+                    }
+                }
+
+                userSettings = JSON.stringify(userSettings);
+                settings[settingsKey] = userSettings;
+                chrome.storage.sync.set(settings);
+            });
+        });
+    });
+
+    // Update setting on change for select
+    document.querySelectorAll("#acfToolsUserSettings select").forEach(setting => {
+        setting.addEventListener("change", (e) => {
+            var settingID = e.currentTarget.id;
+            var settingValue = e.currentTarget.value;
+            chrome.storage.sync.get(settingsKey, function(data) {
+
+                var settings = {};
+                var userSettings = JSON.parse(data[settingsKey]);
+
+                for (i in userSettings) {
+                    if ( i == settingID ) {
+                        userSettings[settingID] = settingValue;
+                    }
+                }
+
+                userSettings = JSON.stringify(userSettings);
+                settings[settingsKey] = userSettings;
                 chrome.storage.sync.set(settings);
             });
         });

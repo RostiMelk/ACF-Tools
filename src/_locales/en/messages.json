@@ -41,6 +41,18 @@
     "settingLabel1": {
         "message": "If statements for basic fields"
     },
+    "settingLabel2": {
+        "message": "Spacing on field code"
+    },
+    "tab": {
+        "message": "Tab"
+    },
+    "space": {
+        "message": "space"
+    },
+    "spaces": {
+        "message": "spaces"
+    },
     "gmapsTitle": {
         "message": "Google Maps field code"
     },

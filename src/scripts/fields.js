@@ -280,12 +280,12 @@ function acf_field(appendCode, fieldName, typeOfField, returnType, seniority, pl
 
 	// Adjust tabs for appended sub fields
 	if (appendCode) {
-		fieldCode = fieldCode.replace(/\n/g, '\n\t\t' )
+		fieldCode = fieldCode.replace(/\n/g, '\n'+s+s )
 	}
 		
 	// Copy to clipboard
 	sessionStorage.removeItem( 'fieldcode' );
-	sessionStorage.setItem( 'fieldcode', '\n\t\t' + fieldCode + '\n' );
+	sessionStorage.setItem( 'fieldcode', '\n'+s+s + fieldCode + '\n' );
 	// Copy the code to the clipboard if sub fields are done appending to a repeater or group field
 	// Skip running copy code funtion if the field type is google_map
 	if (!appendCode && typeOfField !== 'google_map' ) {

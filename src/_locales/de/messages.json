@@ -53,6 +53,12 @@
     "spaces": {
         "message": "spaces"
     },
+    "extIsActive": {
+        "message": "ACF Tools is active on this page"
+    },
+    "extIsNotActive": {
+        "message": "ACF Tools is not active on this page"
+    },
     "gmapsTitle": {
         "message": "Google Maps Feld Code"
     },

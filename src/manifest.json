@@ -11,7 +11,8 @@
   },
   "permissions": [
     "activeTab",
-    "storage"
+    "storage",
+    "tabs"
   ],
   "browser_action": {
     "default_popup": "static/popup.html",

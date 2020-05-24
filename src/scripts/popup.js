@@ -82,4 +82,13 @@ ready(() => {
         });
     });
 
+    chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+        let url = tabs[0].url;
+        if (url.indexOf("wp-admin") > -1) {
+            document.querySelector("#acfToolsStatus").innerText = "ACF Tools is active";
+            document.querySelector("#acfToolsStatus").classList.add('active');
+        }
+    });
+
+    document.querySelector('html, #acfToolsUserSettingsPopup').style.height = "0";
 });

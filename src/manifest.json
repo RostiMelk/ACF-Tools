@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "ACF Tools",
-  "version": "2.7.2",
+  "version": "3.0.0",
   "description": "__MSG_extDescription__",
   "default_locale": "en",
   "icons": {
@@ -9,19 +9,43 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "permissions": ["activeTab"],
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs"
+  ],
+  "browser_action": {
+    "default_popup": "static/popup.html",
+    "default_title": "Toggle ACF Tools settings",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
   "content_scripts": [
     {
-      "matches": ["*://*/wp-admin/*", "*://*/**/wp-admin/*"],
-      "css": ["styles/style.css", "styles/modal.css", "styles/highlight.css"],
+      "matches": [
+        "*://*/wp-admin/*",
+        "*://*/**/wp-admin/*"
+      ],
+      "css": [
+        "styles/style.css",
+        "styles/modal.css",
+        "styles/highlight.css"
+      ],
       "js": [
         "lib/jquery-3.5.0.min.js",
         "lib/highlight.pack.js",
         "scripts/app.js",
+        "scripts/user-settings.js",
         "scripts/misc.js",
-        "scripts/fields.js"
+        "scripts/fields.js",
+        "scripts/i18n.js"
       ]
     }
   ],
-  "web_accessible_resources": ["static/*"]
+  "web_accessible_resources": [
+    "static/modals/*"
+  ]
 }

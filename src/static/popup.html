@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../styles/popup.css">
+</head>
+<body id="acfToolsUserSettingsPopup">
+    <h1>__MSG_settingsTitle__</h1>
+
+    <form id="acfToolsUserSettings">
+        <input type="checkbox" id="ifStatement">
+        <label for="ifStatement">__MSG_settingLabel1__</label>
+
+        <hr>
+
+        <select name="spacing" id="spacing">
+            <option value="tab">__MSG_tab__</option>
+            <option value="sp1">1 __MSG_space__</option>
+            <option value="sp2">2 __MSG_spaces__</option>
+            <option value="sp3">3 __MSG_spaces__</option>
+            <option value="sp4">4 __MSG_spaces__</option>
+            <option value="sp5">5 __MSG_spaces__</option>
+            <option value="sp6">6 __MSG_spaces__</option>
+            <option value="sp7">7 __MSG_spaces__</option>
+            <option value="sp8">8 __MSG_spaces__</option>
+        </select>
+        <label for="spacing" class="for-select">__MSG_settingLabel2__</label>
+    </form>
+
+    <p id="acfToolsStatus">__MSG_extIsNotActive__</p>
+
+    <script src="../scripts/popup.js" type="text/javascript"></script>
+    <script src="../scripts/i18n.js" type="text/javascript"></script>
+</body>
+</html>

@@ -35,6 +35,30 @@
     "clickToCopyCode": {
         "message": "Klicka för att kopiera kod."
     },
+    "settingsTitle": {
+        "message": "ACF Tools user settings"
+    },
+    "settingLabel1": {
+        "message": "If statements for basic fields"
+    },
+    "settingLabel2": {
+        "message": "Spacing on field code"
+    },
+    "tab": {
+        "message": "Tab"
+    },
+    "space": {
+        "message": "space"
+    },
+    "spaces": {
+        "message": "spaces"
+    },
+    "extIsActive": {
+        "message": "ACF Tools is active on this page"
+    },
+    "extIsNotActive": {
+        "message": "ACF Tools is not active on this page"
+    },
     "gmapsTitle": {
         "message": "Google Maps fältkod"
     },

@@ -4,6 +4,7 @@ $(document).ready(function() {
 	copyFieldCode();
 	appendCopyCodeBtns();
 	appendFieldNameOnEdit();
+	setDefaultUserSettings();
 });
 
 // Running some functions again when edits are made
@@ -58,7 +59,7 @@ function appendCopyCodeBtns() {
 	function appendCopyCodeBtn() {
 		var btnStr = chrome.i18n.getMessage('copyCodeBtn'),
 			btnTitle = chrome.i18n.getMessage('copyCodeBtnTitle');
-		$('.acf-field-object:not([data-type="accordion"], [data-type="message"], [data-type="tab"]) .row-options')
+		$('.acf-field-object:not([data-type="accordion"], [data-type="message"], [data-type="tab"], [data-type="clone"]) .row-options')
 			.append('<a class="button button-primary button-small copy-field-code exclude-sub-fields" title="'+btnTitle+'" href="#">'+btnStr+'</a>');
 	}
 	appendCopyCodeBtn();
@@ -119,11 +120,14 @@ function getReturnType(thisField, typeOfField) {
 		typeOfField == "taxonomy" ||
 		typeOfField == "user" ||
 		typeOfField == "file" ||
-		typeOfField == "post_object"
+		typeOfField == "post_object" ||
+		typeOfField == "image_aspect_ratio_crop" ||
+		typeOfField == "nav_menu"
 	) {
 		return thisField
 			.closest(".acf-field-object")
-			.find(".acf-field-setting-return_format li label.selected input")
+			.find(".acf-field-setting-return_format, .acf-field-setting-save_format")
+			.find("li label.selected input")
 			.val();
 	} else {
 		return null;
@@ -151,6 +155,41 @@ function getPlace() {
 	return $('.refresh-location-rule option[selected="selected"]').val();
 }
 
+function isFieldIsAllowedIf(typeOfField, ifStatementAllow) {
+	// Only allow if statement setting on certain fields
+	if(
+		typeOfField == "text" ||
+		typeOfField == "textarea" ||
+		typeOfField == "number" ||
+		typeOfField == "range" ||
+		typeOfField == "url" ||
+		typeOfField == "password" ||
+		typeOfField == "wysiwyg" ||
+		typeOfField == "font-awesome" ||
+		typeOfField == "date_picker" ||
+		typeOfField == "date_time_picker" ||
+		typeOfField == "time_picker" ||
+		typeOfField == "color_picker" ||
+		typeOfField == "extended-color-picker" ||
+		typeOfField == "acf_code_field"
+	) {
+		ifStatementAllow = true;
+	}
+
+	return ifStatementAllow;
+}
+
+function spacingSetting(spacing) {
+	if(spacing == "tab") {
+		spacing = "\t";
+	} else if (spacing.includes("sp")) {
+		var numSp = spacing.replace( /^\D+/g, '');
+		spacing = " "
+		spacing = spacing.repeat(numSp);
+	}
+	return spacing;
+}
+
 function copyFieldCode() {
 	// Copy field code
 	$("body").on("click", ".copy-field-code", function(e) {
@@ -158,12 +197,14 @@ function copyFieldCode() {
 		e.stopPropagation();
 		
 		var thisField = $(this),
-		fieldName = getFieldName(thisField),
-		typeOfField = getTypeOfField(thisField),
-		returnType = getReturnType(thisField, typeOfField),
-		seniority = getSeniority(thisField),
-		place = getPlace(thisField),
-		subFields = "";
+			fieldName = getFieldName(thisField),
+			typeOfField = getTypeOfField(thisField),
+			returnType = getReturnType(thisField, typeOfField),
+			seniority = getSeniority(thisField),
+			place = getPlace(thisField),
+			subFields = "",
+			ifStatement = false,
+			ifStatementAllow = false;
 
 		// Get rid of modal if it is open
 		codeModal(false);
@@ -188,17 +229,42 @@ function copyFieldCode() {
 					typeOfField = getTypeOfField(thisField),
 					returnType = getReturnType(thisField, typeOfField),
 					seniority = getSeniority(thisField),
-					place = getPlace(thisField);
+					place = getPlace(thisField),
+					ifStatement = false,
+					ifStatementAllow = false;
 
-				acf_field(appendCode = true, fieldName, typeOfField, returnType, seniority, place, "");
+				ifStatementAllow = isFieldIsAllowedIf(typeOfField, ifStatementAllow);
 
-				subFields += sessionStorage.getItem("fieldcode");
+				// Get user settings
+				chrome.storage.sync.get(settingsKey, function(data) {
+					var userSettings = JSON.parse(data[settingsKey]);
+
+					if( userSettings["ifStatement"] == true && ifStatementAllow) {
+						ifStatement = true;
+					}
+
+					var spacing = spacingSetting(userSettings["spacing"]);
+
+					acf_field(appendCode = true, fieldName, typeOfField, returnType, seniority, place, "", ifStatement, ifStatementAllow, spacing);
+					subFields += sessionStorage.getItem("fieldcode");
+				});
 			});
 		}
-		acf_field(appendCode = false, fieldName, typeOfField, returnType, seniority, place, subFields);
 
-		// Clear session storage
-		sessionStorage.removeItem("fieldcode");
+		ifStatementAllow = isFieldIsAllowedIf(typeOfField, ifStatementAllow);
+
+		// Get user settings
+		chrome.storage.sync.get(settingsKey, function(data) {
+			var userSettings = JSON.parse(data[settingsKey]);
+
+			if( userSettings["ifStatement"] == true && ifStatementAllow) {
+				ifStatement = true;
+			}
+
+			var spacing = spacingSetting(userSettings["spacing"]);
+
+			acf_field(appendCode = false, fieldName, typeOfField, returnType, seniority, place, subFields, ifStatement, ifStatementAllow, spacing);
+		});
 	});
 }
 

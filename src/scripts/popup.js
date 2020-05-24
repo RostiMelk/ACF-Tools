@@ -89,6 +89,4 @@ ready(() => {
             document.querySelector("#acfToolsStatus").classList.add('active');
         }
     });
-
-    document.querySelector('html, #acfToolsUserSettingsPopup').style.height = "0";
 });

@@ -1,13 +1,15 @@
 #acfToolsUserSettingsPopup, html {
-    width: 260px;
+    height: fit-content;
     max-height: 100%;
-    height: 100%;
+    width: 260px;
     max-width: 100%;
+}
+#acfToolsUserSettingsPopup {
     margin: 0;
     font-size: 13px;
     font-weight: 400;
     font-family: "Segoe UI",Helvetica,"Helvetica Neue",Arial,sans-serif;
-
+    overflow: hidden;
 }
 #acfToolsUserSettingsPopup h1 {
     padding: 14px;

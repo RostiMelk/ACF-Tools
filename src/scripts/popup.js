@@ -89,4 +89,7 @@ ready(() => {
             document.querySelector("#acfToolsStatus").classList.add('active');
         }
     });
+
+    var manifestData = chrome.runtime.getManifest();
+    document.querySelector("#currentVersion").innerText = 'v' + manifestData.version;
 });

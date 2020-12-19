@@ -11,11 +11,20 @@
     font-family: "Segoe UI",Helvetica,"Helvetica Neue",Arial,sans-serif;
     overflow: hidden;
 }
-#acfToolsUserSettingsPopup h1 {
+#acfToolsUserSettingsPopup header {
     padding: 14px;
     color: #fff;
     background-color: #4d5cf1;
+    display: flex;
+    justify-content: space-between;
+}
+#acfToolsUserSettingsPopup header #currentVersion {
+    margin: 0;
+    text-align: right;
+}
+#acfToolsUserSettingsPopup header h1 {
     font-size: 16px;
+    margin: 0;
 }
 #acfToolsUserSettings {
     margin: 20px 14px;
